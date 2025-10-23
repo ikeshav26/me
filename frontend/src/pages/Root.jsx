@@ -1,0 +1,64 @@
+import { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import Nav from "../components/Nav";
+import About from "./About";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import Home from "./Home";
+
+export default function Route() {
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const location = useLocation();
+
+
+  useEffect(() => {
+    if (location.hash === "#about") {
+      aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else if (location.hash === "#projects") {
+      projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else if (location.hash === "#contact") {
+      contactRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      homeRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+
+  return (
+    <div>
+      <section
+        id="home"
+        ref={homeRef}
+      >
+       <Home/>
+      </section>
+
+
+      <section
+        id="about"
+        ref={aboutRef}
+      >
+       <About/>
+      </section>
+
+
+      <section
+        id="projects"
+        ref={projectsRef}
+      >
+        <Projects/>
+      </section>
+
+
+      <section
+        id="contact"
+        ref={contactRef}
+      >
+        <Contact/>
+      </section>
+    </div>
+  );
+}
