@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: font1;
+    src: url('../public/62c97acc3aa63787-s.p.woff2');
+}
+
+@font-face {
+    font-family: font2;
+    src: url('../public//b5c95a22b4347906-s.p.woff2');
+}
+

@@ -39,7 +39,7 @@ const LandingPage = ({children}) => {
   return (
     <>
     <div className='main fixed inset-0 z-50 flex overflow-hidden'>
-      <div className='group z-60 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[15vw] font-bold text-white'>
+      <div className='group z-60 font-[font1] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[17vw]  text-white'>
       <span className='name'>K</span>
       <span className='name'>E</span>
       <span className='name'>S</span>
