@@ -3,7 +3,7 @@ import React from 'react'
 const Home = () => {
   return (
     <div className='h-screen relative px-6 md:px-0'>
-      <div className='absolute top-1/4 md:top-1/4 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8 md:gap-0'>
+      <div className='absolute top-1/4 md:top-1/4 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
 
       <div className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1]'>
         <span className='text-[#00f050]'>FULL STACK</span>
@@ -22,7 +22,7 @@ const Home = () => {
       <div className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 bottom-12 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0'>
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>1+</div>
-        <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Years of Experience</div>
+        <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Years of Learning</div>
       </div>
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>5+</div>
@@ -33,6 +33,24 @@ const Home = () => {
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Hours Worked</div>
         </div>
         </div>
+
+      <div className='absolute opacity-5 bottom-8 left-1/2 -translate-x-1/2 animate-bounce'>
+        <svg 
+          className='w-16 h-16 md:w-60 md:h-60' 
+          viewBox='0 0 24 24' 
+          fill='none' 
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path 
+            d='M4 8L12 16L20 8' 
+            stroke='#c8c8c8' 
+            strokeWidth='3' 
+            strokeLinecap='round' 
+            strokeLinejoin='round'
+          />
+        </svg>
+      </div>
+        
     </div>
   )
 }

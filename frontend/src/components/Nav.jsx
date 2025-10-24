@@ -84,7 +84,7 @@ const Nav = () => {
       </div>
 
 
-      <div className='fixed -left-21 top-3/4 font-[font2] text-[#c8c8c8]/70 rotate-90 text-md'>keshavgilhotra4@gmail.com</div>
+      <div className='fixed -left-21 md:-left-20 top-3/4 font-[font2] text-[#c8c8c8]/50 rotate-90 text-sm md:text-lg'>keshavgilhotra4@gmail.com</div>
 
     </div>
   );
