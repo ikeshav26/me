@@ -3,7 +3,7 @@ import React from 'react'
 const Home = () => {
   return (
     <div className='h-screen relative px-6 md:px-0'>
-      <div className='absolute top-1/4 md:top-1/4 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
+      <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/6 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
 
       <div className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1]'>
         <span className='text-[#00f050]'>FULL STACK</span>
@@ -34,20 +34,30 @@ const Home = () => {
         </div>
         </div>
 
-      <div className='absolute opacity-5 bottom-8 left-1/2 -translate-x-1/2 animate-bounce'>
-        <svg 
-          className='w-16 h-16 md:w-60 md:h-60' 
-          viewBox='0 0 24 24' 
-          fill='none' 
-          xmlns='http://www.w3.org/2000/svg'
+      <div className='absolute  bottom-8 left-1/2 -translate-x-1/2  animate-bounce'>
+         <svg
+            id="banner-arrow-svg"
+            width="376"
+            height="111"
+            viewBox="0 0 376 111"
+            fill="transparent"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-32 h-24 md:w-50 md:h-38"
         >
-          <path 
-            d='M4 8L12 16L20 8' 
-            stroke='#c8c8c8' 
-            strokeWidth='3' 
-            strokeLinecap='round' 
-            strokeLinejoin='round'
-          />
+            <path
+                className="svg-arrow svg-arrow-1"
+                d="M1 1V39.9286L188 110V70.6822L1 1Z"
+                stroke="#2c2c2c"
+                strokeWidth="3"
+                fill="none"
+            />
+            <path
+                className="svg-arrow svg-arrow-2"
+                d="M375 1V39.9286L188 110V70.6822L375 1Z"
+                stroke="#2c2c2c"
+                strokeWidth="3"
+                fill="none"
+            />
         </svg>
       </div>
         
