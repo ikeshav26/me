@@ -1,9 +1,39 @@
 import React from 'react'
+import { gsap } from 'gsap';
+import {useGSAP} from '@gsap/react'
 
 const Home = () => {
+  useGSAP(()=>{
+    const tl=gsap.timeline();
+    const tl2=gsap.timeline();
+    
+    tl.to('.svg-arrow-1',{
+      duration:1,
+      strokeDashoffset:0,
+      strokeDasharray:400,
+      repeat:-1
+    })
+
+    tl.to('.svg-arrow-2',{
+      duration:1,
+      strokeDashoffset:0,
+      strokeDasharray:400,
+      repeat:-1
+    })
+
+    tl.from('.arrow',{
+      yPercent:-20,
+      repeat:-1,
+      opacity:0.5,
+      yoyo:true,
+      ease:"power1.inOut",
+      duration:1,
+    })
+
+  })
   return (
     <div className='h-screen relative px-6 md:px-0'>
-      <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/6 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
+      <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
 
       <div className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1]'>
         <span className='text-[#00f050]'>FULL STACK</span>
@@ -34,7 +64,7 @@ const Home = () => {
         </div>
         </div>
 
-      <div className='absolute  bottom-8 left-1/2 -translate-x-1/2  animate-bounce'>
+      <div className='arrow absolute  bottom-8 left-1/2 -translate-x-1/2  '>
          <svg
             id="banner-arrow-svg"
             width="376"
@@ -42,7 +72,7 @@ const Home = () => {
             viewBox="0 0 376 111"
             fill="transparent"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-32 h-24 md:w-50 md:h-38"
+            className="w-32 h-24 md:w-80 md:h-80 "
         >
             <path
                 className="svg-arrow svg-arrow-1"
