@@ -6,11 +6,11 @@ const Heading = ({text}) => {
   const MarqueeContent = () => (
     <>
       <div className='flex gap-4 sm:gap-6 items-center mx-8 sm:mx-12'>
-        <div className='w-2 h-2 bg-[#00f050] rounded-full animate-pulse'></div>
-        <GiTwirlyFlower className='icon w-5 h-5 sm:w-6 sm:h-6 text-[#00f050] drop-shadow-[0_0_8px_rgba(0,240,80,0.5)]' />
+        <div className='w-2 h-2 bg-[#c8c8c8] rounded-full animate-pulse'></div>
+        <GiTwirlyFlower className='icon w-5 h-5 sm:w-6 sm:h-6 text-[#c8c8c8] drop-shadow-[0_0_8px_rgba(0,240,80,0.5)]' />
         <span className='whitespace-nowrap tracking-[0.3em] font-semibold'>{text}</span>
-        <GiTwirlyFlower className='icon w-5 h-5 sm:w-6 sm:h-6 text-[#00f050] drop-shadow-[0_0_8px_rgba(0,240,80,0.5)]' />
-        <div className='w-2 h-2 bg-[#00f050] rounded-full animate-pulse'></div>
+        <GiTwirlyFlower className='icon w-5 h-5 sm:w-6 sm:h-6 text-[#c8c8c8] drop-shadow-[0_0_8px_rgba(0,240,80,0.5)]' />
+        <div className='w-2 h-2 bg-[#c8c8c8] rounded-full animate-pulse'></div>
       </div>
     </>
   )
@@ -74,7 +74,7 @@ const Heading = ({text}) => {
         <div className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-14 sm:h-16 md:h-18 -rotate-1 overflow-hidden relative marquee-glow border-y border-[#00f050]/30 backdrop-blur-sm'>
           <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
           <div className='absolute inset-0 flex items-center'>
-            <div className='flex animate-marquee font-[font1] text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#00f050] uppercase'>
+            <div className='flex animate-marquee font-[font1] text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#c8c8c8] uppercase'>
               <MarqueeContent />
               <MarqueeContent />
               <MarqueeContent />
@@ -98,7 +98,7 @@ const Heading = ({text}) => {
         <div className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-14 sm:h-16 md:h-18 rotate-1 overflow-hidden relative marquee-glow border-y border-[#00f050]/30 backdrop-blur-sm'>
           <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
           <div className='absolute inset-0 flex items-center'>
-            <div className='flex animate-marquee-reverse font-[font1] text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#00f050] uppercase'>
+            <div className='flex animate-marquee-reverse font-[font1] text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#c8c8c8] uppercase'>
               <MarqueeContent />
               <MarqueeContent />
               <MarqueeContent />

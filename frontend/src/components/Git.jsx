@@ -38,8 +38,6 @@ const Git = () => {
 
   return (
     <div className='w-full py-12 sm:py-16 flex flex-col items-center justify-center px-6'>
-
-      <Heading text={"GITHUB CONTRIBUTIONS"}/>
       
       <div className='w-full max-w-7xl flex flex-col items-center'>
         <div className='w-full overflow-x-auto flex justify-center px-2'>
