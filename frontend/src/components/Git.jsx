@@ -3,6 +3,7 @@ import GitHubCalendar from 'react-github-calendar';
 import { GiTwirlyFlower } from "react-icons/gi";
 import { gsap } from 'gsap';
 import {useGSAP} from '@gsap/react'
+import Heading from './Heading';
 
 
 const Git = () => {
@@ -36,17 +37,11 @@ const Git = () => {
   })
 
   return (
-    <div className=' w-full min-h-screen py-16 sm:py-20 md:py-24 flex flex-col items-center justify-center px-6  relative'>
+    <div className='w-full py-12 sm:py-16 flex flex-col items-center justify-center px-6'>
 
-      <h2 className=' absolute left-1/5 top-1/4 font-[font1] text-2xl sm:text-3xl md:text-4xl lg:text-4xl text-[#c8c8c8]/80  flex gap-2 sm:gap-3 items-center'>
-        <GiTwirlyFlower className='icon w-8 h-8 '/>
-        <span className='whitespace-nowrap'>GITHUB</span>
-        <span className='hidden sm:inline'>CONTRIBUTIONS</span>
-        <span className='sm:hidden'>CONTRI</span>
-      </h2>
+      <Heading text={"GITHUB CONTRIBUTIONS"}/>
       
-      
-      <div className=' w-full max-w-7xl flex flex-col items-center gap-8'>
+      <div className='w-full max-w-7xl flex flex-col items-center'>
         <div className='w-full overflow-x-auto flex justify-center px-2'>
           <div className='inline-block min-w-fit'>
             <GitHubCalendar 

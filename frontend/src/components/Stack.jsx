@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { GiTwirlyFlower } from "react-icons/gi";
 import Skill from './Skill';
 import { frontend, backend, database, tools } from '../assets/assets';
+import Heading from './Heading';
 
 const Stack = () => {
     useGSAP(()=>{
@@ -15,10 +16,10 @@ const Stack = () => {
     })
   })
   return (
-    <div className='w-full min-h-screen py-16 md:py-20 flex flex-col items-center justify-center px-6  relative'>
-        <h2 className=' font-[font1] absolute left-1/5 top-0 text-3xl sm:text-4xl md:text-3xl lg:text-3xl text-[#c8c8c8]/80 mb-12 sm:mb-16 md:mb-20 flex gap-2 items-center'><GiTwirlyFlower className='icon w-8 h-8 '/>MY STACK</h2>
+    <div className='w-full py-12 sm:py-16 flex flex-col items-center justify-center px-6 relative'>
+        <Heading text={"MY STACK"}/>
         
-        <div className='w-full max-w-6xl flex flex-col gap-10 sm:gap-12 md:gap-16'>
+        <div className='w-full max-w-6xl flex flex-col gap-8 sm:gap-10 md:gap-12'>
           
           
           <div className='w-full flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-10 items-start md:items-center'>

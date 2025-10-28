@@ -8,10 +8,10 @@ const About = () => {
   
   
   return (
-    <div className='min-h-screen px-6 md:px-0 py-20 md:py-0'>
-      <div className='max-w-7xl mx-auto h-full flex flex-col justify-center gap-12 sm:gap-16 md:gap-20'>
+    <div className='min-h-screen px-6 md:px-0 py-12 sm:py-16 md:py-20'>
+      <div className='max-w-7xl mx-auto h-full flex flex-col justify-center gap-10 sm:gap-12 md:gap-16'>
       
-        <div className='quote w-full md:w-4/5 lg:w-3/4 mx-auto md:ml-[10%] font-light font-[font2] text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-relaxed text-[#c8c8c8]'>
+        <div className='quote w-full md:w-4/5 lg:w-3/4 mx-auto md:ml-[10%] font-light font-[font2] text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#c8c8c8]'>
           I believe in a user-centered development approach, ensuring every application I build delivers seamless performance, intuitive interfaces, and real value to its users.
         </div>
 
