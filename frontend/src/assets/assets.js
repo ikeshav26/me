@@ -44,6 +44,7 @@ export const projectsData = [
     description:
       "Full-stack music streaming platform with real-time playback, custom playlists, and user authentication.",
     link: "https://echovia-music-player.vercel.app/",
+    image:"/projects/echovia.png"
   },
   {
     number: "02",
@@ -52,6 +53,7 @@ export const projectsData = [
     description:
       "Open-source collaborative note-taking platform with real-time sync, Redis caching, and OAuth authentication.",
     link: "https://zettanote.tech/",
+    image:"/projects/zettanote.png"
   },
   {
     number: "03",
@@ -60,6 +62,7 @@ export const projectsData = [
     description:
       "AI-powered GitHub automation that reviews pull requests, detects issues, and suggests improvements via GitHub Actions.",
     link: "https://github.com/ikeshav26/auto_pr_reviewer",
+    image:"/projects/reviewer.png"
   },
   {
     number: "04",
@@ -68,6 +71,7 @@ export const projectsData = [
     description:
       "AI-powered career toolkit that enhances CVs, generates cover letters, and provides interview preparation using OpenAI GPT.",
     link: "https://elevatecv-ai.ikeshav.tech/",
+    image:"/projects/elevate.png"
   },
   {
     number: "05",
@@ -76,5 +80,6 @@ export const projectsData = [
     description:
       "ML-based health diagnosis system that predicts diseases from symptoms and provides detailed descriptions with treatment recommendations.",
     link: "https://github.com/ikeshav26/disease-detector",
+    image:"/projects/fit.png"
   },
 ];

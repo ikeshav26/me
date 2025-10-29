@@ -1,9 +1,40 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { FiExternalLink } from "react-icons/fi";
 
 
-const Project = ({ number, title, tech, description, link }) => {
+const Project = ({ number, title, tech, description, link,image }) => {
+  const containerRef = useRef(null)
+  const imageRef = useRef(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current || !imageRef.current) return
+    
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    
+    // Calculate relative position (0 to 1)
+    const relativeX = x / rect.width
+    const relativeY = y / rect.height
+    
+    // Convert to offset range (-20px to 20px for subtle float)
+    const offsetX = (relativeX - 0.5) * 40
+    const offsetY = (relativeY - 0.5) * 40
+    
+    setMousePos({ x: offsetX, y: offsetY })
+  }
+
+  const handleMouseEnter = () => {
+    setIsHovering(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+  }
+
   return (
     <div className='w-full px-6 md:px-12 lg:px-20 py-4 sm:py-4'>
       <style>{`
@@ -31,10 +62,28 @@ const Project = ({ number, title, tech, description, link }) => {
           stroke-dashoffset: 0;
           opacity: 1;
         }
+
+        .project-image {
+          opacity: 0;
+          transform: scale(0.95);
+          transition: opacity 0.6s ease-out, transform 0.3s ease-out;
+          pointer-events: none;
+        }
+
+        .group:hover .project-image {
+          opacity: 1;
+          transform: scale(1);
+        }
       `}</style>
       
       <Link to={link}>
-      <div className='w-full border-b border-[#c8c8c8]/30 pb-4 sm:pb-6 group'>
+      <div 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className='w-full border-b border-[#c8c8c8]/30 pb-4 sm:pb-6 group relative'
+      >
         <div className='flex flex-col sm:flex-row items-start gap-3 sm:gap-3 md:gap-5'>
 
           <div className='text-[#c8c8c8]/60 font-[font1] text-xl sm:text-2xl md:text-3xl min-w-[60px] sm:min-w-[80px]'>
@@ -63,6 +112,19 @@ const Project = ({ number, title, tech, description, link }) => {
           </div>
           
         </div>
+
+        <div 
+          ref={imageRef}
+          style={{ 
+            backgroundImage: `url(${image})`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            transform: isHovering 
+              ? `translate(${mousePos.x}px, ${mousePos.y}px) scale(1)` 
+              : 'translate(0, 0) scale(0.95)',
+          }} 
+          className='project-image absolute top-0 right-20 w-90 h-50 rounded-lg shadow-xl '
+        ></div>
       </div>
       </Link>
     </div>
