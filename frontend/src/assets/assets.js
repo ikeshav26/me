@@ -1,38 +1,80 @@
-import { SiOpenai, SiPostman, SiGithubactions } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
+import { SiOpenai, SiPostman, SiGithubactions } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
+export const frontend = [
+  { name: "JavaScript", logo: "/logos/js.png" },
+  { name: "TypeScript", logo: "/logos/ts.png" },
+  { name: "React", logo: "/logos/react.png" },
+  { name: "Next.Js", logo: "/logos/next.png" },
+  { name: "Expo", logo: "/logos/expo.png" },
+  { name: "Tailwind CSS", logo: "/logos/tailwind.png" },
+  { name: "GSAP", logo: "/logos/gsap.png" },
+  { name: "Framer Motion", logo: "/logos/framer-motion.png" },
+  { name: "SASS", logo: "/logos/sass.png" },
+  { name: "Bootstrap", logo: "/logos/bootstrap.svg" },
+];
 
-export const frontend=[
-    {name:"JavaScript",logo:"/logos/js.png"},
-    {name:"TypeScript",logo:"/logos/ts.png"},
-    {name:"React",logo:"/logos/react.png"},
-    {name:"Next.Js",logo:"/logos/next.png"},
-    {name:"Expo",logo:"/logos/expo.png"},
-    {name:"Tailwind CSS",logo:"/logos/tailwind.png"},
-    {name:"GSAP",logo:"/logos/gsap.png"},
-    {name:"Framer Motion",logo:"/logos/framer-motion.png"},
-    {name:"SASS",logo:"/logos/sass.png"},
-    {name:"Bootstrap",logo:"/logos/bootstrap.svg"}
-  ]
-  
- export const backend=[
-    {name:"Node.Js",logo:"/logos/node.png"},
-    {name:"Express",logo:"/logos/express.png"},
-    {name:"Java", icon: FaJava, iconColor: "#ff6c37"},
-    {name:"OpenAI", icon: SiOpenai, iconColor: "#10A37F"},
-    {name:"Oauth",logo:"/logos/oauth.png"},
-    {name:"Redis",logo:"/logos/redis.png"}
-  ]
+export const backend = [
+  { name: "Node.Js", logo: "/logos/node.png" },
+  { name: "Express", logo: "/logos/express.png" },
+  { name: "Java", icon: FaJava, iconColor: "#ff6c37" },
+  { name: "OpenAI", icon: SiOpenai, iconColor: "#10A37F" },
+  { name: "Oauth", logo: "/logos/oauth.png" },
+  { name: "Redis", logo: "/logos/redis.png" },
+];
 
- export  const database=[
-    {name:"MongoDB",logo:"/logos/mongodb.png"},
-    {name:"MySQL",logo:"/logos/mysql.svg"}
-  ]
+export const database = [
+  { name: "MongoDB", logo: "/logos/mongodb.png" },
+  { name: "MySQL", logo: "/logos/mysql.svg" },
+];
 
- export const tools=[
-    {name:"Git",logo:"/logos/git.png"},
-    {name:"GitHub",logo:"/logos/github.png"},
-    {name:"Docker",logo:"/logos/docker.svg"},
-    {name:"Postman", icon: SiPostman, iconColor: "#FF6C37"},
-    {name:"CI/CD", icon: SiGithubactions, iconColor: "#2088FF"}
-  ]
+export const tools = [
+  { name: "Git", logo: "/logos/git.png" },
+  { name: "GitHub", logo: "/logos/github.png" },
+  { name: "Docker", logo: "/logos/docker.svg" },
+  { name: "Postman", icon: SiPostman, iconColor: "#FF6C37" },
+  { name: "CI/CD", icon: SiGithubactions, iconColor: "#2088FF" },
+];
+
+export const projectsData = [
+  {
+    number: "01",
+    title: "ECHOVIA - MUSIC PLAYER",
+    tech: "MONGODB • EXPRESS.JS • REACT.JS • NODE.JS",
+    description:
+      "Full-stack music streaming platform with real-time playback, custom playlists, and user authentication.",
+    link: "https://echovia-music-player.vercel.app/",
+  },
+  {
+    number: "02",
+    title: "ZETTANOTE",
+    tech: "NODE.JS • VITE • REDIS • OAUTH • DOCKER • OPEN SOURCE",
+    description:
+      "Open-source collaborative note-taking platform with real-time sync, Redis caching, and OAuth authentication.",
+    link: "https://zettanote.tech/",
+  },
+  {
+    number: "03",
+    title: "AUTO PR REVIEWER",
+    tech: "GITHUB ACTIONS • NODE.JS • GEMINI API",
+    description:
+      "AI-powered GitHub automation that reviews pull requests, detects issues, and suggests improvements via GitHub Actions.",
+    link: "https://github.com/ikeshav26/auto_pr_reviewer",
+  },
+  {
+    number: "04",
+    title: "ELEVATE CV AI",
+    tech: "MERN • OPENAI API • PDF GENERATION",
+    description:
+      "AI-powered career toolkit that enhances CVs, generates cover letters, and provides interview preparation using OpenAI GPT.",
+    link: "https://elevatecv-ai.ikeshav.tech/",
+  },
+  {
+    number: "05",
+    title: "FIT AI - HEALTH PREDICTOR",
+    tech: "PYTHON • FLASK • STREAMLIT • MACHINE LEARNING • SCIKIT-LEARN",
+    description:
+      "ML-based health diagnosis system that predicts diseases from symptoms and provides detailed descriptions with treatment recommendations.",
+    link: "https://github.com/ikeshav26/disease-detector",
+  },
+];
