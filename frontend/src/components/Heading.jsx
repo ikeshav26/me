@@ -57,12 +57,12 @@ const Heading = ({text}) => {
       <div className='flex gap-4 sm:gap-6 items-center mx-8 sm:mx-12'>
         <GiTwirlyFlower 
           ref={el => iconsRef.current.push(el)} 
-          className='w-5 h-5 sm:w-6 sm:h-6 text-[#00f050]' 
+          className='w-5 h-5 sm:w-6 sm:h-6 text-[#c8c8c8]/80' 
         />
         <span className='whitespace-nowrap tracking-[0.3em] font-semibold'>{text}</span>
         <GiTwirlyFlower 
           ref={el => iconsRef.current.push(el)} 
-          className='w-5 h-5 sm:w-6 sm:h-6 text-[#00f050]' 
+          className='w-5 h-5 sm:w-6 sm:h-6 text-[#c8c8c8]/80' 
         />
       </div>
     </>
@@ -79,7 +79,7 @@ const Heading = ({text}) => {
         >
           <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
           <div className='absolute inset-0 flex items-center'>
-            <div ref={marquee1Ref} className='flex font-[font1] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#00f050] uppercase'>
+            <div ref={marquee1Ref} className='flex font-[font1] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#c8c8c8]/80 uppercase'>
               <MarqueeContent />
               <MarqueeContent />
               <MarqueeContent />
@@ -95,7 +95,7 @@ const Heading = ({text}) => {
 
           <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to right, #000000 0%, transparent 15%)'}}></div>
           <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to left, #000000 0%, transparent 15%)'}}></div>
-        </div>
+        </div>ptaa
       </div>
       
 
@@ -107,7 +107,7 @@ const Heading = ({text}) => {
         >
           <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
           <div className='absolute inset-0 flex items-center'>
-            <div ref={marquee2Ref} className='flex font-[font1] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#00f050] uppercase' style={{transform: 'translateX(-50%)'}}>
+            <div ref={marquee2Ref} className='flex font-[font1] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#c8c8c8]/80 uppercase' style={{transform: 'translateX(-50%)'}}>
               <MarqueeContent />
               <MarqueeContent />
               <MarqueeContent />
