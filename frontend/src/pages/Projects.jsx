@@ -11,7 +11,7 @@ const Projects = () => {
     <div className='min-h-screen w-full py-12 sm:py-16 md:py-20'>
       <Heading text={"MY PROJECTS"}/>
       
-      <div className='w-full max-w-7xl mx-auto flex flex-col gap-6 sm:gap-8 md:gap-10 mt-8 sm:mt-12'>
+      <div className='w-full max-w-7xl mx-auto flex flex-col gap-2  mt-8 sm:mt-12'>
         {projectsData.map((project, index) => (
           <Project
             key={index}
