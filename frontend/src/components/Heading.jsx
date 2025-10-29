@@ -74,7 +74,7 @@ const Heading = ({text}) => {
       <div className='relative mb-2 sm:mb-3 overflow-hidden'>
         <div 
           ref={el => glowRef.current[0] = el}
-          className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-10 sm:h-12 md:h-14 lg:h-16 -rotate-1 overflow-hidden relative border-y border-[#00f050]/30'
+          className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-8 sm:h-8 md:h-8 lg:h-10 -rotate-1 overflow-hidden relative border-y border-[#00f050]/30'
           style={{boxShadow: '0 0 20px rgba(0, 240, 80, 0.3), inset 0 0 20px rgba(0, 240, 80, 0.1)'}}
         >
           <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
@@ -102,7 +102,7 @@ const Heading = ({text}) => {
       <div className='relative overflow-hidden'>
         <div 
           ref={el => glowRef.current[1] = el}
-          className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-10 sm:h-12 md:h-14 lg:h-16 rotate-1 overflow-hidden relative border-y border-[#00f050]/30'
+          className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-8 sm:h-8 md:h-8 lg:h-10 rotate-1 overflow-hidden relative border-y border-[#00f050]/30'
           style={{boxShadow: '0 0 20px rgba(0, 240, 80, 0.3), inset 0 0 20px rgba(0, 240, 80, 0.1)'}}
         >
           <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
