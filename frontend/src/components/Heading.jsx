@@ -1,129 +1,90 @@
 import React, { useRef } from 'react'
-import { GiTwirlyFlower } from 'react-icons/gi'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 
 const Heading = ({text}) => {
-  const marquee1Ref = useRef(null)
-  const marquee2Ref = useRef(null)
-  const iconsRef = useRef([])
-  const glowRef = useRef([])
+  const textRef = useRef(null)
+  const lineLeftRef = useRef(null)
+  const lineRightRef = useRef(null)
+  const containerRef = useRef(null)
 
   useGSAP(() => {
+    const tl = gsap.timeline()
 
-    gsap.to(marquee1Ref.current, {
-      xPercent: -50,
-      duration: 30,
-      ease: 'none',
+    // Container fade in
+    tl.fromTo(containerRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5, ease: 'power2.out' }
+    )
+
+    // Lines expand from center outward
+    tl.fromTo([lineLeftRef.current, lineRightRef.current], 
+      { scaleX: 0 },
+      { scaleX: 1, duration: 0.8, ease: 'power3.out', stagger: 0.1 },
+      '-=0.2'
+    )
+
+    // Text fades in and slides up
+    tl.fromTo(textRef.current,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' },
+      '-=0.5'
+    )
+
+    // Continuous subtle glow pulse on lines
+    gsap.to([lineLeftRef.current, lineRightRef.current], {
+      boxShadow: '0 0 25px rgba(0, 240, 80, 0.7)',
+      duration: 2,
+      ease: 'sine.inOut',
+      yoyo: true,
       repeat: -1
     })
 
-
-    gsap.to(marquee2Ref.current, {
-      xPercent: 50,
-      duration: 30,
-      ease: 'none',
+    // Subtle letter spacing breathing effect
+    gsap.to(textRef.current, {
+      letterSpacing: '0.25em',
+      duration: 3,
+      ease: 'sine.inOut',
+      yoyo: true,
       repeat: -1
     })
 
-    iconsRef.current.forEach(icon => {
-      if (icon) {
-        gsap.to(icon, {
-          rotation: 360,
-          duration: 8,
-          ease: 'none',
-          repeat: -1
-        })
-      }
-    })
-
-
-    glowRef.current.forEach(glow => {
-      if (glow) {
-        gsap.to(glow, {
-          boxShadow: '0 0 40px rgba(0, 240, 80, 0.5), inset 0 0 30px rgba(0, 240, 80, 0.2)',
-          duration: 1.5,
-          ease: 'power1.inOut',
-          yoyo: true,
-          repeat: -1
-        })
-      }
-    })
-  })
-
-  const MarqueeContent = () => (
-    <>
-      <div className='flex gap-4 sm:gap-6 items-center mx-8 sm:mx-12'>
-        <GiTwirlyFlower 
-          ref={el => iconsRef.current.push(el)} 
-          className='w-5 h-5 sm:w-6 sm:h-6 text-[#c8c8c8]/80' 
-        />
-        <span className='whitespace-nowrap tracking-[0.3em] font-semibold'>{text}</span>
-        <GiTwirlyFlower 
-          ref={el => iconsRef.current.push(el)} 
-          className='w-5 h-5 sm:w-6 sm:h-6 text-[#c8c8c8]/80' 
-        />
-      </div>
-    </>
-  )
+  }, [])
 
   return (
-    <div className='relative w-full overflow-hidden py-3 sm:py-4 md:py-5 mb-6 sm:mb-8 md:mb-10'>
-      
-      <div className='relative mb-2 sm:mb-3 overflow-hidden'>
-        <div 
-          ref={el => glowRef.current[0] = el}
-          className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-8 sm:h-8 md:h-8 lg:h-10 -rotate-1 overflow-hidden relative border-y border-[#00f050]/30'
-          style={{boxShadow: '0 0 20px rgba(0, 240, 80, 0.3), inset 0 0 20px rgba(0, 240, 80, 0.1)'}}
-        >
-          <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
-          <div className='absolute inset-0 flex items-center'>
-            <div ref={marquee1Ref} className='flex font-[font1] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#c8c8c8]/80 uppercase'>
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-            </div>
-          </div>
-
-          <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to right, #000000 0%, transparent 15%)'}}></div>
-          <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to left, #000000 0%, transparent 15%)'}}></div>
+    <div ref={containerRef} className='w-full py-8 sm:py-10 md:py-12 mb-6 sm:mb-8 md:mb-10'>
+      <div className='flex flex-col items-center gap-5 sm:gap-6'>
+        
+        {/* Dual decorative lines with center dot */}
+        <div className='flex items-center gap-3 sm:gap-4'>
+          <div 
+            ref={lineLeftRef}
+            className='w-16 sm:w-20 md:w-24 h-0.5 bg-[#00f050] origin-right'
+            style={{boxShadow: '0 0 10px rgba(0, 240, 80, 0.5)'}}
+          ></div>
+          
+          <div className='w-1.5 h-1.5 bg-[#00f050] rounded-full shadow-[0_0_10px_rgba(0,240,80,0.8)]'></div>
+          
+          <div 
+            ref={lineRightRef}
+            className='w-16 sm:w-20 md:w-24 h-0.5 bg-[#00f050] origin-left'
+            style={{boxShadow: '0 0 10px rgba(0, 240, 80, 0.5)'}}
+          ></div>
         </div>
-      </div>
-      
 
-      <div className='relative overflow-hidden'>
-        <div 
-          ref={el => glowRef.current[1] = el}
-          className='bg-gradient-to-r from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] w-full h-8 sm:h-8 md:h-8 lg:h-10 rotate-1 overflow-hidden relative border-y border-[#00f050]/30'
-          style={{boxShadow: '0 0 20px rgba(0, 240, 80, 0.3), inset 0 0 20px rgba(0, 240, 80, 0.1)'}}
+        {/* Heading text */}
+        <h1 
+          ref={textRef}
+          className='font-[font1] text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#00f050] uppercase text-center'
+          style={{
+            letterSpacing: '0.2em',
+            textShadow: '0 0 30px rgba(0, 240, 80, 0.4), 0 0 60px rgba(0, 240, 80, 0.2)'
+          }}
         >
-          <div className='absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,240,80,0.05)_50%,transparent_100%)]'></div>
-          <div className='absolute inset-0 flex items-center'>
-            <div ref={marquee2Ref} className='flex font-[font1] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#c8c8c8]/80 uppercase' style={{transform: 'translateX(-50%)'}}>
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-              <MarqueeContent />
-            </div>
-          </div>
+          {text}
+        </h1>
 
-          <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to right, #000000 0%, transparent 15%)'}}></div>
-          <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to left, #000000 0%, transparent 15%)'}}></div>
-        </div>
       </div>
     </div>
   )
