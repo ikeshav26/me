@@ -95,7 +95,7 @@ const Heading = ({text}) => {
 
           <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to right, #000000 0%, transparent 15%)'}}></div>
           <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 h-full pointer-events-none z-10' style={{background: 'linear-gradient(to left, #000000 0%, transparent 15%)'}}></div>
-        </div>ptaa
+        </div>
       </div>
       
 

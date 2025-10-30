@@ -16,11 +16,10 @@ const Project = ({ number, title, tech, description, link,image }) => {
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
     
-    // Calculate relative position (0 to 1)
     const relativeX = x / rect.width
     const relativeY = y / rect.height
     
-    // Convert to offset range (-20px to 20px for subtle float)
+
     const offsetX = (relativeX - 0.5) * 40
     const offsetY = (relativeY - 0.5) * 40
     
@@ -70,9 +69,11 @@ const Project = ({ number, title, tech, description, link,image }) => {
           pointer-events: none;
         }
 
-        .group:hover .project-image {
-          opacity: 1;
-          transform: scale(1);
+        @media (min-width: 768px) {
+          .group:hover .project-image {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
       `}</style>
       
