@@ -7,6 +7,7 @@ export const frontend = [
   { name: "React", logo: "/logos/react.png" },
   { name: "Next.Js", logo: "/logos/next.png" },
   { name: "Expo", logo: "/logos/expo.png" },
+  { name: "React Native", logo: "/logos/react.png" },
   { name: "Tailwind CSS", logo: "/logos/tailwind.png" },
   { name: "GSAP", logo: "/logos/gsap.png" },
   { name: "Framer Motion", logo: "/logos/framer-motion.png" },
