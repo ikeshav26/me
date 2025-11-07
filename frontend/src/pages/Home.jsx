@@ -64,7 +64,7 @@ const Home = () => {
         </div>
         </div>
 
-      <div className='arrow absolute  bottom-8 left-1/2 -translate-x-1/2  '>
+      <div className='arrow absolute  -bottom-8 left-1/2 -translate-x-1/2  '>
          <svg
             id="banner-arrow-svg"
             width="376"

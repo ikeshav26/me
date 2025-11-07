@@ -12,6 +12,10 @@ const reviewSchema=new mongoose.Schema({
     stars:{
         type:Number,
         required:true
+    },
+    deleteKey:{
+        type:String,
+        required:true
     }
 })
 
