@@ -2,7 +2,6 @@ import React from 'react'
 import Heading from '../components/Heading'
 import Project from '../components/Project'
 import { projectsData } from '../assets/assets'
-import Eye from '../components/Eye'
 
 
 const Projects = () => {
