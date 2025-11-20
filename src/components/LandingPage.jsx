@@ -47,16 +47,16 @@ const LandingPage = ({children}) => {
       <span className='name'>A</span>
       <span className='name'>V</span>
       </div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
-      <div className='stair h-screen w-[10vw] bg-black'></div>
+      <div className='stair h-screen w-[20vw] md:w-[10vw] bg-black'></div>
+      <div className='stair h-screen w-[10vw] hidden md:block bg-black'></div>
+      <div className='stair h-screen w-[20vw] md:w-[10vw] bg-black'></div>
+      <div className='stair h-screen w-[10vw] hidden md:block bg-black'></div>
+      <div className='stair h-screen w-[20vw] md:w-[10vw] bg-black'></div>
+      <div className='stair h-screen w-[10vw] hidden md:block bg-black'></div>
+      <div className='stair h-screen w-[20vw] md:w-[10w] bg-black'></div>
+      <div className='stair h-screen w-[10vw] hidden md:block bg-black'></div>
+      <div className='stair h-screen w-[20vw] md:w-[10vw] bg-black'></div>
+      <div className='stair h-screen w-[10vw]  hidden md:block bg-black'></div>
     </div>
     <div>
         {children}
