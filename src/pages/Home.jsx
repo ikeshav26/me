@@ -45,7 +45,14 @@ const Home = () => {
       </div>
 
       <div>
-        <button className='bg-[#00f050] text-black font-[font1] text-lg md:text-xl py-2 px-4 hover:bg-[#00d045] transition-colors duration-300'>Download CV</button>
+        <a 
+          href='/resume.pdf' 
+          download='Keshav_Gilhotra_Resume.pdf'
+          className='group relative inline-block bg-[#00f050] cursor-pointer text-black font-[font1] text-lg md:text-xl py-2 px-4 overflow-hidden transition-colors duration-300'
+        >
+          <span className='relative z-10'>Download CV</span>
+          <div className='absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left'></div>
+        </a>
       </div>
       </div>
 

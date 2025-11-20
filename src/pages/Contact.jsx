@@ -110,7 +110,7 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Contact Form */}
+
         <form onSubmit={handleSubmit} className='space-y-8 mb-16'>
           <div className='form-group'>
             <label 
@@ -226,7 +226,7 @@ const Contact = () => {
           </div>
         </form>
 
-        {/* Social Links */}
+
         <div className=' pt-12'>
           <h2 className='social-links text-2xl md:text-3xl font-[font1] text-white mb-6'>
             CONNECT WITH ME
