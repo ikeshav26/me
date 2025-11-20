@@ -168,25 +168,25 @@ const Activity = () => {
       )}
 
 
-      <div className='flex flex-col md:flex-row gap-2 md:gap-20'>
-        <div className='activity-card flex-1 flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
+        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
           <div className='text-lg'>🕐</div>
           <div className='flex-1 min-w-0'>
             <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>IST</div>
-            <div className='text-white text-md font-[font1] tabular-nums'>
+            <div className='text-white text-sm font-[font1] tabular-nums'>
               {currentTime}
             </div>
           </div>
         </div>
 
-        {/* Last Commit */}
-        <div className='activity-card flex-1 flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3'>
+
+        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
           <div className='text-lg'>📝</div>
           <div className='flex-1 min-w-0'>
             <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Last Commit</div>
             {lastCommit ? (
               <>
-                <div className='text-white text-xl font-[font1] truncate'>
+                <div className='text-white text-sm font-[font1] truncate'>
                   {lastCommit.message}
                 </div>
                 <div className='text-[#00f050] text-xs'>
@@ -203,18 +203,15 @@ const Activity = () => {
       </div>
 
 
-      <div className='flex flex-col md:flex-row gap-2 md:gap-20'>
-        
-
-        
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
         {activity?.activities && activity.activities.length > 0 ? (
-          <div className='activity-card flex-1 flex items-center gap-4 border-b border-[#c8c8c8]/10 pb-3'>
+          <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
             <div className='text-lg'>{getActivityIcon(activity.activities[0].name)}</div>
             <div className='flex-1 min-w-0'>
               <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>
                 {activity.activities[0].type === 0 ? 'Playing' : activity.activities[0].type === 1 ? 'Streaming' : 'Using'}
               </div>
-              <div className='text-white text-xs font-[font1] truncate'>
+              <div className='text-white text-sm font-[font1] truncate'>
                 {activity.activities[0].name}
               </div>
               {activity.activities[0].details && (
@@ -236,11 +233,11 @@ const Activity = () => {
             )}
           </div>
         ) : (
-          <div className='activity-card flex-1 flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3'>
+          <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
             <div className='text-lg'>💻</div>
             <div className='flex-1 min-w-0'>
-              <div className='text-[#c8c8c8]/60 text-xl font-[font2]'>VS Code</div>
-              <div className='text-[#c8c8c8]/40 text-xs'>
+              <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>VS Code</div>
+              <div className='text-[#c8c8c8]/40 text-sm'>
                 Not active
               </div>
             </div>
@@ -248,13 +245,13 @@ const Activity = () => {
         )}
 
 
-        <div className='activity-card flex-1 flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3'>
+        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
           <div className='text-lg'>🎵</div>
           <div className='flex-1 min-w-0'>
             <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Spotify</div>
             {spotify ? (
               <>
-                <div className='text-white text-xl font-[font1] truncate'>
+                <div className='text-white text-sm font-[font1] truncate'>
                   {spotify.song}
                 </div>
                 <div className='text-[#c8c8c8]/60 text-xs truncate'>
@@ -262,7 +259,7 @@ const Activity = () => {
                 </div>
               </>
             ) : (
-              <div className='text-[#c8c8c8]/40 text-xl'>
+              <div className='text-[#c8c8c8]/40 text-sm'>
                 Not playing
               </div>
             )}
