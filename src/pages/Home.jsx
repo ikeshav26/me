@@ -63,7 +63,7 @@ const Home = () => {
       </div>
       </div>
 
-      <div className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 bottom-42 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0'>
+      <div className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 bottom-25 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0'>
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>1+</div>
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Years of Learning</div>
