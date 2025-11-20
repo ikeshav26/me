@@ -24,41 +24,49 @@ const Nav = () => {
 
   return (
     <div>
-      <div
+      <button
         onClick={() => setdropdown(!dropdown)}
+        aria-label={dropdown ? "Close menu" : "Open menu"}
+        aria-expanded={dropdown}
+        aria-controls="navigation-menu"
         className={`z-50 cursor-pointer fixed top-10 right-10 flex flex-col justify-center items-center transition-all duration-300 ${
           dropdown ? "gap-0" : "gap-2"
         }`}
       >
-        <div
+        <span
           className={`h-[3px] w-8 bg-[#c8c8c8] transition-all duration-300 ${
             dropdown ? "rotate-45 translate-y-[1.5px]" : ""
           }`}
-        ></div>
-        <div
+        ></span>
+        <span
           className={`h-[3px] w-8 bg-[#c8c8c8] transition-all duration-300 ${
             dropdown ? "-rotate-45 -translate-y-[1.5px]" : ""
           }`}
-        ></div>
-      </div>
+        ></span>
+      </button>
 
      
       <div
+        id="navigation-menu"
+        role="navigation"
+        aria-label="Main navigation"
         className={`dropdown fixed top-0 right-0 w-full sm:w-1/3 flex h-screen bg-[#1a1a1a] z-40 transition-transform duration-500 ease-in-out ${
           dropdown ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <nav className="flex flex-col items-center justify-center h-full w-1/2 gap-8 ">
         <h1 className="font-[font2] text-2xl text-[#c8c8c8]/60 mb-6">SOCIAL</h1>
-          {socialLinks.map((item, index) => (<>
-            <Link
+          {socialLinks.map((item, index) => (
+            <a
               key={index}
-              to={item.path}
+              href={item.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit my ${item.name} profile`}
               className="text-xl font-[font2]  text-[#c8c8c8] hover:text-white transition-colors duration-300 cursor-pointer"
             >
               {item.name}
-            </Link>
-            </>
+            </a>
           ))}
         </nav>
         <nav className="flex flex-col items-center justify-center h-full w-1/2 gap-8 ">

@@ -1,7 +1,8 @@
 import React from 'react'
 import { gsap } from 'gsap';
 import {useGSAP} from '@gsap/react'
-import Activity from '../components/Activity'
+import { lazy } from 'react';
+const Activity = lazy(() => import('../components/Activity'));
 
 const Home = () => {
   useGSAP(()=>{
@@ -33,13 +34,13 @@ const Home = () => {
 
   })
   return (
-    <div className='h-screen relative px-6 md:px-0'>
+    <main id="main-content" className='h-screen relative px-6 md:px-0' aria-label="Home page">
       <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
 
-      <div className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1]'>
+      <h1 className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1]'>
         <span className='text-[#00f050]'>FULL STACK</span>
         <span className='ml-4 md:ml-8'>DEVELOPER</span>
-      </div>
+      </h1>
 
       <div className='text-base sm:text-lg md:text-xl text-[#c8c8c8]/60'>
         Hi! I'm <span className='text-[#c8c8c8]'>Keshav Gilhotra</span>. A Full Stack Developer with experience of building scalable, high-performance web apps. Currently enhancing my skills in Java and DSA to strengthen my backend and problem-solving expertise.
@@ -57,13 +58,13 @@ const Home = () => {
       </div>
 
 
-      <div className='mt-22 md:mt-33 max-w-md'>
-        <h3 className='text-[#00f050] text-xl font-[font1] mb-4'>CURRENT ACTIVITY</h3>
+      <section className='mt-22 md:mt-33 max-w-md'>
+        <h2 className='text-[#00f050] text-xl font-[font1] mb-4'>CURRENT ACTIVITY</h2>
         <Activity />
-      </div>
+      </section>
       </div>
 
-      <div className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 bottom-25 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0'>
+      <section className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 bottom-25 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0' aria-label="Statistics">
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>1+</div>
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Years of Learning</div>
@@ -76,9 +77,9 @@ const Home = () => {
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>2.5K+</div>
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Hours Worked</div>
         </div>
-        </div>
+        </section>
 
-      <div className='arrow absolute  -bottom-8 left-1/2 -translate-x-1/2  '>
+      <div className='arrow absolute  -bottom-8 left-1/2 -translate-x-1/2  ' aria-hidden="true">
          <svg
             id="banner-arrow-svg"
             width="376"
@@ -87,6 +88,8 @@ const Home = () => {
             fill="transparent"
             xmlns="http://www.w3.org/2000/svg"
             className="w-32 h-24 md:w-80 md:h-80 "
+            role="img"
+            aria-label="Decorative arrow pointing down"
         >
             <path
                 className="svg-arrow svg-arrow-1"
@@ -105,7 +108,7 @@ const Home = () => {
         </svg>
       </div>
         
-    </div>
+    </main>
   )
 }
 

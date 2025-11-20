@@ -129,6 +129,7 @@ const Contact = () => {
               onChange={handleChange}
               onFocus={() => setFocusedField('name')}
               onBlur={() => setFocusedField(null)}
+              autoComplete='name'
               className='w-full bg-transparent border-b-2 border-[#c8c8c8]/20 focus:border-[#00f050] outline-none py-3 text-white text-lg md:text-xl transition-all duration-300'
               required
             />
@@ -151,6 +152,7 @@ const Contact = () => {
               onChange={handleChange}
               onFocus={() => setFocusedField('email')}
               onBlur={() => setFocusedField(null)}
+              autoComplete='email'
               className='w-full bg-transparent border-b-2 border-[#c8c8c8]/20 focus:border-[#00f050] outline-none py-3 text-white text-lg md:text-xl transition-all duration-300'
               required
             />

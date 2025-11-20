@@ -227,7 +227,10 @@ const Activity = () => {
                     ? activity.activities[0].assets.large_image.replace('mp:', 'https://media.discordapp.net/')
                     : `https://cdn.discordapp.com/app-assets/${activity.activities[0].application_id}/${activity.activities[0].assets.large_image}.png`
                 }
-                alt={activity.activities[0].name}
+                alt={`${activity.activities[0].name} logo`}
+                loading="lazy"
+                width="32"
+                height="32"
                 className='w-8 h-8 rounded shrink-0'
               />
             )}
@@ -267,7 +270,10 @@ const Activity = () => {
           {spotify?.album_art_url && (
             <img 
               src={spotify.album_art_url} 
-              alt='Album Art' 
+              alt={`${spotify.song} by ${spotify.artist} album cover`}
+              loading="lazy"
+              width="32"
+              height="32"
               className='w-8 h-8 rounded shrink-0'
             />
           )}

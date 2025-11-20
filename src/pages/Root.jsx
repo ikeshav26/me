@@ -1,10 +1,10 @@
 import { useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Nav from "../components/Nav";
-import About from "./About";
-import Projects from "./Projects";
-import Contact from "./Contact";
-import Home from "./Home";
+import { lazy } from "react";
+const About = lazy(() => import("./About"));
+const Projects = lazy(() => import("./Projects"));
+const Contact = lazy(() => import("./Contact"));
+const Home = lazy(() => import("./Home"));
 
 export default function Route() {
   const homeRef = useRef(null);
