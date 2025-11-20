@@ -9,7 +9,7 @@ const About = () => {
   
   
   return (
-    <div className='min-h-screen px-6 md:px-0  sm:py-16 md:py-20'>
+    <div className='min-h-screen px-6 md:px-0  sm:py-16 md:py-20 mt-40'>
       <Heading text={"ABOUT ME"}/>
       <div className='max-w-7xl mx-auto h-full flex flex-col justify-center gap-10 sm:gap-12 md:gap-16'>
       
