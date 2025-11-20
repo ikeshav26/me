@@ -21,6 +21,7 @@ const Projects = () => {
             description={project.description}
             link={project.link}
             image={project.image}
+            status={project.status}
           />
         ))}
       </div>

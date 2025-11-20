@@ -40,15 +40,25 @@ export const tools = [
 export const projectsData = [
   {
     number: "01",
-    title: "ECHOVIA - MUSIC PLAYER",
-    tech: "MONGODB • EXPRESS.JS • REACT.JS • NODE.JS",
+    title: "SECUREAUTH",
+    tech: "NEXT.JS • EXPRESS • REDIS • DOCKER • CI/CD • AI SECURITY",
     description:
-      "Full-stack music streaming platform with real-time playback, custom playlists, and user authentication.",
-    link: "https://echovia-music-player.vercel.app/",
-    image:"/projects/echovia.png"
+      "Enterprise-grade security platform offering Git repo scanning, Zero-Trust secrets vault, AI security assistant, log monitoring, and a full developer security dashboard.",
+    link: "https://github.com/MannuVilasara/hacknauts-sentinels",
+    image:"/projects/secureauth.jpg",
+    status: "In Progress"
   },
   {
     number: "02",
+    title: "CLASS OCCUPANCY & FAN DETECTION",
+    tech: "YOLO • REACT NATIVE • OPENCV • PYTHON",
+    description:
+      "Real-time classroom monitoring system using YOLO for people count detection and OpenCV for fan status recognition.",
+    link: "https://github.com/ikeshav26/auto_detection_",
+    image:"/projects/class-monitor.png"
+  },
+  {
+    number: "03",
     title: "ZETTANOTE",
     tech: "NODE.JS • VITE • REDIS • OAUTH • DOCKER • OPEN SOURCE",
     description:
@@ -57,7 +67,7 @@ export const projectsData = [
     image:"/projects/zettanote.png"
   },
   {
-    number: "03",
+    number: "04",
     title: "AUTO PR REVIEWER",
     tech: "GITHUB ACTIONS • NODE.JS • GEMINI API",
     description:
@@ -65,21 +75,21 @@ export const projectsData = [
     link: "https://github.com/ikeshav26/auto_pr_reviewer",
     image:"/projects/reviewer.png"
   },
-  {
-    number: "04",
-    title: "ELEVATE CV AI",
-    tech: "MERN • OPENAI API • PDF GENERATION",
+   {
+    number: "05",
+    title: "ECHOVIA - MUSIC PLAYER",
+    tech: "MONGODB • EXPRESS.JS • REACT.JS • NODE.JS",
     description:
-      "AI-powered career toolkit that enhances CVs, generates cover letters, and provides interview preparation using OpenAI GPT.",
-    link: "https://elevatecv-ai.ikeshav.tech/",
-    image:"/projects/elevate.png"
+      "Full-stack music streaming platform with real-time playback, custom playlists, and user authentication.",
+    link: "https://echovia-music-player.vercel.app/",
+    image:"/projects/echovia.png"
   },
   {
-    number: "05",
+    number: "06",
     title: "FIT AI - HEALTH PREDICTOR",
     tech: "PYTHON • FLASK • STREAMLIT • MACHINE LEARNING • SCIKIT-LEARN",
     description:
-      "ML-based health diagnosis system that predicts diseases from symptoms and provides detailed descriptions with treatment recommendations.",
+      "ML-based health diagnosis system that predicts diseases from symptoms and provides explanations and treatment recommendations.",
     link: "https://github.com/ikeshav26/disease-detector",
     image:"/projects/fit.png"
   },
