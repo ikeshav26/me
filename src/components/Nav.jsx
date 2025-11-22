@@ -71,7 +71,7 @@ const Nav = () => {
         </nav>
         <nav className="flex flex-col items-center justify-center h-full w-1/2 gap-8 ">
         <h1 className="font-[font2] text-2xl text-[#c8c8c8]/60 mb-6">MENU</h1>
-          {navItems.map((item, index) => (<>
+          {navItems.map((item, index) => (
             <Link
               key={index}
               to={item.path}
@@ -79,7 +79,6 @@ const Nav = () => {
             >
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }}></div>{item.name}
             </Link>
-            </>
           ))}
         </nav>
 

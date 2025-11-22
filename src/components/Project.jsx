@@ -77,7 +77,6 @@ const Project = ({ number, title, tech, description, link,image,status }) => {
         }
       `}</style>
       
-      <Link to={link}>
       <div 
         ref={containerRef}
         onMouseMove={handleMouseMove}
@@ -92,13 +91,11 @@ const Project = ({ number, title, tech, description, link,image,status }) => {
           </div>
           
           <div className='flex-1 flex flex-col gap-3 sm:gap-4'>
-            <div className='text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[font1] flex items-center gap-4 sm:gap-6 md:gap-8'>
+            <Link to={link} className='text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[font1] flex items-center gap-4 sm:gap-6 md:gap-8'>
               <h3 className='title-gradient'>{title}</h3>
               <span className='text-lg text-[#00f050]'>{status ? ` (${status})` : ""}</span>
-              <Link to={link} className='flex-shrink-0'>
-                <FiExternalLink className='link-icon w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 opacity-0 '/>
-              </Link>
-            </div>
+              <FiExternalLink className='link-icon w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 opacity-0 flex-shrink-0'/>
+            </Link>
             
             
             <div className='text-sm sm:text-base md:text-sm font-[font2] text-[#c8c8c8]/60 uppercase tracking-wider'>
@@ -128,7 +125,6 @@ const Project = ({ number, title, tech, description, link,image,status }) => {
           className='project-image absolute top-0 right-20 w-90 h-50 rounded-lg shadow-xl '
         ></div>
       </div>
-      </Link>
     </div>
   )
 }
