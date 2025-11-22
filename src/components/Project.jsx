@@ -86,7 +86,7 @@ const Project = ({ number, title, tech, description, link,image,status }) => {
       >
         <div className='flex flex-col sm:flex-row items-start gap-3 sm:gap-3 md:gap-5'>
 
-          <div className='text-[#c8c8c8]/60 font-[font1] text-xl sm:text-2xl md:text-3xl min-w-[60px] sm:min-w-[80px]'>
+          <div className='text-[#c8c8c8]/60 font-[font1] text-xl sm:text-2xl md:text-3xl min-w-[60px] sm:min-w-20'>
             _{number}.
           </div>
           
@@ -94,7 +94,7 @@ const Project = ({ number, title, tech, description, link,image,status }) => {
             <Link to={link} className='text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[font1] flex items-center gap-4 sm:gap-6 md:gap-8'>
               <h3 className='title-gradient'>{title}</h3>
               <span className='text-lg text-[#00f050]'>{status ? ` (${status})` : ""}</span>
-              <FiExternalLink className='link-icon w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 opacity-0 flex-shrink-0'/>
+              <FiExternalLink className='link-icon w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 opacity-0 shrink-0'/>
             </Link>
             
             

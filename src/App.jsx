@@ -5,9 +5,11 @@ import Nav from "./components/Nav.jsx";
 import LandingPage from "./components/LandingPage.jsx";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import ScrollPosition from "./components/ScrollPosition.jsx";
 
 const App = () => {
   const scrollRef = useRef(null);
+  const [locomotiveInstance, setLocomotiveInstance] = React.useState(null);
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
@@ -16,6 +18,8 @@ const App = () => {
       multiplier: 1,
       class: "is-reveal",
     });
+
+    setLocomotiveInstance(locomotiveScroll);
 
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy();
@@ -26,6 +30,7 @@ const App = () => {
     <>
       {" "}
       <Nav />
+      <ScrollPosition locomotiveScroll={locomotiveInstance}/>
       <div ref={scrollRef} data-scroll-container className="text-white ">
         <Routes>
           <Route path="/" element={<Root />} />
