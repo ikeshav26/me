@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { gsap } from 'gsap';
 import {useGSAP} from '@gsap/react'
 import { lazy } from 'react';
+import { FiCopy, FiCheck } from 'react-icons/fi';
 const Activity = lazy(() => import('../components/Activity'));
 
 const Home = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText('npx who-keshav');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   useGSAP(()=>{
     const tl=gsap.timeline();
     const tl2=gsap.timeline();
@@ -42,8 +51,33 @@ const Home = () => {
         <span className='ml-4 md:ml-8'>DEVELOPER</span>
       </h1>
 
-      <div className='text-base sm:text-lg md:text-xl text-[#c8c8c8]/60'>
-        Hi! I'm <span className='text-[#c8c8c8]'>Keshav Gilhotra</span>. A Full Stack Developer with experience of building scalable, high-performance web apps. Currently enhancing my skills in Java and DSA to strengthen my backend and problem-solving expertise.
+      <div className='flex flex-col gap-3'>
+        <div className='text-base sm:text-lg md:text-xl text-[#c8c8c8]/60'>
+          Hi! I'm <span className='text-[#c8c8c8]'>Keshav Gilhotra</span>. A Full Stack Developer with experience of building scalable, high-performance web apps. Currently enhancing my skills in Java and DSA to strengthen my backend and problem-solving expertise.
+        </div>
+        
+        <div className='group relative bg-[#2c2c2c] border border-[#2c2c2c] rounded-lg px-4 py-3 font-mono text-sm sm:text-base w-fit hover:border-[#00f050]/50 transition-colors duration-300'>
+          <div className='flex items-center gap-3'>
+            <span className='text-[#00f050]'>$</span>
+            <span className='text-[#c8c8c8]'>npx who-keshav</span>
+            <button
+              onClick={handleCopy}
+              className='ml-2 p-1.5 rounded hover:bg-[#2c2c2c] transition-colors duration-200'
+              aria-label='Copy command'
+            >
+              {copied ? (
+                <FiCheck className='w-4 h-4 text-[#00f050]' />
+              ) : (
+                <FiCopy className='w-4 h-4 text-[#c8c8c8]/60 group-hover:text-[#c8c8c8]' />
+              )}
+            </button>
+          </div>
+          {copied && (
+            <span className='absolute -top-8 right-0 text-xs text-[#00f050] bg-[#2c2c2c] border border-[#2c2c2c] px-2 py-1 rounded'>
+              Copied!
+            </span>
+          )}
+        </div>
       </div>
 
       <div>
