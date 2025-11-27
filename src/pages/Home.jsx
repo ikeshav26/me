@@ -46,17 +46,17 @@ const Home = () => {
     <main id="main-content" className='h-screen relative px-6 md:px-0' aria-label="Home page">
       <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
 
-      <h1 className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1]'>
-        <span className='text-[#00f050]'>FULL STACK</span>
-        <span className='ml-4 md:ml-8'>DEVELOPER</span>
+      <h1 className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1] leading-none tracking-tighter'>
+        <span className='text-[#00f050] drop-shadow-[0_0_15px_rgba(0,240,80,0.2)]'>FULL STACK</span>
+        <span className='ml-4 md:ml-8 text-white/90'>DEVELOPER</span>
       </h1>
 
       <div className='flex flex-col gap-3'>
-        <div className='text-base sm:text-lg md:text-xl text-[#c8c8c8]/60'>
-          Hi! I'm <span className='text-[#c8c8c8]'>Keshav Gilhotra</span>. A Full Stack Developer with experience of building scalable, high-performance web apps. Currently enhancing my skills in Java and DSA to strengthen my backend and problem-solving expertise.
+        <div className='text-base sm:text-lg md:text-xl text-[#c8c8c8]/80 max-w-2xl leading-relaxed'>
+          Hi! I'm <span className='text-white font-medium'>Keshav Gilhotra</span>. A Full Stack Developer with experience of building scalable, high-performance web apps. Currently enhancing my skills in Java and DSA to strengthen my backend and problem-solving expertise.
         </div>
         
-        <div className='group relative bg-[#2c2c2c] border border-[#2c2c2c] rounded-lg px-4 py-3 font-mono text-sm sm:text-base w-fit hover:border-[#00f050]/50 transition-colors duration-300'>
+        <div className='group relative bg-[#1a1a1a]/80 backdrop-blur-sm border border-white/10 rounded-xl px-5 py-4 font-mono text-sm sm:text-base w-fit hover:border-[#00f050]/50 hover:shadow-[0_0_30px_-5px_rgba(0,240,80,0.15)] transition-all duration-300'>
           <div className='flex items-center gap-3'>
             <span className='text-[#00f050]'>$</span>
             <span className='text-[#c8c8c8]'>npx who-keshav</span>

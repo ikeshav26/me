@@ -29,17 +29,62 @@ const Activity = () => {
       try {
         const response = await axios.get(import.meta.env.VITE_GITSTATUS_URL)
         const data = response.data
+        
         if (data && data.length > 0) {
+          const latestEvent = data[0]
+          let message = ''
+          let id = ''
+          
+          switch (latestEvent.type) {
+            case 'PushEvent':
+              const commits = latestEvent.payload.commits
+              if (commits && commits.length > 0) {
+                const lastCommit = commits[commits.length - 1]
+                message = lastCommit.message
+                id = lastCommit.sha.substring(0, 7)
+              } else {
+                message = `Pushed to ${latestEvent.repo.name}`
+                id = latestEvent.payload.head ? latestEvent.payload.head.substring(0, 7) : 'Push'
+              }
+              break
+            case 'PullRequestEvent':
+              const pr = latestEvent.payload.pull_request
+              message = `PR ${latestEvent.payload.action}${pr?.title ? `: ${pr.title}` : ''}`
+              id = `#${latestEvent.payload.number}`
+              break
+            case 'IssuesEvent':
+              const issue = latestEvent.payload.issue
+              message = `Issue ${latestEvent.payload.action}${issue?.title ? `: ${issue.title}` : ''}`
+              id = `#${latestEvent.payload.issue?.number || latestEvent.payload.number}`
+              break
+            case 'ForkEvent':
+              message = `Forked ${latestEvent.repo.name}`
+              id = 'Fork'
+              break
+            case 'CreateEvent':
+              message = `Created ${latestEvent.payload.ref_type} ${latestEvent.payload.ref || ''}`
+              id = 'Create'
+              break
+            case 'WatchEvent':
+              message = `Starred ${latestEvent.repo.name}`
+              id = 'Star'
+              break
+            default:
+              message = latestEvent.type.replace('Event', '')
+              id = 'Event'
+          }
+
           setLastCommit({
-            message: data[0].commit.message,
-            date: new Date(data[0].commit.author.date).toLocaleString('en-IN', {
+            message: message,
+            date: new Date(latestEvent.created_at).toLocaleString('en-IN', {
               timeZone: 'Asia/Kolkata',
               month: 'short',
               day: 'numeric',
               hour: '2-digit',
               minute: '2-digit'
             }),
-            sha: data[0].sha.substring(0, 7)
+            sha: id,
+            repo: latestEvent.repo.name
           })
         }
       } catch (error) {
@@ -183,14 +228,19 @@ const Activity = () => {
         <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
           <div className='text-lg'>📝</div>
           <div className='flex-1 min-w-0'>
-            <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Last Commit</div>
+            <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Latest Activity</div>
             {lastCommit ? (
               <>
-                <div className='text-white text-sm font-[font1] truncate'>
+                <div className='text-white text-sm font-[font1] truncate' title={lastCommit.message}>
                   {lastCommit.message}
                 </div>
-                <div className='text-[#00f050] text-xs'>
-                  {lastCommit.sha}
+                <div className='flex items-center gap-2 text-xs'>
+                  <span className='text-[#00f050]'>{lastCommit.sha}</span>
+                  {lastCommit.repo && (
+                    <span className='text-[#c8c8c8]/40 truncate max-w-[120px]' title={lastCommit.repo}>
+                      in {lastCommit.repo}
+                    </span>
+                  )}
                 </div>
               </>
             ) : (
