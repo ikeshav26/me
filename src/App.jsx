@@ -6,6 +6,7 @@ import LandingPage from "./components/LandingPage.jsx";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import ScrollPosition from "./components/ScrollPosition.jsx";
+import Oneko from "./components/Oneko.jsx";
 
 const App = () => {
   const scrollRef = useRef(null);
@@ -30,6 +31,7 @@ const App = () => {
     <>
       {" "}
       <Nav />
+      <Oneko />
       <ScrollPosition locomotiveScroll={locomotiveInstance}/>
       <div ref={scrollRef} data-scroll-container className="text-white ">
         <Routes>
