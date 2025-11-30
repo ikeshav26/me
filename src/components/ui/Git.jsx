@@ -3,7 +3,7 @@ import GitHubCalendar from 'react-github-calendar';
 import { GiTwirlyFlower } from "react-icons/gi";
 import { gsap } from 'gsap';
 import {useGSAP} from '@gsap/react'
-import Heading from './Heading';
+import Heading from './Heading.jsx';
 
 
 const Git = () => {

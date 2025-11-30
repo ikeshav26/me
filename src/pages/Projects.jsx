@@ -1,6 +1,6 @@
 import React from 'react'
 import { lazy } from 'react'
-const Heading = lazy(() => import('../components/Heading'));
+const Heading = lazy(() => import('../components/ui/Heading'));
 const Project = lazy(() => import('../components/Project'));
 import { projectsData } from '../assets/assets';
 

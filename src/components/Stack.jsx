@@ -2,9 +2,9 @@ import React from 'react'
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { GiTwirlyFlower } from "react-icons/gi";
-import Skill from './Skill';
+import Skill from './ui/Skill';
 import { frontend, backend, database, tools } from '../assets/assets';
-import Heading from './Heading';
+import Heading from './ui/Heading';
 
 const Stack = () => {
     useGSAP(()=>{

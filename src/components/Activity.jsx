@@ -6,7 +6,7 @@ import NowPlaying from "./NowPlaying";
 import Discord from "../modals/Discord.jsx";
 import Song from "../modals/Song.jsx";
 import Commit from "../modals/Commit.jsx";
-import Card from "./Card.jsx";
+import Card from "./ui/Card.jsx";
 
 const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
   const [activity, setActivity] = useState(null);

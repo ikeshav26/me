@@ -1,7 +1,7 @@
 import React from 'react'
-import Git from '../components/Git'
+import Git from '../components/ui/Git'
 import { lazy } from 'react';
-const Heading=lazy(() => import("../components/Heading"));
+const Heading=lazy(() => import("../components/ui/Heading"));
 const Stack=lazy(() => import("../components/Stack"));
 
 
