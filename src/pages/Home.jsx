@@ -4,6 +4,7 @@ import {useGSAP} from '@gsap/react'
 import { lazy } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
 const Activity = lazy(() => import('../components/Activity'));
+const Terminal = lazy(() => import('../components/Terminal'));
 
 const Home = ({ onekoEnabled, setOnekoEnabled }) => {
   const [copied, setCopied] = useState(false);
@@ -112,6 +113,11 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Hours Worked</div>
         </div>
         </section>
+
+      
+      <div className='hidden lg:block absolute right-16 top-1/4'>
+        <Terminal />
+      </div>
 
       <div className='arrow absolute  bottom-18 left-1/2 -translate-x-1/2  ' aria-hidden="true">
          <svg
