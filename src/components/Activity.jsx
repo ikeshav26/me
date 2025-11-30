@@ -247,9 +247,8 @@ const Activity = () => {
           </div>
         )}
 
-
         <div 
-          className='activity-card border-b border-[#c8c8c8]/10 pb-3 min-h-[60px] cursor-pointer hover:opacity-80 transition-opacity'
+          className='music-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px] cursor-pointer hover:opacity-80 transition-opacity'
           onClick={(e) => {
             e.stopPropagation()
             setShowSong(true)

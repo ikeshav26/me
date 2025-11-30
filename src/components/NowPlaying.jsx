@@ -43,35 +43,40 @@ export default function NowPlaying() {
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2">
+      <>
         <div className="text-lg">🎵</div>
         <div className="flex-1 min-w-0">
           <div className="text-[#c8c8c8]/60 text-xs font-[font2]">Music</div>
           <div className="text-[#c8c8c8]/40 text-sm">Loading...</div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (error || !track) {
     return (
-      <div className="flex items-center gap-2">
+      <>
         <div className="text-lg">🎵</div>
         <div className="flex-1 min-w-0">
           <div className="text-[#c8c8c8]/60 text-xs font-[font2]">Music</div>
           <div className="text-[#c8c8c8]/40 text-sm">Not available</div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="flex items-center gap-2"
-    >
-      <div className="text-lg">🎵</div>
+    <>
+      {track.image && (
+        <img 
+          src={track.image} 
+          alt={`${track.name} album cover`}
+          loading="lazy"
+          width="48"
+          height="48"
+          className="w-12 h-12 rounded shrink-0" 
+        />
+      )}
       <div className="flex-1 min-w-0">
         <div className="text-[#c8c8c8]/60 text-xs font-[font2]">
           {track.nowPlaying ? "🎧 Now Playing" : "Last Played"}
@@ -81,16 +86,6 @@ export default function NowPlaying() {
         </div>
         <div className="text-[#c8c8c8]/60 text-xs truncate">{track.artist}</div>
       </div>
-      {track.image && (
-        <img 
-          src={track.image} 
-          alt={`${track.name} album cover`}
-          loading="lazy"
-          width="32"
-          height="32"
-          className="w-8 h-8 rounded shrink-0" 
-        />
-      )}
-    </div>
+    </>
   );
 }
