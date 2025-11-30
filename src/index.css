@@ -24,7 +24,7 @@ img, picture, video, canvas, svg {
   height: auto;
 }
 
-/* Screen reader only class */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -35,5 +35,19 @@ img, picture, video, canvas, svg {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4ade80 40%, #222 100%);
+  border-radius: 8px;
+}
+.terminal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #4ade80 #222;
 }
 

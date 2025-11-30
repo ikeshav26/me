@@ -45,8 +45,7 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
   })
   return (
     <main id="main-content" className='h-[150vh] md:h-[110vh] lg:w-screen relative px-6 md:px-0' aria-label="Home page">
-      <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/4 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
-
+      <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/5 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
       <h1 className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1] leading-none tracking-tighter'>
         <span className='text-[#00f050] drop-shadow-[0_0_15px_rgba(0,240,80,0.2)]'>FULL STACK</span>
         <span className='ml-4 md:ml-8 text-white/90'>DEVELOPER</span>
@@ -115,7 +114,7 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
         </section>
 
       
-      <div className='hidden lg:block absolute right-16 top-1/4'>
+      <div className='hidden lg:block absolute right-1/5 top-1/4'>
         <Terminal />
       </div>
 
