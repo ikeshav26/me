@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react'
 import axios from 'axios'
 import NowPlaying from './NowPlaying'
 import Discord from '../modals/Discord.jsx'
+import Song from '../modals/Song.jsx'
 
 const Activity = () => {
   const [activity, setActivity] = useState(null)
@@ -11,6 +12,7 @@ const Activity = () => {
   const [currentTime, setCurrentTime] = useState('')
   const [lastCommit, setLastCommit] = useState(null)
   const [showDiscord, setShowDiscord] = useState(false)
+  const [showSong, setShowSong] = useState(false)
 
   useEffect(() => {
     
@@ -246,13 +248,20 @@ const Activity = () => {
         )}
 
 
-        <div className='activity-card border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
+        <div 
+          className='activity-card border-b border-[#c8c8c8]/10 pb-3 min-h-[60px] cursor-pointer hover:opacity-80 transition-opacity'
+          onClick={(e) => {
+            e.stopPropagation()
+            setShowSong(true)
+          }}
+        >
           <NowPlaying />
         </div>
       </div>
     </div>
 
       {showDiscord && <Discord onClose={() => setShowDiscord(false)} />}
+      {showSong && <Song onClose={() => setShowSong(false)} />}
     </>
   )
 }

@@ -66,8 +66,7 @@ export default function NowPlaying() {
   }
 
   return (
-    <a 
-      href={track.url} 
+    <div
       target="_blank" 
       rel="noopener noreferrer"
       className="flex items-center gap-2"
@@ -92,6 +91,6 @@ export default function NowPlaying() {
           className="w-8 h-8 rounded shrink-0" 
         />
       )}
-    </a>
+    </div>
   );
 }
