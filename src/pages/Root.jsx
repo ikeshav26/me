@@ -6,7 +6,7 @@ const Projects = lazy(() => import("./Projects"));
 const Contact = lazy(() => import("./Contact"));
 const Home = lazy(() => import("./Home"));
 
-export default function Route() {
+export default function Route({ onekoEnabled, setOnekoEnabled }) {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
@@ -33,7 +33,7 @@ export default function Route() {
         id="home"
         ref={homeRef}
       >
-       <Home/>
+       <Home onekoEnabled={onekoEnabled} setOnekoEnabled={setOnekoEnabled} />
       </section>
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Root from "./pages/Root.jsx";
 import Nav from "./components/Nav.jsx";
@@ -10,7 +10,8 @@ import Oneko from "./components/Oneko.jsx";
 
 const App = () => {
   const scrollRef = useRef(null);
-  const [locomotiveInstance, setLocomotiveInstance] = React.useState(null);
+  const [locomotiveInstance, setLocomotiveInstance] = useState(null);
+  const [onekoEnabled, setOnekoEnabled] = useState(true);
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
@@ -31,11 +32,11 @@ const App = () => {
     <>
       {" "}
       <Nav />
-      <Oneko />
+      {onekoEnabled && <Oneko />}
       <ScrollPosition locomotiveScroll={locomotiveInstance}/>
       <div ref={scrollRef} data-scroll-container className="text-white ">
         <Routes>
-          <Route path="/" element={<Root />} />
+          <Route path="/" element={<Root onekoEnabled={onekoEnabled} setOnekoEnabled={setOnekoEnabled} />} />
         </Routes>
       </div>
     </>

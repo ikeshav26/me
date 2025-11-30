@@ -7,9 +7,29 @@ import Discord from '../modals/Discord.jsx'
 import Song from '../modals/Song.jsx'
 import Commit from '../modals/Commit.jsx'
 
-const Activity = () => {
+// Card component moved outside to prevent remounting
+const Card = ({ children, onClick, className = '', clickable = false }) => (
+  <div 
+    className={`
+      bg-[#0a0a0a] rounded-xl p-3 border border-[#4ade80]/10 
+      min-h-[70px] flex items-center gap-3
+      transition-all duration-200
+      ${clickable ? 'cursor-pointer hover:border-[#4ade80]/40 hover:bg-[#4ade80]/5 group' : ''}
+      ${className}
+    `}
+    onClick={onClick}
+  >
+    {children}
+    {clickable && (
+      <span className="text-[#4ade80]/40 group-hover:text-[#4ade80] transition-colors text-xs ml-auto">
+        →
+      </span>
+    )}
+  </div>
+)
+
+const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
   const [activity, setActivity] = useState(null)
-  const [loading, setLoading] = useState(true)
   const [currentTime, setCurrentTime] = useState('')
   const [lastCommit, setLastCommit] = useState(null)
   const [showDiscord, setShowDiscord] = useState(false)
@@ -73,10 +93,8 @@ const Activity = () => {
             customStatus: userData.activities?.find(act => act.type === 4)
           })
         }
-        setLoading(false)
       } catch (error) {
         console.error('Error fetching activity:', error)
-        setLoading(false)
       }
     }
 
@@ -90,27 +108,14 @@ const Activity = () => {
   }, [])
 
   useGSAP(() => {
-    if (!loading) {
-      gsap.from('.activity-card', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out'
-      })
-    }
-  }, [loading])
-
-  if (loading) {
-    return (
-      <div className='w-full py-8'>
-        <div className='animate-pulse'>
-          <div className='h-4 bg-[#c8c8c8]/20 rounded w-32 mb-4'></div>
-          <div className='h-20 bg-[#c8c8c8]/20 rounded'></div>
-        </div>
-      </div>
-    )
-  }
+    gsap.from('.activity-card', {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out'
+    })
+  }, [])
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -137,135 +142,155 @@ const Activity = () => {
 
   return (
     <>
-      <div 
-        className='w-full flex flex-col space-y-3 cursor-pointer hover:opacity-80 transition-opacity'
-        onClick={() => setShowDiscord(true)}
-      >
-        {activity?.status && (
-          <div className='activity-card flex items-center justify-between border-b border-[#c8c8c8]/10 pb-3'>
-            <div className='flex items-center gap-2'>
+      <div className='w-full flex flex-col space-y-3'>
+        <Card clickable onClick={() => setShowDiscord(true)}>
+          <div className='relative'>
+            <div className='w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl'>
+              👤
+            </div>
+            {activity?.status && (
               <div 
-                className='w-2 h-2 rounded-full animate-pulse'
+                className='absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2 border-[#0a0a0a]'
                 style={{ backgroundColor: getStatusColor(activity.status) }}
               ></div>
-              <span className='text-[#c8c8c8]/60 text-xs font-[font2]'>
-                {activity.status === 'online' ? 'Online' : 
-                 activity.status === 'idle' ? 'Away' : 
-                 activity.status === 'dnd' ? 'DND' : 'Offline'}
-              </span>
-            </div>
+            )}
           </div>
-        )}
-
-
-      {activity?.customStatus && (
-        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3'>
-          {activity.customStatus.emoji && (
-            <span className='text-lg'>{activity.customStatus.emoji.name}</span>
-          )}
-          <span className='text-[#c8c8c8] text-sm truncate'>
-            {activity.customStatus.state}
-          </span>
-        </div>
-      )}
-
-
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
-        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
-          <div className='text-lg'>🕐</div>
           <div className='flex-1 min-w-0'>
-            <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>IST</div>
-            <div className='text-white text-sm font-[font1] tabular-nums'>
-              {currentTime}
+            <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Discord</div>
+            <div className='text-white text-sm font-[font1]'>
+              {activity?.status === 'online' ? 'Online' : 
+               activity?.status === 'idle' ? 'Away' : 
+               activity?.status === 'dnd' ? 'Do Not Disturb' : 'Offline'}
             </div>
+            {activity?.customStatus?.state && (
+              <div className='text-[#c8c8c8]/50 text-xs truncate flex items-center gap-1'>
+                {activity.customStatus.emoji && <span>{activity.customStatus.emoji.name}</span>}
+                {activity.customStatus.state}
+              </div>
+            )}
           </div>
+        </Card>
+
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
+          <Card>
+            <div className='w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl'>
+              🕐
+            </div>
+            <div className='flex-1 min-w-0'>
+              <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Local Time (IST)</div>
+              <div className='text-white text-lg font-[font1] tabular-nums tracking-wide'>
+                {currentTime}
+              </div>
+            </div>
+          </Card>
+
+
+          <Card clickable onClick={() => setShowCommit(true)}>
+            <div className='w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl'>
+              📝
+            </div>
+            <div className='flex-1 min-w-0'>
+              <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Last Commit</div>
+              {lastCommit ? (
+                <>
+                  <div className='text-white text-sm font-[font1] truncate'>
+                    {lastCommit.message}
+                  </div>
+                  <div className='text-[#4ade80] text-xs font-mono'>
+                    {lastCommit.sha}
+                  </div>
+                </>
+              ) : (
+                <div className='text-[#c8c8c8]/40 text-sm'>Loading...</div>
+              )}
+            </div>
+          </Card>
         </div>
 
-
-        <div 
-          className='commit-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px] cursor-pointer hover:opacity-80 transition-opacity'
-          onClick={(e) => {
-            e.stopPropagation()
-            setShowCommit(true)
-          }}
-        >
-          <div className='text-lg'>📝</div>
-          <div className='flex-1 min-w-0'>
-            <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Last Commit</div>
-            {lastCommit ? (
+        
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
+          <Card>
+            {activity?.activities && activity.activities.filter(a => a.type !== 4).length > 0 ? (
               <>
-                <div className='text-white text-sm font-[font1] truncate'>
-                  {lastCommit.message}
-                </div>
-                <div className='text-[#00f050] text-xs'>
-                  {lastCommit.sha}
+                {activity.activities.filter(a => a.type !== 4)[0].assets?.large_image ? (
+                  <img 
+                    src={
+                      activity.activities.filter(a => a.type !== 4)[0].assets.large_image.startsWith('mp:')
+                        ? activity.activities.filter(a => a.type !== 4)[0].assets.large_image.replace('mp:', 'https://media.discordapp.net/')
+                        : `https://cdn.discordapp.com/app-assets/${activity.activities.filter(a => a.type !== 4)[0].application_id}/${activity.activities.filter(a => a.type !== 4)[0].assets.large_image}.png`
+                    }
+                    alt={activity.activities.filter(a => a.type !== 4)[0].name}
+                    className='w-10 h-10 rounded-lg'
+                  />
+                ) : (
+                  <div className='w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl'>
+                    {getActivityIcon(activity.activities.filter(a => a.type !== 4)[0].name)}
+                  </div>
+                )}
+                <div className='flex-1 min-w-0'>
+                  <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>
+                    {activity.activities.filter(a => a.type !== 4)[0].type === 0 ? 'Playing' : 'Using'}
+                  </div>
+                  <div className='text-white text-sm font-[font1] truncate'>
+                    {activity.activities.filter(a => a.type !== 4)[0].name}
+                  </div>
+                  {activity.activities.filter(a => a.type !== 4)[0].details && (
+                    <div className='text-[#c8c8c8]/50 text-xs truncate'>
+                      {activity.activities.filter(a => a.type !== 4)[0].details}
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
-              <div className='text-[#c8c8c8]/40 text-xs'>
-                Loading...
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
-        {activity?.activities && activity.activities.length > 0 ? (
-          <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
-            <div className='text-lg'>{getActivityIcon(activity.activities[0].name)}</div>
-            <div className='flex-1 min-w-0'>
-              <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>
-                {activity.activities[0].type === 0 ? 'Playing' : activity.activities[0].type === 1 ? 'Streaming' : 'Using'}
-              </div>
-              <div className='text-white text-sm font-[font1] truncate'>
-                {activity.activities[0].name}
-              </div>
-              {activity.activities[0].details && (
-                <div className='text-[#c8c8c8]/60 text-xs truncate'>
-                  {activity.activities[0].details}
+              <>
+                <div className='w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl'>
+                  💻
                 </div>
-              )}
-            </div>
-            {activity.activities[0].assets?.large_image && (
-              <img 
-                src={
-                  activity.activities[0].assets.large_image.startsWith('mp:')
-                    ? activity.activities[0].assets.large_image.replace('mp:', 'https://media.discordapp.net/')
-                    : `https://cdn.discordapp.com/app-assets/${activity.activities[0].application_id}/${activity.activities[0].assets.large_image}.png`
-                }
-                alt={`${activity.activities[0].name} logo`}
-                loading="lazy"
-                width="32"
-                height="32"
-                className='w-8 h-8 rounded shrink-0'
-              />
+                <div className='flex-1 min-w-0'>
+                  <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Activity</div>
+                  <div className='text-[#c8c8c8]/40 text-sm'>Not active</div>
+                </div>
+              </>
             )}
-          </div>
-        ) : (
-          <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
-            <div className='text-lg'>💻</div>
+          </Card>
+
+
+          <Card clickable onClick={() => setShowSong(true)}>
+            <NowPlaying />
+          </Card>
+        </div>
+
+        
+        <Card className="justify-between">
+          <div className='flex items-center gap-3'>
+            <div className='w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl'>
+              🐱
+            </div>
             <div className='flex-1 min-w-0'>
-              <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>VS Code</div>
-              <div className='text-[#c8c8c8]/40 text-sm'>
-                Not active
+              <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Oneko Cat</div>
+              <div className='text-white text-sm font-[font1]'>
+                {onekoEnabled ? 'Following your cursor' : 'Taking a nap'}
               </div>
             </div>
           </div>
-        )}
-
-        <div 
-          className='music-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px] cursor-pointer hover:opacity-80 transition-opacity'
-          onClick={(e) => {
-            e.stopPropagation()
-            setShowSong(true)
-          }}
-        >
-          <NowPlaying />
-        </div>
+          <button
+            onClick={() => setOnekoEnabled(!onekoEnabled)}
+            className={`
+              relative w-12 h-6 rounded-full transition-colors duration-200
+              ${onekoEnabled ? 'bg-[#4ade80]' : 'bg-[#1a1a1a] border border-[#c8c8c8]/20'}
+            `}
+          >
+            <div 
+              className={`
+                absolute top-1 w-4 h-4 rounded-full bg-white shadow-md
+                transition-transform duration-200
+                ${onekoEnabled ? 'translate-x-7' : 'translate-x-1'}
+              `}
+            />
+          </button>
+        </Card>
       </div>
-    </div>
 
       {showDiscord && <Discord onClose={() => setShowDiscord(false)} />}
       {showSong && <Song onClose={() => setShowSong(false)} />}

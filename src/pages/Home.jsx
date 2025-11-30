@@ -5,7 +5,7 @@ import { lazy } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
 const Activity = lazy(() => import('../components/Activity'));
 
-const Home = () => {
+const Home = ({ onekoEnabled, setOnekoEnabled }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -94,7 +94,7 @@ const Home = () => {
 
       <section className='mt-22 md:mt-33 max-w-md'>
         <h2 className='text-[#00f050] text-xl font-[font1] mb-4'>CURRENT ACTIVITY</h2>
-        <Activity />
+        <Activity onekoEnabled={onekoEnabled} setOnekoEnabled={setOnekoEnabled} />
       </section>
       </div>
 
