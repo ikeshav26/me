@@ -3,12 +3,14 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import axios from 'axios'
 import NowPlaying from './NowPlaying'
+import Discord from '../modals/Discord.jsx'
 
 const Activity = () => {
   const [activity, setActivity] = useState(null)
   const [loading, setLoading] = useState(true)
   const [currentTime, setCurrentTime] = useState('')
   const [lastCommit, setLastCommit] = useState(null)
+  const [showDiscord, setShowDiscord] = useState(false)
 
   useEffect(() => {
     
@@ -57,7 +59,6 @@ const Activity = () => {
         if (data.success) {
           const userData = data.data
           
-          // Filter out Spotify activity (type 2) since we use Last.fm now
           const otherActivities = userData.activities?.filter(
             act => act.type !== 2 
           )
@@ -131,22 +132,26 @@ const Activity = () => {
   }
 
   return (
-    <div className='w-full flex flex-col space-y-3'>
-      {activity?.status && (
-        <div className='activity-card flex items-center justify-between border-b border-[#c8c8c8]/10 pb-3'>
-          <div className='flex items-center gap-2'>
-            <div 
-              className='w-2 h-2 rounded-full animate-pulse'
-              style={{ backgroundColor: getStatusColor(activity.status) }}
-            ></div>
-            <span className='text-[#c8c8c8]/60 text-xs font-[font2]'>
-              {activity.status === 'online' ? 'Online' : 
-               activity.status === 'idle' ? 'Away' : 
-               activity.status === 'dnd' ? 'DND' : 'Offline'}
-            </span>
+    <>
+      <div 
+        className='w-full flex flex-col space-y-3 cursor-pointer hover:opacity-80 transition-opacity'
+        onClick={() => setShowDiscord(true)}
+      >
+        {activity?.status && (
+          <div className='activity-card flex items-center justify-between border-b border-[#c8c8c8]/10 pb-3'>
+            <div className='flex items-center gap-2'>
+              <div 
+                className='w-2 h-2 rounded-full animate-pulse'
+                style={{ backgroundColor: getStatusColor(activity.status) }}
+              ></div>
+              <span className='text-[#c8c8c8]/60 text-xs font-[font2]'>
+                {activity.status === 'online' ? 'Online' : 
+                 activity.status === 'idle' ? 'Away' : 
+                 activity.status === 'dnd' ? 'DND' : 'Offline'}
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
 
       {activity?.customStatus && (
@@ -246,6 +251,9 @@ const Activity = () => {
         </div>
       </div>
     </div>
+
+      {showDiscord && <Discord onClose={() => setShowDiscord(false)} />}
+    </>
   )
 }
 
