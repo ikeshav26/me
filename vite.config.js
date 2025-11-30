@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     server: {
       port: env.VITE_PORT ? Number(env.VITE_PORT) : 5173,
       headers: {
-        'Cache-Control': 'max-age=31536000'
+        'Cache-Control': 'no-store'
       }
     },
 
