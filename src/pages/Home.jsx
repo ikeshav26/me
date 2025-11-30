@@ -92,7 +92,7 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
       </div>
 
 
-      <section className='mt-22 md:mt-33 max-w-md'>
+      <section className='mt-22 md:mt-33 w-5xl'>
         <h2 className='text-[#00f050] text-xl font-[font1] mb-4'>CURRENT ACTIVITY</h2>
         <Activity onekoEnabled={onekoEnabled} setOnekoEnabled={setOnekoEnabled} />
       </section>
