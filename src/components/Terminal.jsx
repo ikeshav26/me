@@ -5,8 +5,8 @@ export default function Terminal() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const rotateX = useTransform(y, [-100, 100], [5, -5]);
-  const rotateY = useTransform(x, [-100, 100], [-5, 5]);
+  const rotateX = useTransform(y, [-100, 100], [8, -8]);
+  const rotateY = useTransform(x, [-100, 100], [-8, 8]);
 
   const handleMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -98,7 +98,7 @@ export default function Terminal() {
 
     if (trimmed === "") return [];
 
-    return [{ type: "error", text: `Command not found: ${cmd}` }];
+    return [{ type: "error",color:"red", text: `Command not found: ${cmd}` }];
   };
 
   const handleSubmit = () => {
@@ -145,13 +145,15 @@ export default function Terminal() {
             line.type === "input" ? "text-[#00f050]" : ""
           } ${line.type === "output" ? "pl-4" : ""} ${
             line.type === "system" ? "text-[#00f050]/60 italic text-xs" : ""
-          } ${line.type === "error" ? "text-red-400 pl-4" : ""}`} style={{paddingTop: "2px", paddingBottom: "2px"}}>
+          } ${line.type === "error" ? "pl-4" : ""}`} style={{paddingTop: "2px", paddingBottom: "2px"}}>
             {line.type === "input" ? (
               `❯ ${line.text}`
             ) : (
               <span
                 className={
-                  line.color === "green"
+                  line.type === "error"
+                    ? "text-red-500 font-semibold"
+                    : line.color === "green"
                     ? "text-green-400"
                     : line.color === "blue"
                     ? "text-blue-400"
