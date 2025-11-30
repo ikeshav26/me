@@ -113,7 +113,7 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
         </div>
         </section>
 
-      <div className='arrow absolute  -bottom-8 left-1/2 -translate-x-1/2  ' aria-hidden="true">
+      <div className='arrow absolute  bottom-18 left-1/2 -translate-x-1/2  ' aria-hidden="true">
          <svg
             id="banner-arrow-svg"
             width="376"

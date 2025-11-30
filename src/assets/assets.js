@@ -1,4 +1,4 @@
-import { SiOpenai, SiPostman, SiGithubactions } from "react-icons/si";
+import { SiOpenai, SiPostman, SiGithubactions, SiAmazonwebservices, SiDigitalocean } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
 export const frontend = [
@@ -35,6 +35,8 @@ export const tools = [
   { name: "Docker", logo: "/logos/docker.svg" },
   { name: "Postman", icon: SiPostman, iconColor: "#FF6C37" },
   { name: "CI/CD", icon: SiGithubactions, iconColor: "#2088FF" },
+  { name: "AWS", icon: SiAmazonwebservices, iconColor: "#FF9900" },
+  { name: "DigitalOcean", icon: SiDigitalocean, iconColor: "#0080FF" },
 ];
 
 export const projectsData = [
