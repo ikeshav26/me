@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import axios from 'axios'
+import NowPlaying from './NowPlaying'
 
 const Activity = () => {
   const [activity, setActivity] = useState(null)
-  const [spotify, setSpotify] = useState(null)
   const [loading, setLoading] = useState(true)
   const [currentTime, setCurrentTime] = useState('')
   const [lastCommit, setLastCommit] = useState(null)
@@ -57,14 +57,7 @@ const Activity = () => {
         if (data.success) {
           const userData = data.data
           
-          
-          if (userData.spotify) {
-            setSpotify(userData.spotify)
-          } else {
-            setSpotify(null)
-          }
-          
-          
+          // Filter out Spotify activity (type 2) since we use Last.fm now
           const otherActivities = userData.activities?.filter(
             act => act.type !== 2 
           )
@@ -248,35 +241,8 @@ const Activity = () => {
         )}
 
 
-        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
-          <div className='text-lg'>🎵</div>
-          <div className='flex-1 min-w-0'>
-            <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Spotify</div>
-            {spotify ? (
-              <>
-                <div className='text-white text-sm font-[font1] truncate'>
-                  {spotify.song}
-                </div>
-                <div className='text-[#c8c8c8]/60 text-xs truncate'>
-                  {spotify.artist}
-                </div>
-              </>
-            ) : (
-              <div className='text-[#c8c8c8]/40 text-sm'>
-                Not playing
-              </div>
-            )}
-          </div>
-          {spotify?.album_art_url && (
-            <img 
-              src={spotify.album_art_url} 
-              alt={`${spotify.song} by ${spotify.artist} album cover`}
-              loading="lazy"
-              width="32"
-              height="32"
-              className='w-8 h-8 rounded shrink-0'
-            />
-          )}
+        <div className='activity-card border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
+          <NowPlaying />
         </div>
       </div>
     </div>
