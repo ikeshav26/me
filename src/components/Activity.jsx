@@ -5,6 +5,7 @@ import axios from 'axios'
 import NowPlaying from './NowPlaying'
 import Discord from '../modals/Discord.jsx'
 import Song from '../modals/Song.jsx'
+import Commit from '../modals/Commit.jsx'
 
 const Activity = () => {
   const [activity, setActivity] = useState(null)
@@ -13,6 +14,7 @@ const Activity = () => {
   const [lastCommit, setLastCommit] = useState(null)
   const [showDiscord, setShowDiscord] = useState(false)
   const [showSong, setShowSong] = useState(false)
+  const [showCommit, setShowCommit] = useState(false)
 
   useEffect(() => {
     
@@ -180,7 +182,13 @@ const Activity = () => {
         </div>
 
 
-        <div className='activity-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px]'>
+        <div 
+          className='commit-card flex items-center gap-2 border-b border-[#c8c8c8]/10 pb-3 min-h-[60px] cursor-pointer hover:opacity-80 transition-opacity'
+          onClick={(e) => {
+            e.stopPropagation()
+            setShowCommit(true)
+          }}
+        >
           <div className='text-lg'>📝</div>
           <div className='flex-1 min-w-0'>
             <div className='text-[#c8c8c8]/60 text-xs font-[font2]'>Last Commit</div>
@@ -261,6 +269,7 @@ const Activity = () => {
 
       {showDiscord && <Discord onClose={() => setShowDiscord(false)} />}
       {showSong && <Song onClose={() => setShowSong(false)} />}
+      {showCommit && <Commit onClose={() => setShowCommit(false)} />}
     </>
   )
 }
