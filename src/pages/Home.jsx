@@ -98,14 +98,14 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
       </section>
       </div>
 
-      <section className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 bottom-8 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0' aria-label="Statistics">
+      <section className='h-auto md:h-90 w-auto md:w-50 absolute right-6 md:right-16 top-1/2 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0' aria-label="Statistics">
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>1+</div>
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Years of Learning</div>
       </div>
       <div className='flex flex-col items-end'>
-        <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>5+</div>
-        <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Completed Projects</div>
+        <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>2+</div>
+        <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Hackathons</div>
       </div>
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>2.5K+</div>
