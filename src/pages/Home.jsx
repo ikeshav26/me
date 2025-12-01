@@ -44,8 +44,8 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
 
   })
   return (
-    <main id="main-content" className='h-[150vh] md:h-[110vh] lg:w-screen relative px-6 md:px-0' aria-label="Home page">
-      <div className='absolute top-1/4 md:top-1/5 left-6 md:left-1/6 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
+    <main id="main-content" className='h-[130vh] md:h-[110vh] lg:w-screen relative px-6 md:px-0' aria-label="Home page">
+      <div className='absolute top-1/6 md:top-1/5 left-6 md:left-1/6 w-[calc(100%-3rem)] md:w-1/3 h-auto md:h-90 flex flex-col justify-between gap-8'>
       <h1 className='flex flex-col text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-[font1] leading-none tracking-tighter'>
         <span className='text-[#00f050] drop-shadow-[0_0_15px_rgba(0,240,80,0.2)]'>FULL STACK</span>
         <span className='ml-4 md:ml-8 text-white/90'>DEVELOPER</span>
@@ -98,7 +98,7 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
       </section>
       </div>
 
-      <section className='h-auto md:h-90 w-auto md:w-50 mt-10 md:mt-0 absolute right-6 md:right-16 top-1/2 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0' aria-label="Statistics">
+      <section className='h-auto md:h-90 w-auto md:w-50  absolute right-6 md:right-16 top-3/7 md:bottom-1/5 flex flex-col justify-between items-end gap-6 md:gap-0' aria-label="Statistics">
       <div className='flex flex-col items-end'>
         <div className='text-[#00f050] text-2xl sm:text-3xl font-[font1]'>1+</div>
         <div className='text-[#c8c8c8]/60 text-sm sm:text-base md:text-lg font-[font2]'>Years of Learning</div>
