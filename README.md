@@ -19,7 +19,8 @@ This portfolio is built using:
 - **Animations:** [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/)
 - **Routing:** [React Router](https://reactrouter.com/)
 - **Deployment:** [Vercel](https://vercel.com/)
-
+- **Containerized:** [Docker](https://docker.com)
+  
 ## ✨ Features
 
 - **Interactive Terminal:** A functional terminal component that accepts commands like `help`, `about`, `skills`, `neofetch`, and `kitty`.
