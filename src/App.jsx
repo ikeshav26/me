@@ -7,6 +7,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import ScrollPosition from "./components/ScrollPosition.jsx";
 import Oneko from "./components/Oneko.jsx";
+import TerminalIcon from "./components/ui/TerminalIcon.jsx";
 
 const App = () => {
   const scrollRef = useRef(null);
@@ -32,6 +33,7 @@ const App = () => {
     <>
       {" "}
       <Nav />
+      <TerminalIcon/>
       {onekoEnabled && <Oneko />}
       <ScrollPosition locomotiveScroll={locomotiveInstance}/>
       <div ref={scrollRef} data-scroll-container className="text-white ">
