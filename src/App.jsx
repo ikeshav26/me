@@ -8,11 +8,13 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import ScrollPosition from "./components/ScrollPosition.jsx";
 import Oneko from "./components/Oneko.jsx";
 import TerminalIcon from "./components/ui/TerminalIcon.jsx";
+import Ter from "./modals/Ter.jsx";
 
 const App = () => {
   const scrollRef = useRef(null);
   const [locomotiveInstance, setLocomotiveInstance] = useState(null);
   const [onekoEnabled, setOnekoEnabled] = useState(true);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
@@ -33,7 +35,8 @@ const App = () => {
     <>
       {" "}
       <Nav />
-      <TerminalIcon/>
+      <TerminalIcon onClick={() => setIsTerminalOpen(true)} />
+      <Ter isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
       {onekoEnabled && <Oneko />}
       <ScrollPosition locomotiveScroll={locomotiveInstance}/>
       <div ref={scrollRef} data-scroll-container className="text-white ">
