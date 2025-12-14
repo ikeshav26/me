@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const Oneko = () => {
   const nekoRef = useRef(null);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const [showHearts, setShowHearts] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -180,21 +181,65 @@ const Oneko = () => {
 
   if (isReducedMotion) return null;
 
+  const handleCatHover = () => {
+    setShowHearts(true);
+    setTimeout(() => setShowHearts(false), 1000);
+  };
+
   return (
-    <div
-      ref={nekoRef}
-      id="oneko"
-      aria-hidden="true"
-      style={{
-        width: "32px",
-        height: "32px",
-        position: "fixed",
-        pointerEvents: "none",
-        imageRendering: "pixelated",
-        zIndex: 9999,
-        backgroundImage: "url('https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif')",
-      }}
-    />
+    <>
+      <div
+        ref={nekoRef}
+        id="oneko"
+        aria-hidden="true"
+        style={{
+          width: "32px",
+          height: "32px",
+          position: "fixed",
+          pointerEvents: "auto",
+          imageRendering: "pixelated",
+          zIndex: 9999,
+          backgroundImage: "url('https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif')",
+          cursor: "pointer",
+        }}
+        onMouseEnter={handleCatHover}
+      />
+      {showHearts && (
+        <div
+          style={{
+            position: "fixed",
+            left: nekoRef.current ? `${parseInt(nekoRef.current.style.left) + 16}px` : "0px",
+            top: nekoRef.current ? `${parseInt(nekoRef.current.style.top) - 8}px` : "0px",
+            pointerEvents: "none",
+            zIndex: 10000,
+            transform: "translateX(-50%)",
+            transition: "all 0.3s ease-out",
+          }}
+        >
+          <div className="flex gap-0.5">
+            <span className="text-red-500 text-sm opacity-90" style={{ animation: "heartFloat 1s ease-out" }}>💖</span>
+            <span className="text-pink-500 text-sm opacity-90" style={{ animation: "heartFloat 1s ease-out 0.1s" }}>💕</span>
+            <span className="text-red-400 text-sm opacity-90" style={{ animation: "heartFloat 1s ease-out 0.2s" }}>💗</span>
+          </div>
+        </div>
+      )}
+      <style>{`
+        @keyframes heartFloat {
+          0% {
+            transform: translateY(0) scale(0.8);
+            opacity: 0;
+          }
+          50% {
+            transform: translateY(-10px) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-20px) scale(0.8);
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
