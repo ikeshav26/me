@@ -217,9 +217,9 @@ const Oneko = () => {
           }}
         >
           <div className="flex gap-0.5">
-            <span className="text-red-500 text-sm opacity-90" style={{ animation: "heartFloat 1s ease-out" }}>💖</span>
-            <span className="text-pink-500 text-sm opacity-90" style={{ animation: "heartFloat 1s ease-out 0.1s" }}>💕</span>
-            <span className="text-red-400 text-sm opacity-90" style={{ animation: "heartFloat 1s ease-out 0.2s" }}>💗</span>
+            <span className="text-red-500 text-[8px] opacity-90" style={{ animation: "heartFloat 1s ease-out" }}>💖</span>
+            <span className="text-pink-500 text-[8px] opacity-90" style={{ animation: "heartFloat 1s ease-out 0.1s" }}>💕</span>
+            <span className="text-red-400 text-[8px] opacity-90" style={{ animation: "heartFloat 1s ease-out 0.2s" }}>💗</span>
           </div>
         </div>
       )}
