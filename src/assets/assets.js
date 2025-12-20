@@ -19,7 +19,6 @@ export const backend = [
     { name: "Node.Js", logo: "/logos/node.png" },
     { name: "Express", logo: "/logos/express.png" },
     { name: "Java", icon: FaJava, iconColor: "#ff6c37" },
-    { name: "OpenAI", icon: SiOpenai, iconColor: "#10A37F" },
     { name: "Oauth", logo: "/logos/oauth.png" },
     { name: "Redis", logo: "/logos/redis.png" },
 ];
@@ -37,7 +36,8 @@ export const tools = [
     { name: "CI/CD", icon: SiGithubactions, iconColor: "#2088FF" },
     { name: "AWS", icon: SiAmazonwebservices, iconColor: "#FF9900" },
     { name: "DigitalOcean", icon: SiDigitalocean, iconColor: "#0080FF" },
-    { name: "NginX", icon: SiNginx, iconColor: "#009639" }
+    { name: "NginX", icon: SiNginx, iconColor: "#009639" },
+    { name: "OpenAI", icon: SiOpenai, iconColor: "#10A37F" }
 ];
 
 export const projectsData = [
