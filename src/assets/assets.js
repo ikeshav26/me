@@ -57,7 +57,7 @@ export const projectsData = [
         tech: "NODE.JS • VITE • REDIS • OAUTH • DOCKER • OPEN SOURCE",
         description:
             "Open-source collaborative note-taking platform with real-time sync, Redis caching, and OAuth authentication.",
-        link: "https://zettanote.tech/",
+        link: "https://github.com/braydenidzenga/ZettaNote",
         image: "/projects/zettanote.png"
     },
      {
