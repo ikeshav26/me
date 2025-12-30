@@ -129,10 +129,10 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
 
   return (
     <>
-      <div className="w-full flex flex-col gap-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="w-full md:w-1/2 lg:w-full flex flex-col gap-4 px-4 lg:px-0">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           <Card clickable onClick={() => setShowDiscord(true)}>
-            <div className="relative">
+            <div className="relative flex-shrink-0">
               <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl">
                 👤
               </div>
@@ -172,9 +172,9 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-4">
           <Card>
-            <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl">
+            <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl flex-shrink-0">
               🕐
             </div>
             <div className="flex-1 min-w-0">
@@ -215,10 +215,10 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
                     alt={
                       activity.activities.filter((a) => a.type !== 4)[0].name
                     }
-                    className="w-10 h-10 rounded-lg"
+                    className="w-10 h-10 rounded-lg flex-shrink-0"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl">
+                  <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl flex-shrink-0">
                     {getActivityIcon(
                       activity.activities.filter((a) => a.type !== 4)[0].name
                     )}
@@ -247,7 +247,7 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
               </>
             ) : (
               <>
-                <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl">
+                <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl flex-shrink-0">
                   💻
                 </div>
                 <div className="flex-1 min-w-0">
@@ -261,7 +261,7 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
           </Card>
 
           <Card clickable onClick={() => setShowCommit(true)}>
-            <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl">
+            <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl flex-shrink-0">
               📝
             </div>
             <div className="flex-1 min-w-0">
@@ -284,8 +284,8 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
           </Card>
 
           <Card className="justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-xl flex-shrink-0">
                 🐱
               </div>
               <div className="flex-1 min-w-0">
@@ -300,7 +300,7 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
             <button
               onClick={() => setOnekoEnabled(!onekoEnabled)}
               className={`
-                relative w-12 h-6 rounded-full transition-colors duration-200
+                relative w-12 h-6 rounded-full transition-colors duration-200 flex-shrink-0
                 ${
                   onekoEnabled
                     ? "bg-[#4ade80]"
