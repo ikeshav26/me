@@ -129,7 +129,7 @@ const Activity = ({ onekoEnabled, setOnekoEnabled }) => {
 
   return (
     <>
-      <div className="w-full md:w-1/2 lg:w-full flex flex-col gap-4 px-4 lg:px-0">
+      <div className="w-full md:w-1/2 lg:w-full flex flex-col gap-4 px-4 lg:px-0 mb-26">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           <Card clickable onClick={() => setShowDiscord(true)}>
             <div className="relative flex-shrink-0">

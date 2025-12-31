@@ -6,7 +6,7 @@ const Stack = lazy(() => import("../components/Stack"));
 
 const About = () => {
   return (
-    <div className="min-h-screen px-6 md:px-0  sm:py-16 md:py-20 mt-86 md:mt-69">
+    <div className=" min-h-screen px-6 md:px-0  sm:py-16 md:py-20 mt-86 md:mt-69">
       <Heading text={"ABOUT ME"} />
       <div className="max-w-7xl mx-auto h-full flex flex-col justify-center gap-10 sm:gap-12 md:gap-16">
         <div className="quote w-full md:w-4/5 lg:w-3/4 mx-auto md:ml-[10%] font-light font-[font2] text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tighter text-[#c8c8c8]">
