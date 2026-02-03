@@ -66,7 +66,7 @@ export default function Ter({ isOpen, onClose }) {
         { type: "output", color: "green", text: "📝 Editors: nvim, vscode ⚡" },
         { type: "output", color: "green", text: "🎨 Theme: Catppuccin ✨" },
         { type: "output", color: "green", text: "⚙️  Tech Stack: JavaScript, Java, Python, C-lang, React ⚛️, Node.js 🟢, MongoDB 🍃, Docker 🐳, AWS" },
-        { type: "output", color: "green", text: "🔗 Links: github.com/ikeshav26 | portfolio.ikeshav.tech | in/ikeshav-gilhotra" },
+        { type: "output", color: "green", text: "🔗 Links: github.com/ikeshav26 | ikeshav.in | in/ikeshav-gilhotra" },
         { type: "output", color: "yellow", text: "💡 'I use arch btw !!' ✨" },
       ];
 
