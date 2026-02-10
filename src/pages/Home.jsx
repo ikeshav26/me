@@ -113,10 +113,6 @@ const Home = ({ onekoEnabled, setOnekoEnabled }) => {
         </div>
         </section>
 
-      
-      <div className='hidden lg:block absolute right-1/5 top-1/4'>
-        <Terminal />
-      </div>
 
       <div className='arrow absolute  bottom-18 left-1/2 -translate-x-1/2  ' aria-hidden="true">
          <svg
