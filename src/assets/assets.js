@@ -1,5 +1,6 @@
-import { SiOpenai, SiPostman, SiNginx, SiGithubactions, SiAmazonwebservices, SiDigitalocean } from "react-icons/si";
+import { SiOpenai, SiPostman, SiNginx, SiGithubactions, SiAmazonwebservices, SiDigitalocean, SiApachekafka } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 export const frontend = [
     { name: "JavaScript", logo: "/logos/js.png" },
@@ -26,6 +27,7 @@ export const backend = [
 export const database = [
     { name: "MongoDB", logo: "/logos/mongodb.png" },
     { name: "MySQL", logo: "/logos/mysql.svg" },
+    { name: "PostgreSQL", icon: BiLogoPostgresql, iconColor: "#336791" },
 ];
 
 export const tools = [
@@ -37,7 +39,8 @@ export const tools = [
     { name: "AWS", icon: SiAmazonwebservices, iconColor: "#FF9900" },
     { name: "DigitalOcean", icon: SiDigitalocean, iconColor: "#0080FF" },
     { name: "NginX", icon: SiNginx, iconColor: "#009639" },
-    { name: "OpenAI", icon: SiOpenai, iconColor: "#10A37F" }
+    { name: "OpenAI", icon: SiOpenai, iconColor: "#10A37F" },
+    { name: "Apache Kafka", icon: SiApachekafka, iconColor: "#fff" }
 ];
 
 export const projectsData = [
