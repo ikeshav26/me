@@ -42,7 +42,7 @@ const Stack = () => {
             <div className='w-full md:w-1/3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[font1] text-[#c8c8c8]/80'>DATABASE</div>
             <div className='flex flex-wrap gap-3 sm:gap-4 md:gap-6 font-[font2] w-full md:w-2/3'>
               {database.map((item,index)=>(
-                <Skill key={index} name={item.name} logo={item.logo}/>
+                <Skill key={index} name={item.name} logo={item.logo} icon={item.icon} iconColor={item.iconColor}/>
               ))}
             </div>
           </div>
