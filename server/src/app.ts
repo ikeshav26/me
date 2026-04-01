@@ -1,6 +1,7 @@
 import express, { type Request, type Response } from 'express';
 import dotenv from 'dotenv';
 import oauthRoutes from './routes/oauth.routes.js'
+import reviewRoutes from './routes/review.routes.js';
 
 dotenv.config();
 
@@ -14,5 +15,6 @@ app.get('/',(req:Request,res:Response)=>{
 })
 
 app.use('/api/auth', oauthRoutes);
+app.use('/api/reviews',reviewRoutes)
 
 export default app;
