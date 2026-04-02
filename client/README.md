@@ -1,72 +1,73 @@
-# 🚀 Keshav Gilhotra - Portfolio
+# React + TypeScript + Vite
 
-Welcome to my personal portfolio website! This project showcases my journey, skills, and projects as a Full-Stack Developer. It's built with modern web technologies and features a unique, interactive terminal interface.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 👨‍💻 About Me
+Currently, two official plugins are available:
 
-I'm **Keshav Gilhotra**, a passionate Full-Stack Developer and Open Source Contributor. I love building scalable web applications and exploring new technologies.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **OS:** Arch Linux (I use Arch btw! 🐧)
-- **Interests:** Web Development, DevOps (Docker, CI/CD, DigitalOcean)
-- **Current Focus:** Building cool stuff with React, Next.js, and Node.js.
+## React Compiler
 
-## 🛠️ Tech Stack
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-This portfolio is built using:
+## Expanding the ESLint configuration
 
-- **Frontend:** [React](https://reactjs.org/), [Vite](https://vitejs.dev/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/)
-- **Routing:** [React Router](https://reactrouter.com/)
-- **Deployment:** [Vercel](https://vercel.com/)
-- **Containerized:** [Docker](https://docker.com)
-  
-## ✨ Features
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- **Interactive Terminal:** A functional terminal component that accepts commands like `help`, `about`, `skills`, `neofetch`, and `kitty`.
-- **Now Playing:** Real-time Spotify status integration using Last.fm API.
-- **Responsive Design:** Fully responsive layout that looks great on all devices.
-- **Smooth Animations:** engaging transitions and hover effects.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## 🚀 Getting Started
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-To run this project locally:
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/ikeshav26/me.git
-    cd me
-    ```
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-2.  **Install dependencies:**
-    ```bash
-    pnpm install
-    # or
-    npm install
-    ```
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-3.  **Set up Environment Variables:**
-    Create a `.env` file in the root directory and add your keys (e.g., for Last.fm):
-    ```env
-    VITE_LASTFM_API_KEY=your_api_key
-    VITE_LASTFM_USERNAME=your_username
-    ```
-
-4.  **Run the development server:**
-    ```bash
-    pnpm dev
-    # or
-    npm run dev
-    ```
-
-5.  Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-## 📫 Contact
-
-- **GitHub:** [@ikeshav26](https://github.com/ikeshav26)
-- **LinkedIn:** [Keshav Gilhotra](https://linkedin.com/in/ikeshav-gilhotra)
-- **Email:** keshavgilhotra4@gmail.com
-
----
-
-*Built with ❤️ by Keshav Gilhotra*
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

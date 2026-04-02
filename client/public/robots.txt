@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://ikeshav.in/sitemap.xml
