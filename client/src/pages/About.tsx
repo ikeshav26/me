@@ -107,7 +107,7 @@ const About = () => {
             
             <ScrollVelocity 
               texts={stackItems} 
-              velocity={50} 
+              velocity={30} 
               numCopies={4}
             />
           </div>
