@@ -10,19 +10,19 @@ import Ribbons from './components/Ribbons'
 const App = () => {
   return (
     <Router>
-      <div className='bg-[#0a0a0a] text-neutral-200 w-full min-h-screen flex flex-col font-sans selection:bg-neutral-700 relative overflow-hidden'>
-        <div className="absolute inset-0 z-0 pointer-events-auto">
+      <div className='bg-[#000] text-neutral-200 w-full min-h-screen flex flex-col font-sans selection:bg-neutral-700 relative overflow-hidden'>
+        <div className="absolute inset-0 z-40 pointer-events-auto">
           <Ribbons
             baseThickness={15}
             colors={["#ffffff"]}
             speedMultiplier={0.5}
-            maxAge={400}
-            enableFade={true}
-            enableShaderEffect={true}
+            maxAge={500}
+            enableFade={false}
+            enableShaderEffect={false}
           />
         </div>
 
-        <div className="relative z-10 flex flex-col w-full h-full pointer-events-none">
+        <div className="relative z-50 flex flex-col w-full h-full pointer-events-none">
           <div className="pointer-events-auto">
             <Navbar />
           </div>

@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Moon, Terminal } from 'lucide-react';
+import { Moon } from 'lucide-react';
+import { SiBun } from 'react-icons/si';
 
 const routes = [
   { path: '/about', label: 'About', activeColor: 'text-white', underlineColor: 'bg-white' },
@@ -13,16 +14,16 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 inset-x-0 w-full flex justify-between items-center pt-10 pb-6 px-4 md:px-8 max-w-4xl mx-auto z-50">
+    <header className="absolute top-5 rounded-full inset-x-0 w-full flex justify-between items-center pt-4 pb-4 px-4 md:px-8 max-w-4xl mx-auto z-100">
       <NavLink
         to="/"
         className="p-2 transition-all duration-300 group"
         title="Stats / Home"
       >
-        <Terminal className={`w-6 h-6 transition-colors duration-300 ${
+        <SiBun className={`w-7 h-7 transition-colors duration-300 ${
           location.pathname === '/' 
-            ? 'text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]' 
-            : 'text-neutral-500 group-hover:text-neutral-200'
+            ? 'text-orange-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]' 
+            : 'text-white group-hover:text-neutral-200'
         }`} />
       </NavLink>
 
