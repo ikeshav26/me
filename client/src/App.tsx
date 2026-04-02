@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Me from './pages/Me'
 import About from './pages/About'
 import Work from './pages/Work'
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/guestbook" element={<Guestbook />} />
             </Routes>
+            <Footer />
           </main>
         </div>
       </div>

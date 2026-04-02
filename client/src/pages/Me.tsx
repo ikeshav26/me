@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import { GithubIcon } from "../icons/GithubIcon"
 import { InstagramIcon } from "../icons/InstagramIcon"
 import { DiscordIcon } from "../icons/DiscordIcon"
+import Form from "../components/Form"
 
 const statusColors: Record<string, string> = {
   online: "bg-green-500",
@@ -41,6 +42,7 @@ const Me = () => {
   const [discordActivity, setDiscordActivity] = useState<string | null>(null);
   const [discordError, setDiscordError] = useState(false);
   const [lastCommit, setLastCommit] = useState<{ message: string; repo: string; url: string; time: string } | null>(null);
+  const [recentBlogs, setRecentBlogs] = useState<{ _id: string; subject: string; description: string; createdAt: string }[]>([]);
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -90,6 +92,16 @@ const Me = () => {
       }
     };
     fetchCommit();
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/blogs/all')
+      .then(r => r.json())
+      .then(data => {
+        const all = data.blogs ?? [];
+        setRecentBlogs(all.slice(-2).reverse());
+      })
+      .catch(() => {});
   }, []);
 
   const handleCopy = () => {
@@ -318,6 +330,56 @@ const Me = () => {
           </Card>
         </motion.div>
 
+         <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>
+          <div className="flex items-center justify-start gap-5 mt-17">
+            <div className="oswald-font text-2xl uppercase tracking-widest text-white">Recent Blogs</div>
+            <div className="flex-1 h-[1px] bg-gray-500/50"></div>
+          </div>
+        </motion.div>
+
+        <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>
+          <div className="flex flex-col gap-3">
+            {recentBlogs.length === 0 ? (
+              <p className="text-gray-600 text-sm py-4">No blogs yet.</p>
+            ) : recentBlogs.map((blog) => {
+              const date = new Date(blog.createdAt);
+              const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+              const wordCount = blog.description.trim().split(/\s+/).length;
+              const readMins = Math.max(1, Math.round(wordCount / 200));
+              return (
+                <Link
+                  key={blog._id}
+                  to={`/blog/${blog._id}`}
+                  className="group relative flex flex-col gap-2.5 p-5 rounded-xl border border-white/5 hover:border-white/10 bg-white/3 hover:bg-white/5 transition-all duration-300"
+                >
+                  <ArrowUpRight
+                    size={15}
+                    className="absolute top-4 right-4 text-gray-600 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+                  />
+                  <p className="text-gray-600 text-[11px] font-mono uppercase tracking-widest">
+                    {formatted}
+                  </p>
+                  <h3 className="text-white font-semibold text-base md:text-lg leading-snug pr-6 group-hover:text-gray-200 transition-colors">
+                    {blog.subject}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">
+                    {blog.description}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-white transition-colors mt-4 group/link"
+          >
+            View All Posts
+            <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+          </Link>
+        </motion.div>
+
+<Form/>
       </motion.div>
     </div>
   )
