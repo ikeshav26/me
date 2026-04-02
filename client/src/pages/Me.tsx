@@ -344,8 +344,6 @@ const Me = () => {
             ) : recentBlogs.map((blog) => {
               const date = new Date(blog.createdAt);
               const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-              const wordCount = blog.description.trim().split(/\s+/).length;
-              const readMins = Math.max(1, Math.round(wordCount / 200));
               return (
                 <Link
                   key={blog._id}
