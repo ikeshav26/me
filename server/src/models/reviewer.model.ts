@@ -22,6 +22,10 @@ const reviewSchema=new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
+    },
+    isAuthor:{
+        type:Boolean,
+        default:false
     }
 })
 

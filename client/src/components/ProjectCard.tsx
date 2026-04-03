@@ -32,7 +32,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
         onClick={() => setModalOpen(true)}
         className={`group relative rounded-2xl overflow-hidden border ${theme === 'dark' ? 'border-white/10 bg-white/5 hover:border-white/20 shadow-orange-300/5' : 'border-black/10 bg-black/3 hover:border-black/20 shadow-orange-300/10'} backdrop-blur-sm p-4 transition-all duration-300 flex flex-col h-full cursor-pointer hover:shadow-lg`}
       >
-        {/* Image */}
         <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-5">
           <AnimatePresence mode="wait">
             {!imageLoaded && (
@@ -55,7 +54,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
           />
         </div>
 
-        {/* Info */}
         <div className="flex flex-col grow">
           <h3 className={`text-xl font-bold font-['Oswald'] tracking-wide ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 group-hover:text-orange-300 transition-colors`}>
             {title}
@@ -81,7 +79,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
         </div>
       </motion.div>
 
-      {/* Modal */}
       <AnimatePresence>
         {modalOpen && (
           <motion.div
@@ -100,7 +97,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
               onClick={(e) => e.stopPropagation()}
               className={`relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border ${theme === 'dark' ? 'border-white/10 bg-[#0a0a0a]/95' : 'border-black/10 bg-white/95'} backdrop-blur-xl shadow-2xl`}
             >
-              {/* Close Button */}
+          
               <button
                 onClick={() => setModalOpen(false)}
                 className={`absolute top-4 right-4 z-10 p-2 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/10 hover:bg-black/20 text-black'} transition-colors cursor-pointer`}
@@ -108,7 +105,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                 <X size={18} />
               </button>
 
-              {/* Modal Image */}
               <div className="w-full aspect-video overflow-hidden rounded-t-2xl">
                 <img
                   src={image}
@@ -117,7 +113,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                 />
               </div>
 
-              {/* Modal Content */}
               <div className="p-8">
                 <h2 className={`text-3xl font-bold font-['Oswald'] ${theme === 'dark' ? 'text-white' : 'text-black'} tracking-wide mb-4`}>
                   {title}
@@ -126,7 +121,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                   {longDescription || description}
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {tags.map((tag, idx) => (
                     <span
@@ -138,7 +132,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                   ))}
                 </div>
 
-                {/* Action Buttons */}
+
                 <div className="flex gap-4">
                   {link && (
                     <a

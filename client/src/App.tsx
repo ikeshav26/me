@@ -8,12 +8,14 @@ import Blogs from './pages/Blogs'
 import Guestbook from './pages/Guestbook'
 import Ribbons from './components/Ribbons'
 import ThemeContextProvider from './context/ThemeContext'
+import { AuthProvider } from './context/AuthContext'
 
 const App = () => {
 
   return (
     <ThemeContextProvider>
-      <Router>
+      <AuthProvider>
+        <Router>
         <div className='w-full min-h-screen flex flex-col font-sans relative overflow-hidden transition-colors duration-300' style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
           <div className="absolute inset-0 z-40 pointer-events-auto">
             <Ribbons
@@ -43,6 +45,7 @@ const App = () => {
           </div>
         </div>
       </Router>
+      </AuthProvider>
     </ThemeContextProvider>
   )
 }

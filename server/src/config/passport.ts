@@ -28,16 +28,14 @@ passport.use(
         }
 
         let user = await Reviewer.findOne({
-          where: {
-            googleProviderId: profile.id,
-          },
+           googleProviderId: profile.id,
         });
 
         if (user) {
           if (avatarUrl) {
             user = await Reviewer.findByIdAndUpdate(
               user._id,
-              { avatar: avatarUrl },
+              { avatarUrl: avatarUrl },
               { new: true }
             );
           }

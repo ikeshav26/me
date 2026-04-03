@@ -18,7 +18,6 @@ import { useTheme } from "../context/ThemeContext";
 
 const TechItem = ({ Icon, name, color }: { Icon: any; name: string; color: string }) => {
   const { theme } = useTheme();
-  // If the color is white, switch it based on the theme
   const iconColor = color.toUpperCase() === '#FFFFFF' 
     ? (theme === 'dark' ? '#FFFFFF' : '#1a1a1a') 
     : color;
@@ -110,7 +109,7 @@ const About = () => {
         <div className="max-w-3xl mx-auto w-full px-4 md:px-0">
           <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>
             <h1 className={`oswald-font text-5xl md:text-7xl tracking-wide ${theme === 'dark' ? 'text-white' : 'text-black'} m-0 uppercase`}>
-              <DecryptedText text="WHO AM I?" animateOn="repeat" delay={5000} />
+              <DecryptedText text="WHO AM I?" animateOn="repeat" delay={2000} />
             </h1>
             <p className={`text-lg mt-4 max-w-2xl font-light leading-relaxed ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
               I'm Keshav — a builder who loves connecting the dots between complex backend logic 
@@ -162,7 +161,6 @@ const About = () => {
             />
           </div>
 
-          {/* Mobile Tech Stack (Grid Layout) */}
           <div className="md:hidden flex flex-col gap-10 px-4 mt-8 pb-4">
             {techCategories.map((category, idx) => (
               <div key={idx} className="flex flex-col gap-3">

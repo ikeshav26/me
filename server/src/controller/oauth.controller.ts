@@ -19,15 +19,21 @@ export const googleOauthController = (req:Request, res:Response, next:Function) 
       }
 
       res.redirect(
-        `${process.env.CLIENT_URL}/?oauth=success&token=${
-          user.id
-        }&user=${encodeURIComponent(JSON.stringify({ userId: user.id, name: user.name, email: user.email, avatarUrl: user.avatarUrl }))}`
+        `${process.env.CLIENT_URL}/guestbook/?oauth=success&token=${
+          user.googleProviderId
+        }&user=${encodeURIComponent(JSON.stringify({ 
+          userId: user._id, 
+          googleProviderId: user.googleProviderId,
+          name: user.name, 
+          email: user.email, 
+          avatarUrl: user.avatarUrl 
+        }))}`
       );
     })(req, res, next);
   } catch (err) {
     console.error('OAuth Controller error', err);
     return res.redirect(
-      `${process.env.CLIENT_URL}/login?error=oauth_failed&message="Internal server error"`
+      `${process.env.CLIENT_URL}/guestbook/?error=oauth_failed&message="Internal server error"`
     );
   }
 };

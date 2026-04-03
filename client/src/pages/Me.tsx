@@ -355,7 +355,7 @@ const Me = () => {
               return (
                 <Link
                   key={blog._id}
-                  to={`/blog/${blog._id}`}
+                  to={`/blogs/${blog._id}`}
                   className={`group relative flex flex-col gap-2.5 p-5 rounded-xl border ${theme === 'dark' ? 'border-white/5 hover:border-white/10 bg-white/3 hover:bg-white/5' : 'border-black/10 hover:border-black/20 bg-black/3 hover:bg-black/5'} transition-all duration-300`}
                 >
                   <ArrowUpRight
@@ -365,19 +365,16 @@ const Me = () => {
                   <p className={`${theme === 'dark' ? 'text-gray-600' : 'text-gray-400'} text-[11px] font-mono uppercase tracking-widest`}>
                     {formatted}
                   </p>
-                  <h3 className={`${theme === 'dark' ? 'text-white group-hover:text-gray-200' : 'text-gray-950 group-hover:text-gray-700'} font-semibold text-base md:text-lg leading-snug pr-6 transition-colors`}>
+                  <h3 className={`text-blue-500 hover:text-blue-400 font-semibold text-base md:text-lg leading-snug pr-6 transition-colors underline-offset-4 hover:underline`}>
                     {blog.subject}
                   </h3>
-                  <p className={`${theme === 'dark' ? 'text-gray-500' : 'text-gray-600'} text-sm leading-relaxed line-clamp-2`}>
-                    {blog.description}
-                  </p>
                 </Link>
               );
             })}
           </div>
 
           <Link
-            to="/blog"
+            to="/blogs"
             className={`inline-flex items-center gap-1.5 text-sm ${theme === 'dark' ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-black'} transition-colors mt-4 group/link`}
           >
             View All Posts

@@ -6,14 +6,20 @@ import Review from "../models/review.model.js";
 
 export const createReview=async(req:Request,res:Response)=>{
     try{
-        const {googleProviderId,reviewText}=req.body;
-        if(!googleProviderId || !reviewText){
-            return res.status(400).json({message:'Please try again little later...'});
+        const {googleProviderId, userId, reviewText}=req.body;
+        if((!googleProviderId && !userId) || !reviewText){
+            return res.status(400).json({message:'Please try again later... no identification provided'});
         }
 
-        const findReviewer=await Reviewer.findOne({googleProviderId});
+        let findReviewer;
+        if (googleProviderId) {
+            findReviewer = await Reviewer.findOne({ googleProviderId });
+        } else if (userId) {
+            findReviewer = await Reviewer.findById(userId);
+        }
+
         if(!findReviewer){
-            return res.status(404).json({message:'Please try again little later...'});
+            return res.status(404).json({message:'Please try again later... no reviewer found'});
         }
 
         const newReview=await Review.create({
@@ -30,8 +36,22 @@ export const createReview=async(req:Request,res:Response)=>{
 
 export const getAllReviews=async(req:Request,res:Response)=>{
     try{
-        const reviews=await Review.find().populate('reviewedBy','name avatarUrl');
-        res.status(200).json({reviews});
+        const allReviews=await Review.find().populate('reviewedBy','name avatarUrl googleProviderId isAuthor');
+        // Filter out reviews where reviewedBy is null (orphaned reviews)
+        const reviews = allReviews.filter(review => review.reviewedBy !== null);
+        
+        // Sort: Author messages first, then by date descending
+        const sortedReviews = reviews.sort((a: any, b: any) => {
+            const aIsAuthor = a.reviewedBy?.isAuthor || false;
+            const bIsAuthor = b.reviewedBy?.isAuthor || false;
+            
+            if (aIsAuthor && !bIsAuthor) return -1;
+            if (!aIsAuthor && bIsAuthor) return 1;
+            
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        });
+
+        res.status(200).json({reviews: sortedReviews});
     }catch(err){
         console.error('Error fetching reviews', err);
         res.status(500).json({ message: 'Internal server error' });
@@ -45,7 +65,9 @@ export const deleteReview=async(req:Request,res:Response)=>{
         if(!reviewId){
             return res.status(400).json({message:'Review ID is required'});
         }
-        const {googleProviderId}=req.body;
+        // Support getting googleProviderId from body, query or headers
+        const googleProviderId = req.body.googleProviderId || req.query.googleProviderId || req.headers['x-google-provider-id'];
+        
         if(!googleProviderId){
             return res.status(400).json({message:'Google Provider ID is required'});
         }

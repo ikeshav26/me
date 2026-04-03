@@ -25,11 +25,12 @@ const Navbar = () => {
           className="p-2 transition-all duration-300 group z-101"
           title="Stats / Home"
         >
-          <SiBun className={`w-7 h-7 transition-colors duration-300 ${
-            location.pathname === '/' 
-              ? 'text-orange-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]' 
-              : 't-primary group-hover:t-secondary'
-          }`} />
+         
+            <SiBun className={`w-7 h-7 transition-colors duration-300 ${
+              location.pathname === '/' 
+                ? 'text-orange-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]' 
+                : 't-primary group-hover:t-secondary'
+            }`} />
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-8 md:gap-10 text-[18px] font-['JetBrains_Mono'] tracking-tight">
@@ -77,6 +78,7 @@ const Navbar = () => {
             </AnimatePresence>
           </button>
           
+          
           <button 
             className="md:hidden t-dim hover:t-primary transition-colors p-2"
             onClick={() => setIsOpen(!isOpen)}
@@ -86,7 +88,6 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
