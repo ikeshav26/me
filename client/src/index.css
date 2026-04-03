@@ -1,5 +1,66 @@
 @import "tailwindcss";
 
+/* ── Theme Variables ── */
+:root,
+[data-theme="dark"] {
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.06);
+    --bg-card-border: rgba(255, 255, 255, 0.06);
+    --bg-card-border-hover: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+    --text-dim: #737373;
+    --text-faint: #525252;
+    --border-primary: rgba(255, 255, 255, 0.1);
+    --border-secondary: rgba(255, 255, 255, 0.05);
+    --selection-bg: #404040;
+    --ribbon-color: #ffffff;
+    --nav-inactive: #737373;
+    --nav-hover: #d4d4d4;
+    --nav-active: #ffffff;
+    --divider: rgba(255, 255, 255, 0.1);
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --tag-bg: rgba(255, 255, 255, 0.05);
+    --tag-border: rgba(255, 255, 255, 0.1);
+    --gradient-edge: black;
+    --mobile-card-bg: #111111;
+    --mobile-card-hover: #1a1a1a;
+    --mobile-card-text: #e2e2e2;
+    --mobile-card-sub: #888888;
+}
+
+[data-theme="light"] {
+    --bg-primary: #fafafa;
+    --bg-secondary: #f5f5f5;
+    --bg-card: rgba(0, 0, 0, 0.03);
+    --bg-card-hover: rgba(0, 0, 0, 0.06);
+    --bg-card-border: rgba(0, 0, 0, 0.08);
+    --bg-card-border-hover: rgba(0, 0, 0, 0.15);
+    --text-primary: #171717;
+    --text-secondary: #404040;
+    --text-muted: #525252;
+    --text-dim: #737373;
+    --text-faint: #a3a3a3;
+    --border-primary: rgba(0, 0, 0, 0.1);
+    --border-secondary: rgba(0, 0, 0, 0.06);
+    --selection-bg: #d4d4d4;
+    --ribbon-color: #171717;
+    --nav-inactive: #737373;
+    --nav-hover: #404040;
+    --nav-active: #171717;
+    --divider: rgba(0, 0, 0, 0.1);
+    --overlay-bg: rgba(255, 255, 255, 0.7);
+    --tag-bg: rgba(0, 0, 0, 0.04);
+    --tag-border: rgba(0, 0, 0, 0.1);
+    --gradient-edge: #fafafa;
+    --mobile-card-bg: #f0f0f0;
+    --mobile-card-hover: #e8e8e8;
+    --mobile-card-text: #1a1a1a;
+    --mobile-card-sub: #666666;
+}
 
 .oswald-font {
     font-family: "Oswald", sans-serif;
@@ -9,5 +70,35 @@
 }
 
 body {
-    background: #000;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─ Theme-aware utility classes ─ */
+.t-primary { color: var(--text-primary); }
+.t-secondary { color: var(--text-secondary); }
+.t-muted { color: var(--text-muted); }
+.t-dim { color: var(--text-dim); }
+.t-faint { color: var(--text-faint); }
+.bg-card { background: var(--bg-card); }
+.bg-card-hover:hover { background: var(--bg-card-hover); }
+.border-card { border-color: var(--bg-card-border); }
+.border-card-hover:hover { border-color: var(--bg-card-border-hover); }
+
+/* ─ GitHub Calendar Theme Support ─ */
+[data-theme="light"] .react-github-calendar {
+    color: #171717 !important;
+}
+
+[data-theme="light"] .react-github-calendar text {
+    fill: #171717 !important;
+}
+
+[data-theme="dark"] .react-github-calendar {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .react-github-calendar text {
+    fill: #ffffff !important;
 }

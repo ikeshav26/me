@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
 
 export interface Project {
   title: string;
@@ -18,6 +19,7 @@ interface ProjectCardProps extends Project {
 }
 
 const ProjectCard = ({ title, description, longDescription, image, tags, link, github, delay = 0 }: ProjectCardProps) => {
+  const { theme } = useTheme();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -28,7 +30,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: delay * 0.1, ease: 'easeOut' }}
         onClick={() => setModalOpen(true)}
-        className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm p-4 hover:border-white/20 transition-all duration-300 flex flex-col h-full cursor-pointer hover:shadow-lg hover:shadow-orange-300/5"
+        className={`group relative rounded-2xl overflow-hidden border ${theme === 'dark' ? 'border-white/10 bg-white/5 hover:border-white/20 shadow-orange-300/5' : 'border-black/10 bg-black/3 hover:border-black/20 shadow-orange-300/10'} backdrop-blur-sm p-4 transition-all duration-300 flex flex-col h-full cursor-pointer hover:shadow-lg`}
       >
         {/* Image */}
         <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-5">
@@ -39,7 +41,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 bg-white/10 animate-pulse rounded-xl"
+                className={`absolute inset-0 ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} animate-pulse rounded-xl`}
               />
             )}
           </AnimatePresence>
@@ -55,17 +57,17 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
 
         {/* Info */}
         <div className="flex flex-col grow">
-          <h3 className="text-xl font-bold font-['Oswald'] tracking-wide text-white mb-2 group-hover:text-orange-300 transition-colors">
+          <h3 className={`text-xl font-bold font-['Oswald'] tracking-wide ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 group-hover:text-orange-300 transition-colors`}>
             {title}
           </h3>
-          <p className="text-gray-400 font-['JetBrains_Mono'] text-sm mb-4 leading-relaxed grow line-clamp-3">
+          <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] text-sm mb-4 leading-relaxed grow line-clamp-3`}>
             {description}
           </p>
           <div className="flex flex-wrap gap-2 mt-auto">
             {tags.slice(0, 4).map((tag, idx) => (
               <span
                 key={idx}
-                className="text-xs font-medium px-2 py-1 bg-white/5 border border-white/10 text-gray-300 rounded-md whitespace-nowrap"
+                className={`text-xs font-medium px-2 py-1 ${theme === 'dark' ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-black/5 border-black/10 text-gray-700'} border rounded-md whitespace-nowrap`}
               >
                 {tag}
               </span>
@@ -87,7 +89,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${theme === 'dark' ? 'bg-black/70' : 'bg-white/70'} backdrop-blur-sm`}
             onClick={() => setModalOpen(false)}
           >
             <motion.div
@@ -96,12 +98,12 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl shadow-2xl"
+              className={`relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border ${theme === 'dark' ? 'border-white/10 bg-[#0a0a0a]/95' : 'border-black/10 bg-white/95'} backdrop-blur-xl shadow-2xl`}
             >
               {/* Close Button */}
               <button
                 onClick={() => setModalOpen(false)}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                className={`absolute top-4 right-4 z-10 p-2 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/10 hover:bg-black/20 text-black'} transition-colors cursor-pointer`}
               >
                 <X size={18} />
               </button>
@@ -117,10 +119,10 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
 
               {/* Modal Content */}
               <div className="p-8">
-                <h2 className="text-3xl font-bold font-['Oswald'] text-white tracking-wide mb-4">
+                <h2 className={`text-3xl font-bold font-['Oswald'] ${theme === 'dark' ? 'text-white' : 'text-black'} tracking-wide mb-4`}>
                   {title}
                 </h2>
-                <p className="text-gray-400 font-['JetBrains_Mono'] text-sm leading-relaxed mb-6">
+                <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] text-sm leading-relaxed mb-6`}>
                   {longDescription || description}
                 </p>
 
@@ -129,7 +131,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-semibold px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 rounded-lg"
+                      className={`text-xs font-semibold px-3 py-1.5 ${theme === 'dark' ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-black/5 border-black/10 text-gray-700'} border rounded-lg`}
                     >
                       {tag}
                     </span>
@@ -154,7 +156,7 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                       href={github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold font-['Oswald'] rounded-lg border border-white/10 transition-colors text-sm tracking-wide"
+                      className={`flex items-center gap-2 px-5 py-2.5 ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/10 hover:bg-black/20 text-black'} font-bold font-['Oswald'] rounded-lg border border-transparent transition-colors text-sm tracking-wide`}
                     >
                       <FaGithub size={16} />
                       SOURCE CODE

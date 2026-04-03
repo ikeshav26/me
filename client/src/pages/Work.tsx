@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import type { Project } from '../components/ProjectCard';
+import { useTheme } from '../context/ThemeContext';
 
 const projects: Project[] = [
   {
@@ -57,22 +58,23 @@ const projects: Project[] = [
 ];
 
 const Work = () => {
+  const { theme } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 max-w-7xl mx-auto">
+    <div className="min-h-screen pt-18 pb-20 px-6 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="mb-16 text-center"
       >
-        <h1 className="text-5xl md:text-7xl font-bold font-['Oswald'] text-white mb-6 tracking-tight">
+        <h1 className={`text-5xl md:text-7xl font-bold font-['Oswald'] ${theme === 'dark' ? 'text-white' : 'text-black'} mb-6 tracking-tight`}>
           SELECTED <span className="text-orange-300">WORKS</span>
         </h1>
-        <p className="text-gray-400 font-['JetBrains_Mono'] max-w-2xl mx-auto text-lg leading-relaxed">
+        <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] max-w-2xl mx-auto text-lg leading-relaxed`}>
           Showcasing a collection of projects where design meets functionality. Focused on creating performant, interactive, and premium user experiences.
         </p>
       </motion.div>
