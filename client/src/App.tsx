@@ -5,6 +5,7 @@ import Me from './pages/Me'
 import About from './pages/About'
 import Work from './pages/Work'
 import Blogs from './pages/Blogs'
+import Blog from './pages/Blog'
 import Guestbook from './pages/Guestbook'
 import Ribbons from './components/Ribbons'
 import ThemeContextProvider from './context/ThemeContext'
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/work" element={<Work />} />
                 <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/:id" element={<Blog />} />
                 <Route path="/guestbook" element={<Guestbook />} />
               </Routes>
               <Footer />
