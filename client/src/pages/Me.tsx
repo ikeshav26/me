@@ -4,10 +4,10 @@ import { Copy, Check, MapPin, GitCommitHorizontal, BookOpen, ArrowUpRight } from
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { GithubIcon } from "../icons/GithubIcon"
-import { InstagramIcon } from "../icons/InstagramIcon"
 import { DiscordIcon } from "../icons/DiscordIcon"
 import Form from "../components/Form"
 import { useTheme } from "../context/ThemeContext"
+import { FaLinkedin } from "react-icons/fa";
 
 const statusColors: Record<string, string> = {
   online: "bg-green-500",
@@ -97,6 +97,7 @@ const Me = () => {
           });
         }
       } catch {
+        // Ignore errors for commit fetching
       }
     };
     fetchCommit();
@@ -186,13 +187,13 @@ const Me = () => {
           </button>
 
           <div className={`flex items-center gap-5 mt-2 sm:mt-0 ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
-            <Link to="#" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="GitHub">
+            <Link to="https://github.com/ikeshav26" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="GitHub">
               <GithubIcon className="w-[22px] h-[22px]" />
             </Link>
-            <Link to="#" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="Instagram">
-              <InstagramIcon className="w-[22px] h-[22px]" />
+            <Link to="https://www.linkedin.com/in/keshavgilhotra" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="LinkedIn">
+              <FaLinkedin className="w-[22px] h-[22px]" />
             </Link>
-            <Link to="#" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="Discord">
+            <Link to="https://discord.com/users/1353631480064245772" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="Discord">
               <DiscordIcon className="w-[22px] h-[22px]" />
             </Link>
           </div>

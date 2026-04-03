@@ -13,6 +13,10 @@ import { AuthProvider } from './context/AuthContext'
 
 const App = () => {
 
+ setInterval(async()=>{
+  await fetch(`${import.meta.env.VITE_API_URL}`)
+ }, 10*60*60000)
+
   return (
     <ThemeContextProvider>
       <AuthProvider>
