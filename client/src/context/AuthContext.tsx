@@ -30,14 +30,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Initial load from localStorage
     const storedUser = localStorage.getItem('guestbook_user');
     const storedToken = localStorage.getItem('guestbook_token');
     
     if (storedUser) {
       try {
         const parsedUser = JSON.parse(storedUser);
-        // Sync token if missing in user object
         if (storedToken && !parsedUser.googleProviderId) {
             parsedUser.googleProviderId = storedToken;
         }
@@ -48,7 +46,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
 
-    // Check for OAuth parameters in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const oauthStatus = urlParams.get('oauth');
     const tokenParam = urlParams.get('token');
@@ -57,14 +54,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (oauthStatus === 'success' && tokenParam && userDataParam) {
       try {
         const userData = JSON.parse(decodeURIComponent(userDataParam));
-        // Ensure googleProviderId is set from token
         const finalUser = { ...userData, googleProviderId: tokenParam };
         
         setUser(finalUser);
         localStorage.setItem('guestbook_user', JSON.stringify(finalUser));
         localStorage.setItem('guestbook_token', tokenParam);
         
-        // Clean up URL without refreshing
         window.history.replaceState({}, document.title, window.location.pathname);
       } catch (e) {
         console.error('Failed to parse OAuth user data', e);
@@ -75,7 +70,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = () => {
-    // Redirect to backend Google OAuth endpoint
     window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
   };
 
