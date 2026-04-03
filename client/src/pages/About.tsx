@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import ScrollVelocity from "../components/ScrollVelocity";
 import { 
   SiJavascript, SiTypescript, SiReact, SiTailwindcss, SiNextdotjs, SiExpress,
-  SiGit, SiGithub, SiPostman, SiArchlinux, SiOpenai,
+  SiGithub, SiPostman, SiArchlinux,
   SiMongodb, SiPostgresql,
   SiDocker, SiDigitalocean, SiApachekafka, SiNginx,
   SiGithubactions,
   SiPrisma, SiGooglegemini,
+  SiCplusplus, SiC, SiPython
 } from 'react-icons/si';
-import { FaAws } from 'react-icons/fa';
+import { FaAws, FaJava } from 'react-icons/fa';
 import { VscVscode } from 'react-icons/vsc';
 import { DiMysql } from "react-icons/di";
 import { GitHubCalendar } from 'react-github-calendar';
@@ -21,40 +22,69 @@ const TechItem = ({ Icon, name, color }: { Icon: any; name: string; color: strin
   </div>
 );
 
-const stackItems = [
-  <div className="flex items-center justify-center gap-4">
-    <TechItem Icon={SiJavascript} name="JavaScript" color="#F7DF1E" />
-    <TechItem Icon={SiTypescript} name="TypeScript" color="#3178C6" />
-    <TechItem Icon={SiReact} name="React" color="#61DAFB" />
-    <TechItem Icon={SiNextdotjs} name="Next.js" color="#FFFFFF" />
-    <TechItem Icon={SiTailwindcss} name="Tailwind" color="#06B6D4" />
-    <TechItem Icon={SiExpress} name="Express" color="#FFFFFF" />
-  </div>,
-  <div className="flex items-center gap-4">
-    <TechItem Icon={SiGit} name="Git" color="#F05032" />
-    <TechItem Icon={SiGithub} name="GitHub" color="#FFFFFF" />
-    <TechItem Icon={VscVscode} name="VS Code" color="#007ACC" />
-    <TechItem Icon={SiPostman} name="Postman" color="#FF6C37" />
-    <TechItem Icon={SiArchlinux} name="Arch Linux" color="#1793D1" />
-    <TechItem Icon={SiOpenai} name="OpenAI" color="#FFFFFF" />
-    <TechItem Icon={SiGooglegemini} name="Generative AI" color="#4285F4" />
-  </div>,
-  <div className="flex items-center gap-4">
-    <TechItem Icon={SiMongodb} name="MongoDB" color="#47A248" />
-    <TechItem Icon={SiPostgresql} name="PostgreSQL" color="#4169E1" />
-    <TechItem Icon={DiMysql} name="MySQL" color="#00758F" />
-    <TechItem Icon={SiPrisma} name="Prisma" color="#2D3748" />
-  </div>,
-  <div className="flex items-center gap-4">
-    <TechItem Icon={SiDocker} name="Docker" color="#2496ED" />
-    <TechItem Icon={FaAws} name="AWS" color="#FF9900" />
-    <TechItem Icon={SiDigitalocean} name="DigitalOcean" color="#0080FF" />
-    <TechItem Icon={SiApachekafka} name="Kafka" color="#FFFFFF" />
-    <TechItem Icon={SiGithubactions} name="CI/CD" color="#2088FF" />
-    <TechItem Icon={SiNginx} name="Nginx" color="#009639" />
-  </div>
+const techCategories = [
+  {
+    title: "Development",
+    icon: "🌐",
+    items: [
+      { Icon: SiJavascript, name: "JavaScript", subtitle: "Languages of the web", color: "#F7DF1E" },
+      { Icon: SiTypescript, name: "TypeScript", subtitle: "JavaScript with Types", color: "#3178C6" },
+      { Icon: SiReact, name: "ReactJS", subtitle: "A JavaScript Library", color: "#61DAFB" },
+      { Icon: SiTailwindcss, name: "Tailwind CSS", subtitle: "CSS Frameworks", color: "#06B6D4" },
+      { Icon: SiNextdotjs, name: "NextJS", subtitle: "React Framework", color: "#FFFFFF" },
+      { Icon: SiExpress, name: "ExpressJS", subtitle: "Web Framework for Node.js", color: "#FFFFFF" },
+    ]
+  },{
+    title: "Databases & ORM",
+    icon: "🗄️",
+    items: [
+      { Icon: SiMongodb, name: "MongoDB", subtitle: "NoSQL Database", color: "#47A248" },
+      { Icon: SiPostgresql, name: "PostgreSQL", subtitle: "Relational Database", color: "#4169E1" },
+      { Icon: DiMysql, name: "MySQL", subtitle: "Relational Database", color: "#00758F" },
+      { Icon: SiPrisma, name: "Prisma", subtitle: "Next-generation ORM", color: "#2D3748" },
+    ]
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: "☁️",
+    items: [
+      { Icon: SiDocker, name: "Docker", subtitle: "Containerization", color: "#2496ED" },
+      { Icon: FaAws, name: "AWS", subtitle: "Cloud Computing", color: "#FF9900" },
+      { Icon: SiDigitalocean, name: "DigitalOcean", subtitle: "Cloud Hosting", color: "#0080FF" },
+      { Icon: SiApachekafka, name: "Kafka", subtitle: "Event Streaming", color: "#FFFFFF" },
+      { Icon: SiGithubactions, name: "CI/CD", subtitle: "Automation", color: "#2088FF" },
+      { Icon: SiNginx, name: "Nginx", subtitle: "Web Server", color: "#009639" },
+    ]
+  },
+  {
+    title: "Programming Languages",
+    icon: "💻",
+    items: [
+      { Icon: SiCplusplus, name: "C++", subtitle: "Systems Programming", color: "#00599C" },
+      { Icon: SiC, name: "C", subtitle: "Low-level Programming", color: "#A8B9CC" },
+      { Icon: FaJava, name: "Java", subtitle: "Enterprise Software", color: "#E76F51" },
+      { Icon: SiPython, name: "Python", subtitle: "General Purpose", color: "#3776AB" },
+    ]
+  },{
+    title: "Tools and Platforms",
+    icon: "🛠️",
+    items: [
+      { Icon: SiGithub, name: "Git & GitHub", subtitle: "Version Control", color: "#FFFFFF" },
+      { Icon: VscVscode, name: "VS Code", subtitle: "Code Editor", color: "#007ACC" },
+      { Icon: SiPostman, name: "Postman", subtitle: "API Testing", color: "#FF6C37" },
+      { Icon: SiArchlinux, name: "Arch Linux", subtitle: "Linux Distribution", color: "#1793D1" },
+      { Icon: SiGooglegemini, name: "Generative AI", subtitle: "AI Assistance", color: "#4285F4" },
+    ]
+  },
 ];
 
+const stackItems = techCategories.map((cat, idx) => (
+  <div key={idx} className="flex items-center justify-center gap-4">
+    {cat.items.map((item, i) => (
+      <TechItem key={i} Icon={item.Icon} name={item.name} color={item.color} />
+    ))}
+  </div>
+));
 const About = () => {
   return (
     <div className="w-full mt-17 mb-8 overflow-hidden">
@@ -101,7 +131,7 @@ const About = () => {
         </div>
         
         <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>
-          <div className="relative py-2 mt-4 bg-white/2">
+          <div className="relative py-2 mt-4 bg-white/2 hidden md:block">
             <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-linear-to-r from-black via-black/80 to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-linear-to-l from-black via-black/80 to-transparent z-10" />
             
@@ -110,6 +140,33 @@ const About = () => {
               velocity={30} 
               numCopies={4}
             />
+          </div>
+
+          {/* Mobile Tech Stack (Grid Layout) */}
+          <div className="md:hidden flex flex-col gap-10 px-4 mt-8 pb-4">
+            {techCategories.map((category, idx) => (
+              <div key={idx} className="flex flex-col gap-3">
+                <div className="text-gray-400 font-mono text-sm tracking-wide flex items-center gap-2 mb-2 px-1">
+                  {category.title} {category.icon}
+                </div>
+                <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-3">
+                  {category.items.map((item, i) => {
+                    const { Icon } = item;
+                    return (
+                      <div key={i} className="flex items-center gap-4 bg-[#111111] hover:bg-[#1a1a1a] transition-colors border border-white/5 p-4 rounded-xl cursor-default">
+                        <div className="bg-black/50 p-2.5 rounded-lg flex-shrink-0 border border-white/5 shadow-inner">
+                          <Icon className="w-6 h-6 md:w-7 md:h-7" style={{ color: item.color }} />
+                        </div>
+                        <div className="flex flex-col overflow-hidden">
+                          <span className="text-[#e2e2e2] font-semibold text-[15px] truncate tracking-tight">{item.name}</span>
+                          <span className="text-[#888888] text-[12px] truncate">{item.subtitle}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
