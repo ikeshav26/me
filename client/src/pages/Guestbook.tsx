@@ -33,7 +33,7 @@ const Guestbook = () => {
   const fetchEntries = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:3000/api/reviews/all');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews/all`);
       if (!res.ok) throw new Error('Failed to fetch guestbook messages');
       const data = await res.json();
       setEntries(data.reviews ?? []);
@@ -63,7 +63,7 @@ const Guestbook = () => {
           throw new Error('Authentication data is incomplete. Please try logging out and in again.');
       }
 
-      const res = await fetch('http://localhost:3000/api/reviews/create', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -104,7 +104,7 @@ const Guestbook = () => {
 
     try {
       setPosting(true);
-      const res = await fetch(`http://localhost:3000/api/reviews/delete/${reviewId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/reviews/delete/${reviewId}`, {
         method: 'DELETE',
         headers: { 
             'Content-Type': 'application/json',

@@ -103,7 +103,7 @@ const Me = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/blogs/all')
+    fetch(`${import.meta.env.VITE_API_URL}/api/blogs/all`)
       .then(r => r.json())
       .then(data => {
         const all = data.blogs ?? [];

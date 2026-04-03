@@ -39,7 +39,7 @@ const Blogs = () => {
     const fetchBlogs = async () => {
         try {
           setLoading(true);
-          const res = await fetch('http://localhost:3000/api/blogs/all');
+          const res = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs/all`);
           if (!res.ok) throw new Error('Failed to fetch blogs');
           const data = await res.json();
           const enhancedBlogs = (data.blogs ?? []).map((blog: Blog) => ({
