@@ -1,6 +1,6 @@
 import TextType from "../components/TextType"
 import { motion } from "framer-motion"
-import { Copy, Check, MapPin, GitCommitHorizontal, BookOpen, ArrowUpRight } from "lucide-react"
+import { Copy, Check, MapPin, GitCommitHorizontal, BookOpen, ArrowUpRight, Eye } from "lucide-react"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { GithubIcon } from "../icons/GithubIcon"
@@ -51,6 +51,7 @@ const Me = () => {
   const [discordError, setDiscordError] = useState(false);
   const [lastCommit, setLastCommit] = useState<{ message: string; repo: string; url: string; time: string } | null>(null);
   const [recentBlogs, setRecentBlogs] = useState<{ _id: string; subject: string; description: string; createdAt: string }[]>([]);
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -109,6 +110,15 @@ const Me = () => {
       .then(data => {
         const all = data.blogs ?? [];
         setRecentBlogs(all.slice(-2).reverse());
+      })
+      .catch(() => {});
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/visitor/count`)
+      .then(r => r.json())
+      .then(data => {
+        if (data && typeof data.visitorCount === 'number') {
+          setVisitorCount(data.visitorCount);
+        }
       })
       .catch(() => {});
   }, []);
@@ -244,7 +254,6 @@ const Me = () => {
 
         <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-
             <Card className="sm:col-span-2 hover:border-white/10 transition-all duration-300">
               <SectionLabel icon={<GitCommitHorizontal size={10} />} label="Latest Commit" />
               {lastCommit ? (
@@ -274,9 +283,6 @@ const Me = () => {
               <p className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-sm font-medium leading-tight`}>Punjab, India</p>
               <p className={`${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} text-xs font-mono mt-1`}>IST · UTC+5:30</p>
             </Card>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
 
             <Card className={`hover:${theme === 'dark' ? 'border-white/10' : 'border-black/20'} transition-all duration-300`}>
               <SectionLabel icon={<DiscordIcon className="w-2.5 h-2.5" />} label="Discord Status" />
@@ -308,15 +314,25 @@ const Me = () => {
               )}
             </Card>
 
+            <Card className={`hover:${theme === 'dark' ? 'border-white/10' : 'border-black/20'} transition-all duration-300`}>
+              <SectionLabel icon={<Eye size={10} />} label="Visitors" />
+              <div className="flex items-baseline gap-2">
+                <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-950'} text-xl font-bold font-mono`}>
+                  {visitorCount !== null ? visitorCount.toLocaleString() : "..."}
+                </span>
+                <span className={`${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} text-[10px] font-mono shrink-0`}>visits</span>
+              </div>
+              <p className={`${theme === 'dark' ? 'text-gray-600' : 'text-gray-500'} text-[9px] mt-1.5 uppercase tracking-tighter`}>Live Tracker</p>
+            </Card>
 
             <Card className={`hover:${theme === 'dark' ? 'border-white/10' : 'border-black/20'} transition-all duration-300 cursor-pointer`}>
               <SectionLabel icon={<BookOpen size={10} />} label="Guestbook" />
               <Link to="/guestbook" className="flex items-start justify-between group/link">
                 <div>
                   <p className={`${theme === 'dark' ? 'text-white group-hover/link:text-gray-300' : 'text-gray-900 group-hover/link:text-gray-700'} text-sm font-medium transition-colors`}>
-                    Sign my guestbook ✨
+                    Sign guestbook ✨
                   </p>
-                  <p className={`${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} text-xs mt-1`}>Leave a message for me!</p>
+                  <p className={`${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} text-xs mt-1`}>Leave a note!</p>
                 </div>
                 <ArrowUpRight size={14} className={`${theme === 'dark' ? 'text-gray-600 group-hover/link:text-white' : 'text-gray-400 group-hover/link:text-black'} transition-colors shrink-0 mt-0.5`} />
               </Link>

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Me from './pages/Me'
@@ -8,14 +9,20 @@ import Blogs from './pages/Blogs'
 import Blog from './pages/Blog'
 import Guestbook from './pages/Guestbook'
 import Ribbons from './components/Ribbons'
+import VisitorSubtle from './components/VisitorSubtle'
 import ThemeContextProvider from './context/ThemeContext'
 import { AuthProvider } from './context/AuthContext'
 
 const App = () => {
 
- setInterval(async()=>{
-  await fetch(`${import.meta.env.VITE_API_URL}`)
- }, 10*60*60000)
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/visitor/increment`)
+      .catch((err) => console.error("Error incrementing visitor count:", err));
+  }, []);
+
+  setInterval(async()=>{
+    await fetch(`${import.meta.env.VITE_API_URL}`)
+  }, 10*60*60000)
 
   return (
     <ThemeContextProvider>
@@ -37,6 +44,7 @@ const App = () => {
             <div className="pointer-events-auto">
               <Navbar />
             </div>
+            <VisitorSubtle />
             <main className='flex-1 w-full max-w-4xl mx-auto p-4 md:p-10 mt-24 pointer-events-auto'>
               <Routes>
                 <Route path="/" element={<Me />} />
