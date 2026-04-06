@@ -97,7 +97,7 @@ const Me = () => {
           });
         }
       } catch {
-        // Ignore errors for commit fetching
+        // Ignore 
       }
     };
     fetchCommit();
@@ -349,7 +349,9 @@ const Me = () => {
         <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>
           <div className="flex flex-col gap-3">
             {recentBlogs.length === 0 ? (
-              <p className="text-gray-600 text-sm py-4">No blogs yet.</p>
+              Array(2).fill(0).map((_, i) => (
+            <div key={i} className={`h-32 rounded-2xl animate-pulse mb-8 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'}`}></div>
+          ))
             ) : recentBlogs.map((blog) => {
               const date = new Date(blog.createdAt);
               const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });

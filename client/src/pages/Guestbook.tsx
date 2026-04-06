@@ -215,7 +215,6 @@ console.log(entries.length)
         )}
       </motion.div>
 
-      {/* Messages List */}
       <div className="mt-34">
         <div className="flex items-center gap-3 mb-8">
           <MessageSquare className="text-orange-300" size={20} />
@@ -230,7 +229,7 @@ console.log(entries.length)
           </div>
         ) : loading ? (
           Array(3).fill(0).map((_, i) => (
-            <div key={i} className={`h-32 rounded-2xl animate-pulse ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'}`}></div>
+            <div key={i} className={`h-32 rounded-2xl animate-pulse mb-8 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'}`}></div>
           ))
         ) : entries.length > 0 ? (
           <AnimatePresence initial={false}>
