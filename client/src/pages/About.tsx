@@ -7,7 +7,7 @@ import {
   SiDocker, SiDigitalocean, SiApachekafka, SiNginx,
   SiGithubactions,
   SiPrisma, SiGooglegemini,
-  SiCplusplus, SiC, SiPython
+  SiCplusplus, SiC, SiPython,SiSpringboot
 } from 'react-icons/si';
 import { FaAws, FaJava } from 'react-icons/fa';
 import { VscVscode } from 'react-icons/vsc';
@@ -15,6 +15,7 @@ import { DiMysql } from "react-icons/di";
 import { GitHubCalendar } from 'react-github-calendar';
 import DecryptedText from "../components/DecryptedText";
 import { useTheme } from "../context/ThemeContext";
+import { Zustand } from "../icons/Zustand";
 
 const TechItem = ({ Icon, name, color }: { Icon: any; name: string; color: string }) => {
   const { theme } = useTheme();
@@ -37,14 +38,17 @@ const techCategories = [
     items: [
       { Icon: SiJavascript, name: "JavaScript", subtitle: "Languages of the web", color: "#F7DF1E" },
       { Icon: SiTypescript, name: "TypeScript", subtitle: "JavaScript with Types", color: "#3178C6" },
+      { Icon: FaJava, name: "Java", subtitle: "Enterprise Software", color: "#E76F51" },
       { Icon: SiReact, name: "ReactJS", subtitle: "A JavaScript Library", color: "#61DAFB" },
       { Icon: SiTailwindcss, name: "Tailwind CSS", subtitle: "CSS Frameworks", color: "#06B6D4" },
       { Icon: SiNextdotjs, name: "NextJS", subtitle: "React Framework", color: "#FFFFFF" },
+      { Icon: SiSpringboot, name: "Springboot", subtitle: "Java Framework", color: "#47A248"},
       { Icon: SiExpress, name: "ExpressJS", subtitle: "Web Framework for Node.js", color: "#FFFFFF" },
+      {Icon: Zustand, name:"Zustand", subtitle:"State Management", color:"#FFFFFF"}
     ]
   },{
     title: "Databases & ORM",
-    icon: "🗄️",
+    icon: "🗄️", 
     items: [
       { Icon: SiMongodb, name: "MongoDB", subtitle: "NoSQL Database", color: "#47A248" },
       { Icon: SiPostgresql, name: "PostgreSQL", subtitle: "Relational Database", color: "#4169E1" },
@@ -70,7 +74,6 @@ const techCategories = [
     items: [
       { Icon: SiCplusplus, name: "C++", subtitle: "Systems Programming", color: "#00599C" },
       { Icon: SiC, name: "C", subtitle: "Low-level Programming", color: "#A8B9CC" },
-      { Icon: FaJava, name: "Java", subtitle: "Enterprise Software", color: "#E76F51" },
       { Icon: SiPython, name: "Python", subtitle: "General Purpose", color: "#3776AB" },
     ]
   },{
