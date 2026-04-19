@@ -20,9 +20,17 @@ const App = () => {
       .catch((err) => console.error("Error incrementing visitor count:", err));
   }, []);
 
-  setInterval(async()=>{
-    await fetch(`${import.meta.env.VITE_API_URL}`)
-  }, 10*60*60000)
+  useEffect(() => {
+    const pingInterval = setInterval(async () => {
+      try {
+        await fetch(`${import.meta.env.VITE_API_URL}`);
+      } catch (err) {
+        console.error("Server ping error:", err);
+      }
+    }, 14 * 60 * 1000); // 14 minutes
+
+    return () => clearInterval(pingInterval);
+  }, []);
 
   return (
     <ThemeContextProvider>
