@@ -5,10 +5,12 @@ import {
   SiGithub, SiPostman, SiArchlinux,
   SiMongodb, SiPostgresql,
   SiDocker, SiDigitalocean, SiApachekafka, SiNginx,
+  SiGrafana, SiPrometheus,
   SiGithubactions,
   SiPrisma, SiGooglegemini,
   SiCplusplus, SiC, SiPython,SiSpringboot
 } from 'react-icons/si';
+import { DiRedis } from "react-icons/di";
 import { FaAws, FaJava } from 'react-icons/fa';
 import { VscVscode } from 'react-icons/vsc';
 import { DiMysql } from "react-icons/di";
@@ -33,18 +35,29 @@ const TechItem = ({ Icon, name, color }: { Icon: any; name: string; color: strin
 
 const techCategories = [
   {
-    title: "Development",
+    title: "Frontend Development",
     icon: "🌐",
     items: [
       { Icon: SiJavascript, name: "JavaScript", subtitle: "Languages of the web", color: "#F7DF1E" },
       { Icon: SiTypescript, name: "TypeScript", subtitle: "JavaScript with Types", color: "#3178C6" },
-      { Icon: FaJava, name: "Java", subtitle: "Enterprise Software", color: "#E76F51" },
       { Icon: SiReact, name: "ReactJS", subtitle: "A JavaScript Library", color: "#61DAFB" },
       { Icon: SiTailwindcss, name: "Tailwind CSS", subtitle: "CSS Frameworks", color: "#06B6D4" },
-      { Icon: SiNextdotjs, name: "NextJS", subtitle: "React Framework", color: "#FFFFFF" },
-      { Icon: SiSpringboot, name: "Springboot", subtitle: "Java Framework", color: "#47A248"},
-      { Icon: SiExpress, name: "ExpressJS", subtitle: "Web Framework for Node.js", color: "#FFFFFF" },
+       { Icon: SiNextdotjs, name: "NextJS", subtitle: "React Framework", color: "#FFFFFF" },
       {Icon: Zustand, name:"Zustand", subtitle:"State Management", color:"#FFFFFF"}
+    ]
+  },
+  {
+    title: "Backend Development",
+    icon: "🌐",
+    items: [
+      { Icon: FaJava, name: "Java", subtitle: "Enterprise Software", color: "#E76F51" },
+      { Icon: SiExpress, name: "ExpressJS", subtitle: "Web Framework for Node.js", color: "#FFFFFF" },
+      { Icon: SiSpringboot, name: "Springboot", subtitle: "Java Framework", color: "#47A248"},
+      { Icon: SiGrafana, name: "Grafana", subtitle: "Observability Platform", color: "#F46800" },
+      { Icon: SiPrometheus, name: "Prometheus", subtitle: "Metrics Monitoring", color: "#E6522C" },
+      { Icon: DiRedis, name: "Redis", subtitle: "In-memory Data Store", color: "#DC382D" },
+      { Icon: SiApachekafka, name: "Kafka", subtitle: "Event Streaming", color: "#FFFFFF" },
+
     ]
   },{
     title: "Databases & ORM",
@@ -63,7 +76,6 @@ const techCategories = [
       { Icon: SiDocker, name: "Docker", subtitle: "Containerization", color: "#2496ED" },
       { Icon: FaAws, name: "AWS", subtitle: "Cloud Computing", color: "#FF9900" },
       { Icon: SiDigitalocean, name: "DigitalOcean", subtitle: "Cloud Hosting", color: "#0080FF" },
-      { Icon: SiApachekafka, name: "Kafka", subtitle: "Event Streaming", color: "#FFFFFF" },
       { Icon: SiGithubactions, name: "CI/CD", subtitle: "Automation", color: "#2088FF" },
       { Icon: SiNginx, name: "Nginx", subtitle: "Web Server", color: "#009639" },
     ]
