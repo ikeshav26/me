@@ -110,7 +110,7 @@ const Blog = () => {
             h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-8 mb-4" {...props} />,
             h3: ({node, ...props}) => <h3 className="text-xl font-semibold mt-6 mb-3" {...props} />,
             p: ({node, ...props}) => <p className="mb-6 leading-relaxed" {...props} />,
-            a: ({node, ...props}) => <a className="text-blue-500 hover:text-blue-400 no-underline hover:underline transition-all" target="_blank" rel="noopener noreferrer" {...props} />,
+            a: ({node, ...props}) => <a className={`text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 no-underline hover:underline transition-all`} target="_blank" rel="noopener noreferrer" {...props} />,
             ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 space-y-2" {...props} />,
             ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-6 space-y-2" {...props} />,
             li: ({node, ...props}) => <li className="" {...props} />,
@@ -121,13 +121,13 @@ const Blog = () => {
                   style={theme === 'dark' ? atomDark : (prism as any)}
                   language={match[1]}
                   PreTag="div"
-                  className="rounded-lg border border-white/10 my-6 text-sm !bg-zinc-900/50"
+                  className={`rounded-lg border my-6 text-sm ${theme === 'dark' ? 'border-white/10 !bg-zinc-900/50' : 'border-black/10 !bg-gray-100'} overflow-auto`}
                   {...props}
                 >
                   {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
               ) : (
-                <code className={`bg-gray-500/20 text-orange-400 font-mono text-sm rounded-md px-1.5 py-0.5 ${className || ''}`} {...props}>
+                <code className={`font-mono text-sm rounded-md px-1.5 py-0.5 ${theme === 'dark' ? 'bg-gray-500/20 text-orange-400' : 'bg-gray-200 text-orange-600'} ${className || ''}`} {...props}>
                   {children}
                 </code>
               )
