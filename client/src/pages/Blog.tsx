@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Clock, Calendar, BookOpen } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
+import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface BlogData {
   _id: string;
@@ -100,8 +103,39 @@ const Blog = () => {
 
       <div className={`w-full h-px mb-12 ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'}`}></div>
 
-      <article className={`text-base md:text-lg leading-relaxed font-light ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} whitespace-pre-wrap`}>
-        {blog.description}
+      <article className={`text-base md:text-lg leading-relaxed font-light ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+        <ReactMarkdown
+          components={{
+            h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4 border-b pb-2 border-gray-500/30" {...props} />,
+            h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-8 mb-4" {...props} />,
+            h3: ({node, ...props}) => <h3 className="text-xl font-semibold mt-6 mb-3" {...props} />,
+            p: ({node, ...props}) => <p className="mb-6 leading-relaxed" {...props} />,
+            a: ({node, ...props}) => <a className="text-blue-500 hover:text-blue-400 no-underline hover:underline transition-all" target="_blank" rel="noopener noreferrer" {...props} />,
+            ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 space-y-2" {...props} />,
+            ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-6 space-y-2" {...props} />,
+            li: ({node, ...props}) => <li className="" {...props} />,
+            code({node, className, children, ...props}: any) {
+              const match = /language-(\w+)/.exec(className || '')
+              return match ? (
+                <SyntaxHighlighter
+                  style={theme === 'dark' ? atomDark : (prism as any)}
+                  language={match[1]}
+                  PreTag="div"
+                  className="rounded-lg border border-white/10 my-6 text-sm !bg-zinc-900/50"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={`bg-gray-500/20 text-orange-400 font-mono text-sm rounded-md px-1.5 py-0.5 ${className || ''}`} {...props}>
+                  {children}
+                </code>
+              )
+            }
+          }}
+        >
+          {blog.description}
+        </ReactMarkdown>
       </article>
 
       <div className={`w-full h-px mt-20 mb-12 ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'}`}></div>

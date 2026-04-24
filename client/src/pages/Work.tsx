@@ -14,6 +14,15 @@ const projects: Project[] = [
     github: 'https://github.com/ikeshav26/cybersuite',
   },
   {
+    title: 'Keep-Awake',
+    description: 'An npm package to keep free-tier servers awake via cron-based pinging.',
+    longDescription: 'Keep-Awake is a professional TypeScript-based npm package that keeps free-tier servers awake by pinging them at scheduled intervals using cron jobs. It features robust core logic, typed configurations, and easy integration into any Node.js application, preventing spin-down delays on serverless or free hosting platforms.',
+    image: '/keep-awake.png',
+    tags: ['TypeScript', 'Node.js', 'NPM', 'Cron', 'Open Source'],
+    github: 'https://github.com/ikeshav26/keep-awake',
+    link: 'https://www.npmjs.com/package/@ikeshav26/keep-awake'
+  },
+  {
     title: 'Echovia',
     description: 'A full-featured music streaming platform with genre browsing, playlist management, and a sleek now-playing experience.',
     longDescription: 'Echovia is a modern music player web application that lets users discover and stream music across multiple genres. Features include genre-based browsing, custom playlist creation, real-time now-playing controls, and a premium Spotify-inspired dark UI. Built with a focus on seamless audio playback and responsive design.',
@@ -54,7 +63,8 @@ const projects: Project[] = [
     image: '/zettanote.png',
     tags: ['React', 'Node.js', 'MongoDB', 'WebSockets', 'Open Source'],
     github: 'https://github.com/braydenidzenga/ZettaNote',
-  }
+  },
+  
 ];
 
 const Work = () => {

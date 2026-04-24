@@ -24,7 +24,7 @@ export const createBlog=async(req:Request,res:Response)=>{
 
 export const getAllBlogs=async(req:Request,res:Response)=>{
     try{
-        const blogs=await Blog.find();
+        const blogs=await Blog.find().sort({createdAt:-1});
         return res.status(200).json({message:"Blogs fetched successfully",blogs})
     }catch(err){
         console.log(err)
