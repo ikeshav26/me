@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@ikeshav26/keep-awake':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
@@ -55,6 +58,9 @@ importers:
         version: 6.0.2
 
 packages:
+
+  '@ikeshav26/keep-awake@1.0.3':
+    resolution: {integrity: sha512-KKs9xsEDmY4aaS6klwKrfdRrfW8RK8dXrniC4U3VFaJOeDlSljd9Z62RM3F3hjJKQhoEwBadA9wiOeD7nzhXCA==}
 
   '@mongodb-js/saslprep@1.4.6':
     resolution: {integrity: sha512-y+x3H1xBZd38n10NZF/rEBlvDOOMQ6LKUTHqr8R9VkJ+mmQOYtJFxIlkkK8fZrtOiL6VixbOBWMbZGBdal3Z1g==}
@@ -468,6 +474,10 @@ packages:
   node-cleanup@2.1.2:
     resolution: {integrity: sha512-qN8v/s2PAJwGUtr1/hYTpNKlD6Y9rc4p8KSmJXyGdYGZsDGKXrGThikLFP9OCHFeLeEpQzPwiAtdIvBLqm//Hw==}
 
+  node-cron@4.2.1:
+    resolution: {integrity: sha512-lgimEHPE/QDgFlywTd8yTR61ptugX3Qer29efeyWw2rv259HtGBNn1vZVmp8lB9uo9wC0t/AT4iGqXxia+CJFg==}
+    engines: {node: '>=6.0.0'}
+
   nodemon@3.1.14:
     resolution: {integrity: sha512-jakjZi93UtB3jHMWsXL68FXSAosbLfY0In5gtKq3niLSkrWznrVBzXFNOEMJUfc9+Ke7SHWoAZsiMkNP3vq6Jw==}
     engines: {node: '>=10'}
@@ -715,6 +725,10 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
 snapshots:
+
+  '@ikeshav26/keep-awake@1.0.3':
+    dependencies:
+      node-cron: 4.2.1
 
   '@mongodb-js/saslprep@1.4.6':
     dependencies:
@@ -1153,6 +1167,8 @@ snapshots:
   negotiator@1.0.0: {}
 
   node-cleanup@2.1.2: {}
+
+  node-cron@4.2.1: {}
 
   nodemon@3.1.14:
     dependencies:

@@ -20,17 +20,17 @@ const App = () => {
       .catch((err) => console.error("Error incrementing visitor count:", err));
   }, []);
 
-  useEffect(() => {
-    const pingInterval = setInterval(async () => {
-      try {
-        await fetch(`${import.meta.env.VITE_API_URL}`);
-      } catch (err) {
-        console.error("Server ping error:", err);
-      }
-    }, 14 * 60 * 1000); // 14 minutes
+  // useEffect(() => {
+  //   const pingInterval = setInterval(async () => {
+  //     try {
+  //       await fetch(`${import.meta.env.VITE_API_URL}`);
+  //     } catch (err) {
+  //       console.error("Server ping error:", err);
+  //     }
+  //   }, 14 * 60 * 1000); // 14 minutes
 
-    return () => clearInterval(pingInterval);
-  }, []);
+  //   return () => clearInterval(pingInterval);
+  // }, []);
 
   return (
     <ThemeContextProvider>
