@@ -20,10 +20,9 @@ export const googleOauthController = (req:Request, res:Response, next:Function) 
 
       res.redirect(
         `${process.env.CLIENT_URL}/guestbook/?oauth=success&token=${
-          user.googleProviderId
+          user._id
         }&user=${encodeURIComponent(JSON.stringify({ 
           userId: user._id, 
-          googleProviderId: user.googleProviderId,
           name: user.name, 
           email: user.email, 
           avatarUrl: user.avatarUrl 

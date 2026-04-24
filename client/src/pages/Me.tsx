@@ -98,7 +98,7 @@ const Me = () => {
           });
         }
       } catch {
-        // Ignore 
+        // ignore nothing to do there
       }
     };
     fetchCommit();
@@ -109,7 +109,7 @@ const Me = () => {
       .then(r => r.json())
       .then(data => {
         const all = data.blogs ?? [];
-        setRecentBlogs(all.slice(-2).reverse());
+        setRecentBlogs(all.slice(0, 2));
       })
       .catch(() => {});
 

@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface User {
   userId: string;
-  googleProviderId: string;
   name: string;
   email: string;
   avatarUrl: string;
@@ -31,14 +30,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const storedUser = localStorage.getItem('guestbook_user');
-    const storedToken = localStorage.getItem('guestbook_token');
     
     if (storedUser) {
       try {
         const parsedUser = JSON.parse(storedUser);
-        if (storedToken && !parsedUser.googleProviderId) {
-            parsedUser.googleProviderId = storedToken;
-        }
         setUser(parsedUser);
       } catch (e) {
         console.error('Failed to parse stored user', e);
@@ -54,7 +49,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (oauthStatus === 'success' && tokenParam && userDataParam) {
       try {
         const userData = JSON.parse(decodeURIComponent(userDataParam));
-        const finalUser = { ...userData, googleProviderId: tokenParam };
+        const finalUser = { ...userData };
         
         setUser(finalUser);
         localStorage.setItem('guestbook_user', JSON.stringify(finalUser));

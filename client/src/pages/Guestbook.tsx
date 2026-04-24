@@ -10,9 +10,9 @@ interface GuestbookEntry {
   reviewText: string;
   createdAt: string;
   reviewedBy: {
+    _id: string;
     name: string;
     avatarUrl: string;
-    googleProviderId: string;
     isAuthor: boolean;
   };
 }
@@ -52,14 +52,11 @@ const Guestbook = () => {
     try {
       setPosting(true);
       const payload = {
-        googleProviderId: user.googleProviderId,
         userId: user.userId,
         reviewText: message.trim()
       };
       
-      console.log('Posting review with:', payload);
-      
-      if (!payload.googleProviderId && !payload.userId) {
+      if (!payload.userId) {
           throw new Error('Authentication data is incomplete. Please try logging out and in again.');
       }
 
@@ -108,9 +105,9 @@ const Guestbook = () => {
         method: 'DELETE',
         headers: { 
             'Content-Type': 'application/json',
-            'x-google-provider-id': user.googleProviderId
+            'x-user-id': user.userId
         },
-        body: JSON.stringify({ googleProviderId: user.googleProviderId })
+        body: JSON.stringify({ userId: user.userId })
       });
 
       if (!res.ok) {
@@ -126,7 +123,7 @@ const Guestbook = () => {
       setPosting(false);
     }
   };
-console.log(entries.length)
+  
   return (
     <div className="min-h-screen pt-18 pb-20 px-4 md:px-0 max-w-2xl mx-auto">
       <motion.div
@@ -275,7 +272,7 @@ console.log(entries.length)
                         {entry.reviewText}
                       </p>
                       
-                      {user && user.googleProviderId === entry.reviewedBy.googleProviderId && (
+                      {user && user.userId === entry.reviewedBy._id  && (
                         <button 
                           onClick={() => handleDelete(entry._id)}
                           disabled={posting}

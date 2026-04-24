@@ -6,17 +6,13 @@ import Review from "../models/review.model.js";
 
 export const createReview=async(req:Request,res:Response)=>{
     try{
-        const {googleProviderId, userId, reviewText}=req.body;
-        if((!googleProviderId && !userId) || !reviewText){
+        const {userId, reviewText}=req.body;
+        if(!userId || !reviewText){
             return res.status(400).json({message:'Please try again later... no identification provided'});
         }
 
         let findReviewer;
-        if (googleProviderId) {
-            findReviewer = await Reviewer.findOne({ googleProviderId });
-        } else if (userId) {
-            findReviewer = await Reviewer.findById(userId);
-        }
+        findReviewer = await Reviewer.findById(userId);
 
         if(!findReviewer){
             return res.status(404).json({message:'Please try again later... no reviewer found'});
@@ -36,7 +32,7 @@ export const createReview=async(req:Request,res:Response)=>{
 
 export const getAllReviews=async(req:Request,res:Response)=>{
     try{
-        const allReviews=await Review.find().populate('reviewedBy','name avatarUrl googleProviderId isAuthor');
+        const allReviews=await Review.find().populate('reviewedBy','name avatarUrl isAuthor');
         // Filter out reviews where reviewedBy is null (orphaned reviews)
         const reviews = allReviews.filter(review => review.reviewedBy !== null);
         
@@ -65,14 +61,12 @@ export const deleteReview=async(req:Request,res:Response)=>{
         if(!reviewId){
             return res.status(400).json({message:'Review ID is required'});
         }
-        // Support getting googleProviderId from body, query or headers
-        const googleProviderId = req.body.googleProviderId || req.query.googleProviderId || req.headers['x-google-provider-id'];
-        
-        if(!googleProviderId){
-            return res.status(400).json({message:'Google Provider ID is required'});
+        const userId=req.body.userId;
+        if(!userId){
+            return res.status(400).json({message:'User ID is required'});
         }
 
-        const findReviewer=await Reviewer.findOne({googleProviderId});
+        const findReviewer=await Reviewer.findById(userId);
         if(!findReviewer){
             return res.status(404).json({message:'Reviewer not found'});
         }
