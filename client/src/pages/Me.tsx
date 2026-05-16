@@ -179,7 +179,7 @@ const Me = () => {
 
         <motion.div
           variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-4"
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-4"
         >
           <button
             onClick={handleCopy}
@@ -195,6 +195,22 @@ const Me = () => {
               {copied ? <Check size={16} /> : <Copy size={16} />}
             </span>
           </button>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-4 ${theme === 'dark' ? 'bg-white/5 hover:bg-white/10 border-white/5 hover:border-white/10' : 'bg-black/5 hover:bg-black/10 border-black/10 hover:border-black/20'} border rounded-lg px-4 py-3 transition-colors group cursor-pointer text-left w-full sm:w-auto`}
+            aria-label="View resume"
+            title="View Resume"
+          >
+            <span className={`font-mono ${theme === 'dark' ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-600 group-hover:text-gray-800'} text-base transition-colors`}>
+              Resume
+            </span>
+            <span className={`ml-4 ${theme === 'dark' ? 'text-gray-500 group-hover:text-gray-300' : 'text-gray-500 group-hover:text-gray-700'} transition-colors`}>
+              <ArrowUpRight size={16} />
+            </span>
+          </a>
 
           <div className={`flex items-center gap-5 mt-2 sm:mt-0 ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
             <Link to="https://github.com/ikeshav26" className={`hover:${theme === 'dark' ? 'text-white' : 'text-black'} transition-colors duration-200`} aria-label="GitHub">

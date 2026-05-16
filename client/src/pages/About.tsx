@@ -8,7 +8,8 @@ import {
   SiGrafana, SiPrometheus,
   SiGithubactions,
   SiPrisma, SiGooglegemini,
-  SiCplusplus, SiC, SiPython,SiSpringboot
+  SiCplusplus, SiC, SiPython, SiSpringboot,
+  SiKubernetes, SiDrizzle, SiElectron, SiExpo
 } from 'react-icons/si';
 import { DiRedis } from "react-icons/di";
 import { FaAws, FaJava } from 'react-icons/fa';
@@ -42,8 +43,10 @@ const techCategories = [
       { Icon: SiTypescript, name: "TypeScript", subtitle: "JavaScript with Types", color: "#3178C6" },
       { Icon: SiReact, name: "ReactJS", subtitle: "A JavaScript Library", color: "#61DAFB" },
       { Icon: SiTailwindcss, name: "Tailwind CSS", subtitle: "CSS Frameworks", color: "#06B6D4" },
-       { Icon: SiNextdotjs, name: "NextJS", subtitle: "React Framework", color: "#FFFFFF" },
-      {Icon: Zustand, name:"Zustand", subtitle:"State Management", color:"#FFFFFF"}
+      { Icon: SiNextdotjs, name: "NextJS", subtitle: "React Framework", color: "#FFFFFF" },
+      { Icon: Zustand, name: "Zustand", subtitle: "State Management", color: "#FFFFFF" },
+      { Icon: SiElectron, name: "Electron", subtitle: "Desktop Apps", color: "#47848F" },
+      { Icon: SiExpo, name: "Expo", subtitle: "React Native", color: "#ffffff" }
     ]
   },
   {
@@ -57,7 +60,7 @@ const techCategories = [
       { Icon: SiPrometheus, name: "Prometheus", subtitle: "Metrics Monitoring", color: "#E6522C" },
       { Icon: DiRedis, name: "Redis", subtitle: "In-memory Data Store", color: "#DC382D" },
       { Icon: SiApachekafka, name: "Kafka", subtitle: "Event Streaming", color: "#FFFFFF" },
-
+//{ Icon: SiBullmq, name: "BullMQ", subtitle: "Job Queue", color: "#FFB100" }
     ]
   },{
     title: "Databases & ORM",
@@ -67,6 +70,7 @@ const techCategories = [
       { Icon: SiPostgresql, name: "PostgreSQL", subtitle: "Relational Database", color: "#4169E1" },
       { Icon: DiMysql, name: "MySQL", subtitle: "Relational Database", color: "#00758F" },
       { Icon: SiPrisma, name: "Prisma", subtitle: "Next-generation ORM", color: "#2D3748" },
+      { Icon: SiDrizzle, name: "Drizzle", subtitle: "TypeScript ORM", color: "#C5D901" }
     ]
   },
   {
@@ -78,6 +82,7 @@ const techCategories = [
       { Icon: SiDigitalocean, name: "DigitalOcean", subtitle: "Cloud Hosting", color: "#0080FF" },
       { Icon: SiGithubactions, name: "CI/CD", subtitle: "Automation", color: "#2088FF" },
       { Icon: SiNginx, name: "Nginx", subtitle: "Web Server", color: "#009639" },
+      { Icon: SiKubernetes, name: "Kubernetes", subtitle: "Container Orchestration", color: "#326CE5" }
     ]
   },
   {
