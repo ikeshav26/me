@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import React, { useEffect } from "react";
 import ScrollVelocity from "../components/ScrollVelocity";
 import { 
   SiJavascript, SiTypescript, SiReact, SiTailwindcss, SiNextdotjs, SiExpress,
@@ -9,7 +10,7 @@ import {
   SiGithubactions,
   SiPrisma, SiGooglegemini,
   SiCplusplus, SiC, SiPython, SiSpringboot,
-  SiKubernetes, SiDrizzle, SiElectron, SiExpo
+  SiKubernetes, SiDrizzle, SiElectron, SiExpo, SiTerraform, SiAnsible
 } from 'react-icons/si';
 import { DiRedis } from "react-icons/di";
 import { FaAws, FaJava } from 'react-icons/fa';
@@ -19,6 +20,23 @@ import { GitHubCalendar } from 'react-github-calendar';
 import DecryptedText from "../components/DecryptedText";
 import { useTheme } from "../context/ThemeContext";
 import { Zustand } from "../icons/Zustand";
+
+const hideScrollbarStyles = `
+  .hide-scrollbar {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none !important;
+  }
+  .hide-scrollbar * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .hide-scrollbar *::-webkit-scrollbar {
+    display: none !important;
+  }
+`;
 
 const TechItem = ({ Icon, name, color }: { Icon: any; name: string; color: string }) => {
   const { theme } = useTheme();
@@ -59,9 +77,7 @@ const techCategories = [
       { Icon: SiGrafana, name: "Grafana", subtitle: "Observability Platform", color: "#F46800" },
       { Icon: SiPrometheus, name: "Prometheus", subtitle: "Metrics Monitoring", color: "#E6522C" },
       { Icon: DiRedis, name: "Redis", subtitle: "In-memory Data Store", color: "#DC382D" },
-      { Icon: SiApachekafka, name: "Kafka", subtitle: "Event Streaming", color: "#FFFFFF" },
-//{ Icon: SiBullmq, name: "BullMQ", subtitle: "Job Queue", color: "#FFB100" }
-    ]
+      { Icon: SiApachekafka, name: "Kafka", subtitle: "Event Streaming", color: "#FFFFFF" },    ]
   },{
     title: "Databases & ORM",
     icon: "🗄️", 
@@ -82,7 +98,9 @@ const techCategories = [
       { Icon: SiDigitalocean, name: "DigitalOcean", subtitle: "Cloud Hosting", color: "#0080FF" },
       { Icon: SiGithubactions, name: "CI/CD", subtitle: "Automation", color: "#2088FF" },
       { Icon: SiNginx, name: "Nginx", subtitle: "Web Server", color: "#009639" },
-      { Icon: SiKubernetes, name: "Kubernetes", subtitle: "Container Orchestration", color: "#326CE5" }
+      { Icon: SiKubernetes, name: "Kubernetes", subtitle: "Container Orchestration", color: "#326CE5" },
+      { Icon: SiTerraform, name: "Terraform", subtitle: "Infrastructure as Code", color: "#7B42BC" },
+      { Icon: SiAnsible, name: "Ansible", subtitle: "Configuration Management", color: "#EE0000" }
     ]
   },
   {
@@ -115,6 +133,16 @@ const stackItems = techCategories.map((cat, idx) => (
 ));
 const About = () => {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = hideScrollbarStyles;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
     <div className="w-full mt-17 mb-8 overflow-hidden">
       <motion.div
@@ -149,16 +177,19 @@ const About = () => {
 
           <motion.div 
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }} 
-            className={`flex justify-center ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            className="w-full overflow-hidden"
           >
-            <GitHubCalendar 
-              username="ikeshav26" 
-              colorScheme={theme === 'dark' ? 'dark' : 'light'}
-              theme={{
-                light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-                dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-              }}
-            />
+            <div className="hide-scrollbar overflow-x-auto flex justify-center">
+              <GitHubCalendar 
+                username="ikeshav26" 
+                className=""
+                colorScheme={theme === 'dark' ? 'dark' : 'light'}
+                theme={{
+                  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+                  dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+                }}
+              />
+            </div>
           </motion.div>
 
           <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}>

@@ -102,3 +102,7 @@ body {
 [data-theme="dark"] .react-github-calendar text {
     fill: #ffffff !important;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
