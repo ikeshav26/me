@@ -1,23 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect, useMemo } from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
-import Me from '../pages/Me'
-import About from '../pages/About'
-import Work from '../pages/Work'
-import Blogs from '../pages/Blogs'
-import Blog from '../pages/Blog'
-import Guestbook from '../pages/Guestbook'
-import Ribbons from './Ribbons'
-import VisitorSubtle from './VisitorSubtle'
-import { useTheme } from '../context/ThemeContext'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import Me from '../pages/Me';
+import About from '../pages/About';
+import Work from '../pages/Work';
+import Blogs from '../pages/Blogs';
+import Blog from '../pages/Blog';
+import Guestbook from '../pages/Guestbook';
+import Ribbons from './Ribbons';
+import VisitorSubtle from './VisitorSubtle';
+import { useTheme } from '../context/ThemeContext';
 
 const AppContent = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/visitor/increment`)
-      .catch((err) => console.error("Error incrementing visitor count:", err));
+    fetch(`${import.meta.env.VITE_API_URL}/api/visitor/increment`).catch(
+      (err) => console.error('Error incrementing visitor count:', err)
+    );
   }, []);
 
   const ribbonColors = useMemo(() => {
@@ -27,13 +28,19 @@ const AppContent = () => {
   // useEffect(() => {
   //   const pingInterval = setInterval(async () => {
   //     // ...
-  //   }, 14 * 60 * 1000); 
+  //   }, 14 * 60 * 1000);
   //   return () => clearInterval(pingInterval);
   // }, []);
 
   return (
     <Router>
-      <div className='w-full min-h-screen flex flex-col font-sans relative overflow-hidden transition-colors duration-300' style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+      <div
+        className="w-full min-h-screen flex flex-col font-sans relative overflow-hidden transition-colors duration-300"
+        style={{
+          background: 'var(--bg-primary)',
+          color: 'var(--text-primary)',
+        }}
+      >
         <div className="absolute inset-0 z-40 pointer-events-auto">
           <Ribbons
             baseThickness={15}
@@ -50,7 +57,7 @@ const AppContent = () => {
             <Navbar />
           </div>
           <VisitorSubtle />
-          <main className='flex-1 w-full max-w-4xl mx-auto p-4 md:p-10 mt-24 pointer-events-auto'>
+          <main className="flex-1 w-full max-w-4xl mx-auto p-4 md:p-10 mt-24 pointer-events-auto">
             <Routes>
               <Route path="/" element={<Me />} />
               <Route path="/about" element={<About />} />
@@ -64,7 +71,7 @@ const AppContent = () => {
         </div>
       </div>
     </Router>
-  )
-}
+  );
+};
 
 export default AppContent;

@@ -1,8 +1,6 @@
-import AppContent from './components/AppContent'
-import ThemeContextProvider from './context/ThemeContext'
-import { AuthProvider } from './context/AuthContext'
-
-
+import AppContent from './components/AppContent';
+import ThemeContextProvider from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
@@ -11,7 +9,7 @@ const App = () => {
         <AppContent />
       </AuthProvider>
     </ThemeContextProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

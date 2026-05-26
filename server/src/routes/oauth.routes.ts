@@ -2,7 +2,7 @@ import express from 'express';
 import passport from '../config/passport.js';
 import { googleOauthController } from '../controller/oauth.controller.js';
 
-const router :any= express.Router();
+const router: any = express.Router();
 
 router.get(
   '/google',
@@ -12,6 +12,6 @@ router.get(
   })
 );
 
-router.get('/google/callback', googleOauthController)
+router.get('/google/callback', googleOauthController);
 
 export default router;

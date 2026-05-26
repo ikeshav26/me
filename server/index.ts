@@ -1,21 +1,18 @@
-import { keepAwake } from "@ikeshav26/keep-awake";
-import app from "./src/app.js";
-import { connectDB } from "./src/config/db.js";
+import { keepAwake } from '@ikeshav26/keep-awake';
+import app from './src/app.js';
+import { connectDB } from './src/config/db.js';
 
+connectDB();
 
-connectDB()
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 
-
-
-app.listen(process.env.PORT,()=>{
-    console.log(`Server is running on port ${process.env.PORT}`);
-
-    const url=process.env.RENDER_EXTERNAL_URL;
-    const interval=process.env.AWAKE_INTERVAL;
-    if(url){
-        keepAwake({
-            url,
-            interval:Number(interval)
-        })
-    }
-})
+  const url = process.env.RENDER_EXTERNAL_URL;
+  const interval = process.env.AWAKE_INTERVAL;
+  if (url) {
+    keepAwake({
+      url,
+      interval: Number(interval),
+    });
+  }
+});

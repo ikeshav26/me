@@ -7,7 +7,9 @@ const VisitorSubtle = () => {
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/visitor/count`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/visitor/count`
+        );
         const data = await res.json();
         if (data && typeof data.visitorCount === 'number') {
           setCount(data.visitorCount);

@@ -18,7 +18,16 @@ interface ProjectCardProps extends Project {
   delay?: number;
 }
 
-const ProjectCard = ({ title, description, longDescription, image, tags, link, github, delay = 0 }: ProjectCardProps) => {
+const ProjectCard = ({
+  title,
+  description,
+  longDescription,
+  image,
+  tags,
+  link,
+  github,
+  delay = 0,
+}: ProjectCardProps) => {
   const { theme } = useTheme();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -55,10 +64,14 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
         </div>
 
         <div className="flex flex-col grow">
-          <h3 className={`text-xl font-bold font-['Oswald'] tracking-wide ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 group-hover:text-orange-300 transition-colors`}>
+          <h3
+            className={`text-xl font-bold font-['Oswald'] tracking-wide ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 group-hover:text-orange-300 transition-colors`}
+          >
             {title}
           </h3>
-          <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] text-sm mb-4 leading-relaxed grow line-clamp-3`}>
+          <p
+            className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] text-sm mb-4 leading-relaxed grow line-clamp-3`}
+          >
             {description}
           </p>
           <div className="flex flex-wrap gap-2 mt-auto">
@@ -97,7 +110,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
               onClick={(e) => e.stopPropagation()}
               className={`relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border ${theme === 'dark' ? 'border-white/10 bg-[#0a0a0a]/95' : 'border-black/10 bg-white/95'} backdrop-blur-xl shadow-2xl`}
             >
-          
               <button
                 onClick={() => setModalOpen(false)}
                 className={`absolute top-4 right-4 z-10 p-2 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/10 hover:bg-black/20 text-black'} transition-colors cursor-pointer`}
@@ -114,10 +126,14 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
               </div>
 
               <div className="p-8">
-                <h2 className={`text-3xl font-bold font-['Oswald'] ${theme === 'dark' ? 'text-white' : 'text-black'} tracking-wide mb-4`}>
+                <h2
+                  className={`text-3xl font-bold font-['Oswald'] ${theme === 'dark' ? 'text-white' : 'text-black'} tracking-wide mb-4`}
+                >
                   {title}
                 </h2>
-                <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] text-sm leading-relaxed mb-6`}>
+                <p
+                  className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} font-['JetBrains_Mono'] text-sm leading-relaxed mb-6`}
+                >
                   {longDescription || description}
                 </p>
 
@@ -131,7 +147,6 @@ const ProjectCard = ({ title, description, longDescription, image, tags, link, g
                     </span>
                   ))}
                 </div>
-
 
                 <div className="flex gap-4">
                   {link && (

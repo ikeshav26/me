@@ -6,7 +6,7 @@ import {
   useTransform,
   useMotionValue,
   useVelocity,
-  useAnimationFrame
+  useAnimationFrame,
 } from 'framer-motion';
 
 interface VelocityMapping {
@@ -44,7 +44,9 @@ interface ScrollVelocityProps {
   scrollerStyle?: React.CSSProperties;
 }
 
-function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T | null>): number {
+function useElementWidth<T extends HTMLElement>(
+  ref: React.RefObject<T | null>
+): number {
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -73,7 +75,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   parallaxClassName,
   scrollerClassName,
   parallaxStyle,
-  scrollerStyle
+  scrollerStyle,
 }) => {
   function VelocityText({
     children,
@@ -87,15 +89,17 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
     parallaxClassName,
     scrollerClassName,
     parallaxStyle,
-    scrollerStyle
+    scrollerStyle,
   }: VelocityTextProps) {
     const baseX = useMotionValue(0);
-    const scrollOptions = scrollContainerRef ? { container: scrollContainerRef } : {};
+    const scrollOptions = scrollContainerRef
+      ? { container: scrollContainerRef }
+      : {};
     const { scrollY } = useScroll(scrollOptions);
     const scrollVelocity = useVelocity(scrollY);
     const smoothVelocity = useSpring(scrollVelocity, {
       damping: damping ?? 50,
-      stiffness: stiffness ?? 400
+      stiffness: stiffness ?? 400,
     });
     const velocityFactor = useTransform(
       smoothVelocity,
@@ -113,7 +117,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
       return mod + min;
     }
 
-    const x = useTransform(baseX, v => {
+    const x = useTransform(baseX, (v) => {
       if (copyWidth === 0) return '0px';
       return `${wrap(-copyWidth, 0, v)}px`;
     });
@@ -135,14 +139,21 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
     const spans = [];
     for (let i = 0; i < (numCopies ?? 6); i++) {
       spans.push(
-        <span className={`flex-shrink-0 ${className}`} key={i} ref={i === 0 ? copyRef : null}>
+        <span
+          className={`flex-shrink-0 ${className}`}
+          key={i}
+          ref={i === 0 ? copyRef : null}
+        >
           {children}&nbsp;
         </span>
       );
     }
 
     return (
-      <div className={`${parallaxClassName} relative overflow-hidden`} style={parallaxStyle}>
+      <div
+        className={`${parallaxClassName} relative overflow-hidden`}
+        style={parallaxStyle}
+      >
         <motion.div
           className={`${scrollerClassName} flex whitespace-nowrap text-center font-sans font-bold tracking-tight drop-shadow`}
           style={{ x, ...scrollerStyle }}

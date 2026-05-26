@@ -12,7 +12,12 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       callbackURL: `${process.env.API_URL}/auth/google/callback`,
     },
-    async (accessToken: string, refreshToken: string, profile: any, done: (err: any, user?: any) => void) => {
+    async (
+      accessToken: string,
+      refreshToken: string,
+      profile: any,
+      done: (err: any, user?: any) => void
+    ) => {
       try {
         const email =
           profile.emails && profile.emails.length > 0
@@ -28,7 +33,7 @@ passport.use(
         }
 
         let user = await Reviewer.findOne({
-           googleProviderId: profile.id,
+          googleProviderId: profile.id,
         });
 
         if (user) {
@@ -41,10 +46,10 @@ passport.use(
           }
         } else {
           user = await Reviewer.create({
-              name: profile.displayName || email.split('@')[0],
-              email: email,
-              googleProviderId: profile.id,
-              avatarUrl: avatarUrl || '',
+            name: profile.displayName || email.split('@')[0],
+            email: email,
+            googleProviderId: profile.id,
+            avatarUrl: avatarUrl || '',
           });
         }
 

@@ -24,13 +24,15 @@ export const useAuth = () => {
   return context;
 };
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('guestbook_user');
-    
+
     if (storedUser) {
       try {
         const parsedUser = JSON.parse(storedUser);
@@ -50,17 +52,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       try {
         const userData = JSON.parse(decodeURIComponent(userDataParam));
         const finalUser = { ...userData };
-        
+
         setUser(finalUser);
         localStorage.setItem('guestbook_user', JSON.stringify(finalUser));
         localStorage.setItem('guestbook_token', tokenParam);
-        
-        window.history.replaceState({}, document.title, window.location.pathname);
+
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
       } catch (e) {
         console.error('Failed to parse OAuth user data', e);
       }
     }
-    
+
     setLoading(false);
   }, []);
 
