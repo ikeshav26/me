@@ -1,10 +1,7 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=180&section=header&text=Keshav%20Gilhotra&fontSize=48&fontColor=ffffff&fontAlignY=40&desc=Full-Stack%20%C2%B7%20DevOps%20%C2%B7%20System%20Design&descSize=15&descAlignY=60&animation=fadeIn" />
-
-</div>
-
-<div align="center">
+# Keshav Gilhotra
+### Full-Stack Developer · DevOps · System Design
 
 [![Portfolio](https://img.shields.io/badge/🌐%20ikeshav.in-0f0c29?style=for-the-badge)](https://ikeshav.in)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/keshavgilhotra/)
@@ -18,17 +15,17 @@
 
 ---
 
-## 👋 Who am I?
+##  Who am I?
 
 I'm a **2nd-year Computer Science student** from Punjab, India — but that title undersells what I actually do.
 
-While most peers are solving DSA problems and following tutorials, I'm shipping full-stack applications, designing distributed systems, and managing production cloud infrastructure. I don't wait to graduate before building real things. 
+While most peers are solving DSA problems and following tutorials, I'm shipping full-stack applications, designing distributed systems, and managing production cloud infrastructure. I don't wait to graduate before building real things.
 
 I think in systems. Before writing a line of code, I'm already asking: *How does this scale? Where does it break? What's the failure mode at 10x load?* That's not theoretical — it shapes every project I build from day one.
 
 ---
 
-## 🎯 Current Focus
+##  Current Focus
 
 > **Right now, I'm going deep on DevOps, cloud infrastructure, and system design.**
 
@@ -36,27 +33,27 @@ This is the layer most developers treat as someone else's job. I disagree. I wan
 
 Currently studying and building with:
 
-- 🏗️ **Infrastructure as Code** — Terraform, Ansible — provisioning and automating cloud environments
-- ☸️ **Container Orchestration** — Kubernetes — managing services at scale
-- 📡 **Event-Driven Architecture** — Apache Kafka, BullMQ — reliable async communication between services
-- 📊 **Observability** — Prometheus + Grafana — monitoring, alerting, and knowing *when* things break before users do
-- ☁️ **Cloud Platforms** — AWS, DigitalOcean — deploying and maintaining production systems
+-  **Infrastructure as Code** — Terraform, Ansible — provisioning and automating cloud environments
+-  **Container Orchestration** — Kubernetes — managing services at scale
+-  **Event-Driven Architecture** — Apache Kafka, BullMQ — reliable async communication between services
+-  **Observability** — Prometheus + Grafana — monitoring, alerting, and knowing *when* things break before users do
+-  **Cloud Platforms** — AWS, DigitalOcean — deploying and maintaining production systems
 
 ---
 
-## 💡 Why hire me?
+##  Why hire me?
 
 <table>
 <tr>
 <td width="50%">
 
-### 🔭 Full-spectrum ownership
+###  Full-spectrum ownership
 From pixel-perfect UI to Nginx config, Docker container, and the CI/CD pipeline that deployed it — I don't hand off at the edge of my comfort zone. I follow the problem wherever it goes.
 
 </td>
 <td width="50%">
 
-### ⚡ I ship, not just learn
+###  I ship, not just learn
 My portfolio [ikeshav.in](https://ikeshav.in) is a full-stack TypeScript app with OAuth, a blog CMS, guestbook, real-time analytics, and live GitHub integration. Not a template — built, deployed, and maintained by me.
 
 </td>
@@ -64,13 +61,13 @@ My portfolio [ikeshav.in](https://ikeshav.in) is a full-stack TypeScript app wit
 <tr>
 <td width="50%">
 
-### 🧠 Systems thinking from day one
+###  Systems thinking from day one
 Microservices, event queues, caching layers, load balancing — I study how production systems actually run and apply those patterns even in personal projects.
 
 </td>
 <td width="50%">
 
-### 🌱 Open source DNA
+###  Open source DNA
 I contribute, not just consume. I engage with the community, review code, and collaborate on meaningful projects — because that's how you actually grow.
 
 </td>
@@ -79,12 +76,8 @@ I contribute, not just consume. I engage with the community, review code, and co
 
 ---
 
-## 🤝 What I'm looking for
+##  What I'm looking for
 
 I'm open to **internships, collaborations, and open-source contributions** where I can work on real infrastructure, real scale, and real problems — not synthetic assignments.
 
-If you're building something hard and need someone who can own both the frontend and the deployment pipeline, let's talk.
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:302b63,100:0f0c29&height=100&section=footer" />
-
-</div>
+If you're building something hard and need someone who can own both the full-stack and the deployment pipeline, let's talk.
