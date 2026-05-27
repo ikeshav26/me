@@ -11,6 +11,7 @@ import Guestbook from '../pages/Guestbook';
 import Ribbons from './Ribbons';
 import VisitorSubtle from './VisitorSubtle';
 import { useTheme } from '../context/ThemeContext';
+import RouteLoader from "../hooks/RouteLoader";
 
 const AppContent = () => {
   const { theme } = useTheme();
@@ -34,6 +35,7 @@ const AppContent = () => {
 
   return (
     <Router>
+      <RouteLoader />
       <div
         className="w-full min-h-screen flex flex-col font-sans relative overflow-hidden transition-colors duration-300"
         style={{

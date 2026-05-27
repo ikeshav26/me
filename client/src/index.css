@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 
+
 /* ── Theme Variables ── */
 :root,
 [data-theme='dark'] {
@@ -125,4 +126,16 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+#nprogress .bar {
+  background: rgb(238, 186, 90) !important;
+  height: 4px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px rgb(238, 186, 90), 0 0 4px rgb(238, 186, 90) !important;
+}
+
+#nprogress .spinner {
+  display: none !important;
 }
