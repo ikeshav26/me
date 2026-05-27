@@ -139,3 +139,12 @@ body {
 #nprogress .spinner {
   display: none !important;
 }
+
+body {
+  cursor: url("/cursor.svg") 0 0, auto;
+}
+
+a,
+button {
+  cursor: pointer;
+}
