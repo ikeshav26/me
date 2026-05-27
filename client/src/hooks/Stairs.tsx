@@ -64,16 +64,16 @@ const LandingPage = ({children}: {children: React.ReactNode}) => {
       <span className='name'>A</span>
       <span className='name'>V</span>
       </div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
-      <div className={`stair h-screen w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen w-[20vw] md:w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen w-[20vw] md:w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen w-[20vw] md:w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen w-[20vw] md:w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen w-[20vw] md:w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen hidden md:block w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen hidden md:block w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen hidden md:block w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen hidden md:block w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+      <div className={`stair h-screen hidden md:block w-[10vw] ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
     </div>
     <div>
         {children}

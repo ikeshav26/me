@@ -56,6 +56,9 @@ importers:
       react:
         specifier: ^19.2.0
         version: 19.2.4
+      react-animated-cursor:
+        specifier: ^2.11.2
+        version: 2.11.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react-dom:
         specifier: ^19.2.0
         version: 19.2.4(react@19.2.4)
@@ -1552,6 +1555,12 @@ packages:
     resolution: {integrity: sha512-YvHNS4anlW3Xy0fxOU2ZTWrJkOt0ALxX8IfgDRg6jr/vgYsbh//4djf2c7CPhYNROh+5oYZzR0EJaPbrFUj2tA==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
+
+  react-animated-cursor@2.11.2:
+    resolution: {integrity: sha512-LV0PtST61tdeW/chCqFt1JLp6i0d5fD9v2uradBcPAkKKCi2Iw7sAcD11ADS1TjXPPj9MOoD9YubEt++/IbZ+g==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
 
   react-dom@19.2.4:
     resolution: {integrity: sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ==}
@@ -3248,6 +3257,11 @@ snapshots:
       react: 19.2.4
     transitivePeerDependencies:
       - react-dom
+
+  react-animated-cursor@2.11.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
 
   react-dom@19.2.4(react@19.2.4):
     dependencies:

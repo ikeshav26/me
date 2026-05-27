@@ -141,7 +141,7 @@ body {
 }
 
 body {
-  cursor: url("/cursor.svg") 0 0, auto;
+  cursor: url("/cursor.svg") , auto;
 }
 
 a,
