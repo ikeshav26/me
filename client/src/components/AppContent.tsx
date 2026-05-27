@@ -12,6 +12,7 @@ import Ribbons from './Ribbons';
 import VisitorSubtle from './VisitorSubtle';
 import { useTheme } from '../context/ThemeContext';
 import RouteLoader from "../hooks/RouteLoader";
+import LandingPage from '../hooks/Stairs';
 
 const AppContent = () => {
   const { theme } = useTheme();
@@ -54,7 +55,8 @@ const AppContent = () => {
           />
         </div>
 
-        <div className="relative z-50 flex flex-col w-full h-full pointer-events-none">
+        <LandingPage>
+          <div className="relative z-50 flex flex-col w-full h-full pointer-events-none">
           <div className="pointer-events-auto">
             <Navbar />
           </div>
@@ -71,6 +73,7 @@ const AppContent = () => {
             <Footer />
           </main>
         </div>
+        </LandingPage>
       </div>
     </Router>
   );

@@ -6,7 +6,7 @@ const App = () => {
   return (
     <ThemeContextProvider>
       <AuthProvider>
-        <AppContent />
+          <AppContent />
       </AuthProvider>
     </ThemeContextProvider>
   );
