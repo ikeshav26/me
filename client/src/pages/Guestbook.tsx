@@ -36,6 +36,11 @@ const Guestbook = () => {
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+
+  useEffect(() => {
+    document.title = "Guestbook - Keshav Gilhotra";
+  }, []);
+
   useEffect(() => {
     fetchEntries();
   }, []);

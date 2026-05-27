@@ -25,6 +25,10 @@ const Blog = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
+    document.title = "Blog - Keshav Gilhotra";
+  }, []);
+
+  useEffect(() => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
@@ -34,7 +38,7 @@ const Blog = () => {
         if (!res.ok) throw new Error('Blog not found');
         const data = await res.json();
         setBlog(data.blog);
-      } catch (err: any) {
+      } catch (err:any) {
         console.error('Error fetching blog:', err);
         setError(err.message || 'Failed to load blog');
       } finally {

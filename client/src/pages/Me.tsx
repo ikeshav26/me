@@ -169,6 +169,9 @@ const Me = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  useEffect(() => {
+    document.title = "Keshav Gilhotra - Software Developer ";
+  }, []);
   return (
     <div className="min-h-screen flex flex-col max-w-3xl py-14 mx-auto px-4 md:px-0">
       <motion.div

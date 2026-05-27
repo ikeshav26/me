@@ -64,7 +64,7 @@ const TechItem = ({
   name,
   color,
 }: {
-  Icon: any;
+  Icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   name: string;
   color: string;
 }) => {
@@ -75,6 +75,10 @@ const TechItem = ({
         ? '#FFFFFF'
         : '#1a1a1a'
       : color;
+
+    useEffect(() => {
+    document.title = "About Me - Keshav Gilhotra";
+  }, []);
 
   return (
     <div

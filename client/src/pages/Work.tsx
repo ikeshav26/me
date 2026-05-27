@@ -96,6 +96,10 @@ const Work = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.title = "Work - Keshav Gilhotra";
+  }, []);
+
   return (
     <div className="min-h-screen pt-18 pb-20 px-6 max-w-7xl mx-auto">
       <motion.div

@@ -14,6 +14,10 @@ interface Blog {
 
 const BlogSkeleton = () => {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    document.title = "Blogs - Keshav Gilhotra";
+  }, []);
   return (
     <div
       className={`w-full py-10 border-b ${theme === 'dark' ? 'border-white/10' : 'border-black/10'} animate-pulse`}
