@@ -585,7 +585,7 @@ const Me = () => {
               <img
                 src="https://raw.githubusercontent.com/ikeshav26/ikeshav26/output/game.gif"
                 alt="GitHub Contributions"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover grayscale hover:grayscale-0 hover:cursor-pointer transition-all duration-300 contrast-125"
                 loading="lazy"
               />
             </div>
