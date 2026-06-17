@@ -32,6 +32,7 @@ import {
   SiExpo,
   SiTerraform,
   SiAnsible,
+  SiNodedotjs
 } from 'react-icons/si';
 import { DiRedis } from 'react-icons/di';
 import { FaAws, FaJava } from 'react-icons/fa';
@@ -160,6 +161,12 @@ const techCategories = [
         color: '#E76F51',
       },
       {
+        Icon: SiNodedotjs,
+        name: 'Node.js',
+        subtitle: 'JavaScript Runtime',
+        color: '#339933',
+      },
+      {
         Icon: SiExpress,
         name: 'ExpressJS',
         subtitle: 'Web Framework for Node.js',
@@ -170,30 +177,6 @@ const techCategories = [
         name: 'Springboot',
         subtitle: 'Java Framework',
         color: '#47A248',
-      },
-      {
-        Icon: SiGrafana,
-        name: 'Grafana',
-        subtitle: 'Observability Platform',
-        color: '#F46800',
-      },
-      {
-        Icon: SiPrometheus,
-        name: 'Prometheus',
-        subtitle: 'Metrics Monitoring',
-        color: '#E6522C',
-      },
-      {
-        Icon: DiRedis,
-        name: 'Redis',
-        subtitle: 'In-memory Data Store',
-        color: '#DC382D',
-      },
-      {
-        Icon: SiApachekafka,
-        name: 'Kafka',
-        subtitle: 'Event Streaming',
-        color: '#FFFFFF',
       },
     ],
   },
@@ -230,6 +213,12 @@ const techCategories = [
         name: 'Drizzle',
         subtitle: 'TypeScript ORM',
         color: '#C5D901',
+      },
+      {
+        Icon: DiRedis,
+        name: 'Redis',
+        subtitle: 'In-memory Data Store',
+        color: '#DC382D',
       },
     ],
   },
@@ -284,6 +273,24 @@ const techCategories = [
         name: 'Ansible',
         subtitle: 'Configuration Management',
         color: '#EE0000',
+      },
+      {
+        Icon: SiGrafana,
+        name: 'Grafana',
+        subtitle: 'Observability Platform',
+        color: '#F46800',
+      },
+      {
+        Icon: SiPrometheus,
+        name: 'Prometheus',
+        subtitle: 'Metrics Monitoring',
+        color: '#E6522C',
+      },
+      {
+        Icon: SiApachekafka,
+        name: 'Kafka',
+        subtitle: 'Event Streaming',
+        color: '#FFFFFF',
       },
     ],
   },
