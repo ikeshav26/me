@@ -6,24 +6,26 @@ import { useTheme } from '../context/ThemeContext';
 
 const projects: Project[] = [
   {
-    title: 'CyberSuite',
+    title: 'Aegis',
     description:
-      'A cybersecurity platform that provides services to keep deployed projects safe by scanning and fixing vulnerabilities.',
+      'A DevSecOps platform for automated repository security scanning, AI-driven vulnerability remediation, and intelligent PR reviews via GitHub Apps.',
     longDescription:
-      'CyberSuite is a comprehensive cybersecurity platform designed for developers and DevOps teams. It automates vulnerability scanning across deployed applications, provides real-time threat detection, and offers one-click fixes for common security issues. Built with a microservice architecture to handle scalable, parallel security audits across multiple projects.',
-    image: '/cybersuite.png',
+      'Architecting a DevSecOps platform that performs automated repository security scanning, AI-driven vulnerability remediation, and intelligent pull request reviews through GitHub Apps. Built as a scalable microservices system using Node.js, PostgreSQL, Redis, BullMQ, Docker, Prisma, and Google Gemini/OpenRouter, with GitHub webhooks, API Gateway, and production infrastructure powered by Terraform, Ansible, and CI/CD.',
+    image: '/aegis.png',
     tags: [
-      'Turborepo',
-      'Next.js',
-      'Express.js',
-      'TypeScript',
+      'Node.js',
       'PostgreSQL',
-      'Prisma',
-      'Docker',
       'Redis',
+      'BullMQ',
+      'Docker',
+      'Prisma',
+      'Gemini AI',
+      'GitHub Apps',
+      'Terraform',
       'Microservices',
     ],
-    github: 'https://github.com/ikeshav26/cybersuite',
+    github: 'https://github.com/ikeshav26/cybersec_',
+    link: 'https://aegis.ikeshav.in',
   },
   {
     title: 'Keep-Awake',
