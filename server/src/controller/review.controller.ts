@@ -37,6 +37,9 @@ export const createReview = async (req: Request, res: Response) => {
 
 export const getAllReviews = async (req: Request, res: Response) => {
   try {
+    const from = parseInt(req.query.from as string) || 0;
+    const limit = parseInt(req.query.limit as string) || 10;
+
     const allReviews = await Review.find().populate(
       'reviewedBy',
       'name avatarUrl isAuthor'
@@ -55,7 +58,12 @@ export const getAllReviews = async (req: Request, res: Response) => {
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
 
-    res.status(200).json({ reviews: sortedReviews });
+    const paginatedReviews = sortedReviews.slice(from, from + limit);
+    res.status(200).json({
+      reviews: paginatedReviews,
+      total: sortedReviews.length,
+      hasMore: from + limit < sortedReviews.length
+    });
   } catch (err) {
     console.error('Error fetching reviews', err);
     res.status(500).json({ message: 'Internal server error' });

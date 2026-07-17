@@ -25,15 +25,24 @@ export const googleOauthController = (
           );
         }
 
+        const token = jwt.sign({ user_id: user._id }, process.env.JWT_SECRET!, {
+          expiresIn: "1h"
+        })
+        res.cookie("token", token, {
+          maxAge: 60 * 60 * 1000,
+          httpOnly: true,
+          sameSite: "strict",
+        })
+
         res.redirect(
-          `${process.env.CLIENT_URL}/guestbook/?oauth=success&token=${
-            user._id
-          }&user=${encodeURIComponent(
+          `${process.env.CLIENT_URL}/guestbook/?oauth=success&token=${user._id
+          }&isAuthor=${user.isAuthor}&user=${encodeURIComponent(
             JSON.stringify({
               userId: user._id,
               name: user.name,
               email: user.email,
               avatarUrl: user.avatarUrl,
+              isAuthor: user.isAuthor,
             })
           )}`
         );

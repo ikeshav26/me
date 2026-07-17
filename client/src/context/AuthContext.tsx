@@ -5,6 +5,7 @@ interface User {
   name: string;
   email: string;
   avatarUrl: string;
+  isAuthor?: boolean;
 }
 
 interface AuthContextType {
@@ -47,15 +48,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     const oauthStatus = urlParams.get('oauth');
     const tokenParam = urlParams.get('token');
     const userDataParam = urlParams.get('user');
+    const isAuthorParam = urlParams.get('isAuthor');
 
     if (oauthStatus === 'success' && tokenParam && userDataParam) {
       try {
         const userData = JSON.parse(decodeURIComponent(userDataParam));
-        const finalUser = { ...userData };
+        const finalUser = { ...userData, isAuthor: isAuthorParam === 'true' };
 
         setUser(finalUser);
         localStorage.setItem('guestbook_user', JSON.stringify(finalUser));
         localStorage.setItem('guestbook_token', tokenParam);
+        localStorage.setItem('isAuthor', isAuthorParam || 'false');
 
         window.history.replaceState(
           {},

@@ -8,9 +8,13 @@ import {
   AlertCircle,
   Clock,
   CheckCircle2,
-  Trash2,
   Pin,
+  Bell,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import Avatar from '../components/Avatar';
@@ -27,6 +31,15 @@ interface GuestbookEntry {
   };
 }
 
+interface ContactMessage {
+  _id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+}
+
 const Guestbook = () => {
   const { theme } = useTheme();
   const { user, login, logout } = useAuth();
@@ -35,7 +48,11 @@ const Guestbook = () => {
   const [loading, setLoading] = useState(true);
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const navigate = useNavigate();
 
+  const isAuthor = user?.isAuthor || localStorage.getItem('isAuthor') === 'true';
 
   useEffect(() => {
     document.title = "Guestbook - Keshav Gilhotra";
@@ -45,15 +62,19 @@ const Guestbook = () => {
     fetchEntries();
   }, []);
 
-  const fetchEntries = async () => {
+  const fetchEntries = async (page = 1) => {
     try {
       setLoading(true);
+      const limit = 5;
+      const offset = (page - 1) * limit;
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/reviews/all`
+        `${import.meta.env.VITE_API_URL}/api/reviews/all?from=${offset}&limit=${limit}`
       );
       if (!res.ok) throw new Error('Failed to fetch guestbook messages');
       const data = await res.json();
       setEntries(data.reviews ?? []);
+      setTotalPages(Math.ceil((data.total ?? 0) / limit));
+      setCurrentPage(page);
       setError(null);
     } catch (err) {
       console.error('Error fetching guestbook:', err);
@@ -194,13 +215,28 @@ const Guestbook = () => {
                   </div>
                 </div>
               </div>
-              <button
-                onClick={logout}
-                className={`flex cursor-pointer items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all ${theme === 'dark' ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5' : 'border-black/10 text-gray-500 hover:text-black hover:bg-black/5'}`}
-              >
-                <LogOut size={14} />
-                SIGN OUT
-              </button>
+              <div className="flex gap-2">
+                {isAuthor && (
+                  <button
+                    onClick={() => navigate('/messages')}
+                    className={`flex cursor-pointer items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all ${
+                      theme === 'dark'
+                        ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
+                        : 'border-black/10 text-gray-500 hover:text-black hover:bg-black/5'
+                      }`}
+                  >
+                    <Bell size={14} />
+                    NOTIFICATIONS
+                  </button>
+                )}
+                <button
+                  onClick={logout}
+                  className={`flex cursor-pointer items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all ${theme === 'dark' ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5' : 'border-black/10 text-gray-500 hover:text-black hover:bg-black/5'}`}
+                >
+                  <LogOut size={14} />
+                  SIGN OUT
+                </button>
+              </div>
             </div>
 
             <div className="relative">
@@ -209,11 +245,10 @@ const Guestbook = () => {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Write something nice..."
                 maxLength={500}
-                className={`w-full h-32 p-4 rounded-xl text-sm md:text-base border focus:outline-none transition-all duration-300 resize-none ${
-                  theme === 'dark'
-                    ? 'bg-black/40 border-white/10 text-white placeholder:text-gray-600 focus:border-white/30 focus:bg-black/60'
-                    : 'bg-white/50 border-black/10 text-black placeholder:text-gray-400 focus:border-black/20 focus:bg-white/80'
-                }`}
+                className={`w-full h-32 p-4 rounded-xl text-sm md:text-base border focus:outline-none transition-all duration-300 resize-none ${theme === 'dark'
+                  ? 'bg-black/40 border-white/10 text-white placeholder:text-gray-600 focus:border-white/30 focus:bg-black/60'
+                  : 'bg-white/50 border-black/10 text-black placeholder:text-gray-400 focus:border-black/20 focus:bg-white/80'
+                  }`}
               />
               <div
                 className={`absolute bottom-3 right-4 text-[10px] font-mono ${theme === 'dark' ? 'text-gray-600' : 'text-gray-400'}`}
@@ -225,11 +260,10 @@ const Guestbook = () => {
             <button
               onClick={handlePost}
               disabled={!message.trim() || posting}
-              className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold tracking-widest transition-all ${
-                !message.trim() || posting
-                  ? 'opacity-50 cursor-not-allowed bg-gray-500 text-white'
-                  : 'bg-orange-300 text-gray-950 hover:bg-orange-400 active:scale-[0.98]'
-              }`}
+              className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold tracking-widest transition-all ${!message.trim() || posting
+                ? 'opacity-50 cursor-not-allowed bg-gray-500 text-white'
+                : 'bg-orange-300 text-gray-950 hover:bg-orange-400 active:scale-[0.98]'
+                }`}
             >
               {posting ? 'POSTING...' : 'SIGN GUESTBOOK'}
               <Send size={16} />
@@ -244,11 +278,10 @@ const Guestbook = () => {
             </p>
             <button
               onClick={login}
-              className={`inline-flex items-center gap-3 px-8 py-3 rounded-xl font-bold tracking-wider transition-all duration-300 ${
-                theme === 'dark'
-                  ? 'bg-white text-black hover:bg-gray-200'
-                  : 'bg-black text-white hover:bg-gray-800'
-              } active:scale-[0.98]`}
+              className={`inline-flex items-center gap-3 px-8 py-3 rounded-xl font-bold tracking-wider transition-all duration-300 ${theme === 'dark'
+                ? 'bg-white text-black hover:bg-gray-200'
+                : 'bg-black text-white hover:bg-gray-800'
+                } active:scale-[0.98]`}
             >
               <LogIn size={20} />
               LOGIN WITH GOOGLE
@@ -285,86 +318,125 @@ const Guestbook = () => {
               ></div>
             ))
         ) : entries.length > 0 ? (
-          <AnimatePresence initial={false}>
-            {entries.map((entry, index) => {
-              if (!entry.reviewedBy) return null;
+          <>
+            <AnimatePresence initial={false}>
+              {entries.map((entry, index) => {
+                if (!entry.reviewedBy) return null;
 
-              return (
-                <motion.div
-                  key={entry._id}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`group relative py-6 ${index !== entries.length - 1 ? 'border-b' : ''} ${theme === 'dark' ? 'border-white/5' : 'border-black/5'}`}
-                >
-                  <div className="flex items-start gap-4">
-                    <Avatar
-                      src={entry.reviewedBy.avatarUrl}
-                      alt={entry.reviewedBy.name}
-                      className="w-10 h-10 rounded-full  opacity-60 group-hover:opacity-100 transition-all duration-500"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-4 mb-2">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <div
-                            className={`font-semibold text-base truncate ${theme === 'dark' ? 'text-gray-200' : 'text-gray-900'}`}
-                          >
-                            {entry.reviewedBy.name}
+                return (
+                  <motion.div
+                    key={entry._id}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className={`group relative py-6 ${index !== entries.length - 1 ? 'border-b' : ''} ${theme === 'dark' ? 'border-white/5' : 'border-black/5'}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <Avatar
+                        src={entry.reviewedBy.avatarUrl}
+                        alt={entry.reviewedBy.name}
+                        className="w-10 h-10 rounded-full  opacity-60 group-hover:opacity-100 transition-all duration-500"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-4 mb-2">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <div
+                              className={`font-semibold text-base truncate ${theme === 'dark' ? 'text-gray-200' : 'text-gray-900'}`}
+                            >
+                              {entry.reviewedBy.name}
+                            </div>
+
+                            {entry.reviewedBy.isAuthor && (
+                              <div className="flex items-center gap-2 shrink-0">
+                                <Pin
+                                  size={14}
+                                  className="text-blue-500 fill-blue-500/20 rotate-45"
+                                />
+                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold border border-green-500/20">
+                                  Author
+                                </span>
+                              </div>
+                            )}
+
+                            <CheckCircle2
+                              size={12}
+                              className="text-gray-400 shrink-0"
+                            />
                           </div>
 
-                          {entry.reviewedBy.isAuthor && (
-                            <div className="flex items-center gap-2 shrink-0">
-                              <Pin
-                                size={14}
-                                className="text-blue-500 fill-blue-500/20 rotate-45"
-                              />
-                              <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold border border-green-500/20">
-                                Author
-                              </span>
-                            </div>
-                          )}
-
-                          <CheckCircle2
-                            size={12}
-                            className="text-gray-400 shrink-0"
-                          />
+                          <div
+                            className={`flex items-center gap-1 text-[10px] font-mono shrink-0 ${theme === 'dark' ? 'text-gray-600' : 'text-gray-400'}`}
+                          >
+                            <Clock size={10} />
+                            {getTimeAgo(entry.createdAt)}
+                          </div>
                         </div>
+                        <div className="flex items-center justify-between gap-4">
+                          <p
+                            className={`text-sm md:text-base leading-relaxed overflow-wrap-anywhere ${theme === 'dark' ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-600 group-hover:text-black'} transition-colors`}
+                          >
+                            {entry.reviewText}
+                          </p>
 
-                        <div
-                          className={`flex items-center gap-1 text-[10px] font-mono shrink-0 ${theme === 'dark' ? 'text-gray-600' : 'text-gray-400'}`}
-                        >
-                          <Clock size={10} />
-                          {getTimeAgo(entry.createdAt)}
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between gap-4">
-                        <p
-                          className={`text-sm md:text-base leading-relaxed overflow-wrap-anywhere ${theme === 'dark' ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-600 group-hover:text-black'} transition-colors`}
-                        >
-                          {entry.reviewText}
-                        </p>
-
-                        {user && user.userId === entry.reviewedBy._id && (
-                          <button
-                            onClick={() => handleDelete(entry._id)}
-                            disabled={posting}
-                            className={`p-2 rounded-lg transition-all hover:cursor-pointer ${
-                              theme === 'dark'
+                          {user && user.userId === entry.reviewedBy._id && (
+                            <button
+                              onClick={() => handleDelete(entry._id)}
+                              disabled={posting}
+                              className={`p-2 rounded-lg transition-all hover:cursor-pointer ${theme === 'dark'
                                 ? 'text-gray-600 hover:text-red-400 '
                                 : 'text-gray-400 hover:text-red-500 '
-                            }`}
-                            title="Delete message"
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                        )}
+                                }`}
+                              title="Delete message"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+            {totalPages > 1 && (
+              <div className="flex justify-between items-center mt-12 py-6 border-t border-gray-200 dark:border-white/10">
+                <button
+                  onClick={() => fetchEntries(currentPage - 1)}
+                  disabled={currentPage === 1 || loading}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${currentPage === 1 || loading
+                    ? 'opacity-50 cursor-not-allowed border-gray-200 dark:border-white/10'
+                    : theme === 'dark'
+                      ? 'border-white/20 hover:bg-white/10 text-white'
+                      : 'border-black/20 hover:bg-black/5 text-black'
+                    }`}
+                >
+                  <ChevronLeft size={16} />
+                  <span className="font-medium text-sm">Back</span>
+                </button>
+
+                <div className="flex flex-col items-center">
+                  <span className={`font-bold text-base ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Signatures</span>
+                  <span className={`text-sm mt-1 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {currentPage} of {totalPages}
+                  </span>
+                </div>
+
+                <button
+                  onClick={() => fetchEntries(currentPage + 1)}
+                  disabled={currentPage === totalPages || loading}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${currentPage === totalPages || loading
+                    ? 'opacity-50 cursor-not-allowed border-gray-200 dark:border-white/10'
+                    : theme === 'dark'
+                      ? 'border-white/20 hover:bg-white/10 text-white'
+                      : 'border-black/20 hover:bg-black/5 text-black'
+                    }`}
+                >
+                  <span className="font-medium text-sm">Next</span>
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-20 opacity-30">
             <MessageSquare className="mx-auto mb-4" size={48} />

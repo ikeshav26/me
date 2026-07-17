@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-sans: "Playpen Sans", sans-serif;
+}
 
 /* ── Theme Variables ── */
 :root,
@@ -64,13 +67,14 @@
 }
 
 .oswald-font {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
 body {
+  font-family: "Playpen Sans", sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   transition:
@@ -82,27 +86,35 @@ body {
 .t-primary {
   color: var(--text-primary);
 }
+
 .t-secondary {
   color: var(--text-secondary);
 }
+
 .t-muted {
   color: var(--text-muted);
 }
+
 .t-dim {
   color: var(--text-dim);
 }
+
 .t-faint {
   color: var(--text-faint);
 }
+
 .bg-card {
   background: var(--bg-card);
 }
+
 .bg-card-hover:hover {
   background: var(--bg-card-hover);
 }
+
 .border-card {
   border-color: var(--bg-card-border);
 }
+
 .border-card-hover:hover {
   border-color: var(--bg-card-border-hover);
 }
@@ -127,6 +139,7 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 #nprogress .bar {
   background: rgb(238, 186, 90) !important;
   height: 4px !important;
@@ -141,7 +154,7 @@ body {
 }
 
 body {
-  cursor: url("/cursor.svg") , auto;
+  cursor: url("/cursor.svg"), auto;
 }
 
 a,

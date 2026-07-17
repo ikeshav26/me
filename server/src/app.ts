@@ -5,6 +5,9 @@ import oauthRoutes from './routes/oauth.routes.js';
 import reviewRoutes from './routes/review.routes.js';
 import blogRoutes from './routes/Blog.Routes.js';
 import visitorRoutes from './routes/Visitor.routes.js';
+import cookieParser from 'cookie-parser'
+
+import messageRoutes from './routes/message.routes.js';
 
 dotenv.config();
 
@@ -17,6 +20,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Portfolio Backend is running');
@@ -26,5 +30,6 @@ app.use('/api/auth', oauthRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/visitor', visitorRoutes);
+app.use('/api/messages', messageRoutes);
 
 export default app;

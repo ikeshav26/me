@@ -8,6 +8,7 @@ import Work from '../pages/Work';
 import Blogs from '../pages/Blogs';
 import Blog from '../pages/Blog';
 import Guestbook from '../pages/Guestbook';
+import Messages from '../pages/Messages';
 import Ribbons from './Ribbons';
 import VisitorSubtle from './VisitorSubtle';
 import { useTheme } from '../context/ThemeContext';
@@ -69,6 +70,7 @@ const AppContent = () => {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/blogs/:id" element={<Blog />} />
               <Route path="/guestbook" element={<Guestbook />} />
+              <Route path="/messages" element={<Messages />} />
             </Routes>
             <Footer />
           </main>
