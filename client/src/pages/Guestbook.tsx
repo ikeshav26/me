@@ -31,14 +31,6 @@ interface GuestbookEntry {
   };
 }
 
-interface ContactMessage {
-  _id: string;
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  createdAt: string;
-}
 
 const Guestbook = () => {
   const { theme } = useTheme();
@@ -219,10 +211,9 @@ const Guestbook = () => {
                 {isAuthor && (
                   <button
                     onClick={() => navigate('/messages')}
-                    className={`flex cursor-pointer items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all ${
-                      theme === 'dark'
-                        ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
-                        : 'border-black/10 text-gray-500 hover:text-black hover:bg-black/5'
+                    className={`flex cursor-pointer items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all ${theme === 'dark'
+                      ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
+                      : 'border-black/10 text-gray-500 hover:text-black hover:bg-black/5'
                       }`}
                   >
                     <Bell size={14} />
